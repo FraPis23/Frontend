@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
       <div>
-          <header>
+          <header className='header'>
               <img src={logo} alt='Logo'/>
           </header>
           <Router>
@@ -16,8 +16,12 @@ function App() {
                   <Route path="/home" element={<Home/>}/>
               </Routes>
           </Router>
-          <footer>
-              Progetto FW
+          <footer className='footer'>
+              <p>Progetto Fondamenti Web:</p>
+              <p>Donvito Gianni</p>
+              <p>Laterza Giorgio</p>
+              <p>Piscopo Francesco</p>
+              <p>Anno: 2023/2024</p>
           </footer>
       </div>
   );
