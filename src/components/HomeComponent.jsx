@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import '../rendering/HomeComponent.css'
 
 function Home() {
     const [user, setUsers] = useState([{id: '', name: '', lastName: ''}]);
@@ -15,7 +16,7 @@ function Home() {
     }, []);
     return (
         <div>
-            <main>
+            <main className='container'>
                 <aside>
                     <span>Benvenuto, {user.name} {user.lastName}</span> <br />
                     <span>{user.id}</span>
@@ -24,9 +25,7 @@ function Home() {
 
                 </section>
             </main>
-            <footer>
 
-            </footer>
         </div>
     );
 }
