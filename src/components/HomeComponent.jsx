@@ -16,7 +16,7 @@ function Home() {
     }, []);
     return (
         <div>
-            <main className='container'>
+            <main className='homeContainer'>
                 <aside>
                     <span>Benvenuto, {user.name} {user.lastName}</span> <br />
                     <span>{user.id}</span>

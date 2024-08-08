@@ -1,18 +1,26 @@
 import React from 'react';
-import Home from './components/HomeComponent';
+
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import logo from './warehouseLogo.png';
 
 import './App.css';
+
+import Header from "./components/HeaderComponent";
+import LoginPage from "./components/LoginPageComponent";
+import Home from './components/HomeComponent';
 
 function App() {
   return (
       <div>
           <header className='header'>
-              <img src={logo} alt='Logo'/>
+              <Router>
+                  <Routes>
+                      <Route path="/home" element={<Header />} />
+                  </Routes>
+              </Router>
           </header>
           <Router>
               <Routes>
+                  <Route path='/' element={<LoginPage />} />
                   <Route path="/home" element={<Home/>}/>
               </Routes>
           </Router>
