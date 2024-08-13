@@ -26,13 +26,16 @@
     align-items: center;
     border-radius: 10px;
     box-sizing: border-box;
+    backdrop-filter: blur(4px);
+    padding-bottom: 55px;
 }
 
-.loginSection h1 {
+.loginSection p {
     font-size: 2em;
     margin-bottom: 20px;
     text-align: center;
-    color: rgb(23, 81, 103);
+    font-family: "Patua One";
+    color: rgb(37, 37, 37);
 }
 
 .loginButton {
@@ -44,10 +47,29 @@
     transition: color 0.3s, border 0.3s;
     box-sizing: border-box;
     margin-top: 10px;
-    color: rgb(23, 81, 103);
+    font-family: "Patua One";
+    color: rgb(37, 37, 37);
+    border-radius: 15px;
+}
+
+
+.loginButton::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 55px;
+    width: 8%;
+    height: 4px;
+    background-color: rgb(37, 37, 37);
+    transform: translateX(-50%);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.loginButton:hover::after {
+    transform: translateX(-50%) scaleX(0);
+    opacity: 0;
 }
 
 .loginButton:hover {
     border: 4px solid;
-    color: rgb(23, 81, 103);
 }
