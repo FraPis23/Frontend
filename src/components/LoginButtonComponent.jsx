@@ -1,29 +1,16 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import '../rendering/LoginPage.css';
+import '../rendering/pages/LoginPage.css';
 import axios from 'axios';
 
 function LoginButton() {
     const { loginWithRedirect, user } = useAuth0();
 
     const handleLogin = async () => {
-        await loginWithRedirect();
-
-        const userId = user?.sub;
-
-        try {
-            const response = await axios.get(`/api/checkUser/${userId}`);
-            const userExists = response.data.exists;
-
-            const redirectUrl = userExists ? "/home" : "/create-user";
-
-            await loginWithRedirect({
-                appState: {
-                    returnTo: redirectUrl,
-                },
-            });
-        } catch (error) {
-            console.error("Errore nel controllo dell'utente:", error);
-        }
+        await loginWithRedirect({
+            appState: {
+                returnTo: "/home",
+            },
+        });
     };
 
     function handleMouseEnter() {
