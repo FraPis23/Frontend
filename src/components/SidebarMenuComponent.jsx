@@ -1,56 +1,56 @@
 import React, { useState } from 'react';
 import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import UserInfo from '../components/UserInfoComponent';
-
+import AddWarehouse from "./AddWarehouseComponent";
+import ViewYourWarehouse from "./ViewYourWarehousesComponent";
 
 
 const SidebarMenu = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-    const toggleDrawer = (open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setIsDrawerOpen(open);
+    const toggleDrawer = () => {
+        setIsDrawerOpen(!isDrawerOpen);
     };
 
     return (
         <div>
-            {/* Icona del menu in alto a destra */}
             <IconButton
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                onClick={toggleDrawer(true)}
-                sx={{ position: 'fixed', top: 10, left: 10 }}
+                onClick={toggleDrawer}
+                sx={{ position: 'fixed', top: 10, left: 10, zIndex: 1301 }} //Ho messo il ManuIcon in rilievo su ase Z per poterlo sempre cliccare
             >
                 <MenuIcon />
             </IconButton>
 
 
-            {/* Sidebar */}
 
             <Drawer
                 anchor="left"
                 open={isDrawerOpen}
-                onClose={toggleDrawer(false)}
+                ModalProps={{
+                    //hideBackdrop:true //per non opacizzare lo sfondo quando apri la tendina
+                }}
+                PaperProps={{
+                    style: { top: '64px', height: 'calc(100% - 64px)' } // Regola la posizione sotto l'header (considerato alto 64)
+                }}
+
             >
                 <div
                     role="presentation"
-                    onClick={toggleDrawer(false)}
-                    onKeyDown={toggleDrawer(false)}
                     style={{ width: 250}}
                 >
 
                     <List>
                         <ListItem>
                             <ListItemText primary="PiscopoGaty" />
+                            <AddWarehouse />
+                            <ViewYourWarehouse />
                         </ListItem>
                     </List>
                 </div>
             </Drawer>
-
         </div>
     );
 };
