@@ -3,3 +3,21 @@
     grid-template-columns: 1fr 3fr;
     height: 100%;
 }
+
+.pageTitle{
+    text-align: center;
+    font-size: 2rem;
+    position: absolute;
+    top: 20px; /* Distanza dal top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Per assicurarsi che il testo sia centrato */
+    z-index: 1;
+}
+
+.userInfoManagement .userInfo {
+    margin-bottom: 20px;
+}
+
+
+

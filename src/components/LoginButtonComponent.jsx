@@ -1,11 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import '../rendering/pages/LoginPage.css';
-import axios from 'axios';
 
 function LoginButton() {
-    const { loginWithRedirect, user } = useAuth0();
+    const { loginWithRedirect } = useAuth0();
 
-    const handleLogin = async () => {
+    const handleLogin = async ()=> {
         await loginWithRedirect({
             appState: {
                 returnTo: "/home",

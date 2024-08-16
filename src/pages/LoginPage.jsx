@@ -2,7 +2,7 @@ import '../rendering/pages/LoginPage.css';
 
 import LoginButtonComponent from "../components/LoginButtonComponent";
 
-import warehouseLogo from '../warehouseLogo-removebg-preview.png';
+import warehouseLogo from '../images/warehouseLogo-removebg-preview.png';
 
 
 function LoginPage() {
