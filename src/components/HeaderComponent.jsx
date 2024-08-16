@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 import Loading from '../pages/LoadingPage'
 import UserInfo from '../components/UserInfoComponent'
+import SidebarMenu from "./SidebarMenuComponent";
 
 import logo from '../images/warehouseLogo-removebg-preview-fotor-2024081683521.png'
 
@@ -26,7 +27,7 @@ function Header() {
             <Container maxWidth="100vw">
                 <Toolbar disableGutters>
                     <Box className="headerBar">
-                        <MenuIcon />
+                        <SidebarMenu />
                         <img className="headerLogo" src={logo} alt="logo"/>
                         <UserInfo />
                     </Box>
