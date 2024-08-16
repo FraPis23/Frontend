@@ -16,24 +16,7 @@ import '../rendering/components/HeaderComponent.css'
 
 
 function Header() {
-    const { logout, isLoading } = useAuth0();
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
-    const handleAddWarehouse = () => {
-        setAnchorElUser(null);
-    };
-
-    const handleLogout = () => {
-        logout({ logoutParams: { returnTo: window.location.origin } });
-    };
+    const { isLoading } = useAuth0();
 
     if (isLoading)
         return <Loading />
