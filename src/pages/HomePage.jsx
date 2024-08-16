@@ -8,6 +8,8 @@ import '../rendering/pages/HomePage.css'
 
 import Header from "../components/HeaderComponent";
 
+
+
 function HomePage() {
     const {setAccount, setToken, setSub} = useContext(UserContext);
     const {isAuthenticated, getAccessTokenSilently, user, logout, isLoading} = useAuth0();
