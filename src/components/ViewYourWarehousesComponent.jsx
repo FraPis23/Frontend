@@ -10,16 +10,16 @@ const ViewYourWarehouses = () => {
             <IconButton
                 color="primary"
                 aria-label="add warehouse"
-                sx={{ position: 'absolute', top: 300, left: 65}}
+                sx={{ position: 'absolute', top: 330, left: 65}}
             >
                 <StoreIcon style={{ fontSize: 100 }} />
             </IconButton>
 
             <Typography
                 variant="body1"
-                sx={{ position: 'absolute', top: 400, left: 65 }}
+                sx={{ position: 'absolute', top: 430, left: 65 }}
             >
-                Crea Magazzino
+                I miei Magazzini
             </Typography>
         </div>
     );

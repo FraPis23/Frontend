@@ -3,6 +3,8 @@ import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import AddWarehouse from "./AddWarehouseComponent";
 import ViewYourWarehouse from "./ViewYourWarehousesComponent";
+import '../rendering/components/SidebarMenuComponent.css'
+import {blue} from "@mui/material/colors";
 
 
 const SidebarMenu = () => {
@@ -44,7 +46,7 @@ const SidebarMenu = () => {
 
                     <List>
                         <ListItem>
-                            <ListItemText primary="PiscopoGaty" />
+                            <ListItemText className="SidebarHeader" primary="Gestione Magazzini"/>
                             <AddWarehouse />
                             <ViewYourWarehouse />
                         </ListItem>

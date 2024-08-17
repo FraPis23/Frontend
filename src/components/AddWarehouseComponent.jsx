@@ -5,13 +5,14 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 const AddWarehouse = ({ onCreate }) => {
     const [open, setOpen] = useState(false);
     const [warehouseName, setWarehouseName] = useState('');
+    const [warehouseDescription, setWarehouseDescription] = useState('');
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const handleCreate = () => {
-        if (onCreate && warehouseName) {
-            onCreate(warehouseName);
+        if (onCreate && warehouseName && warehouseDescription) {
+            onCreate(warehouseName && warehouseDescription);
             handleClose(); // Chiude la modale dopo aver creato il magazzino
         }
     };
@@ -23,14 +24,14 @@ const AddWarehouse = ({ onCreate }) => {
                 color="primary"
                 aria-label="add warehouse"
                 onClick={handleOpen}
-                sx={{ position: 'absolute', top: 100, left: 65}}
+                sx={{ position: 'absolute', top: 130, left: 65}}
             >
                 <AddCircleOutlineIcon style={{ fontSize: 100 }} />
             </IconButton>
 
             <Typography
                 variant="body1"
-                sx={{ position: 'absolute', top: 210, left: 65 }}
+                sx={{ position: 'absolute', top: 240, left: 65 }}
             >
                 Crea Magazzino
             </Typography>
@@ -67,6 +68,15 @@ const AddWarehouse = ({ onCreate }) => {
                         onChange={(e) => setWarehouseName(e.target.value)}
                         sx={{ mt: 2 }}
                     />
+                    <TextField
+                        fullWidth
+                        label="Descrizione del Magazzino"
+                        variant="outlined"
+                        value={warehouseDescription}
+                        onChange={(e) => setWarehouseDescription(e.target.value)}
+                        sx={{ mt: 2 }}
+                    />
+
                     <Button
                         variant="contained"
                         color="primary"
