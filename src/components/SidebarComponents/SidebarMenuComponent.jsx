@@ -1,48 +1,39 @@
 import React, { useState } from 'react';
 import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import UserInfo from './HeaderComponents/UserInfoComponent';
-
-
 
 const SidebarMenu = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-    const toggleDrawer = (open) => (event) => {
-        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-            return;
-        }
-        setIsDrawerOpen(open);
+    const toggleDrawer = () => {
+        setIsDrawerOpen(!isDrawerOpen); // Inverte lo stato di apertura/chiusura della sidebar
     };
 
     return (
         <div>
-            {/* Icona del menu in alto a destra */}
             <IconButton
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                onClick={toggleDrawer(true)}
+                onClick={toggleDrawer}
                 sx={{ position: 'fixed', top: 10, left: 10 }}
             >
                 <MenuIcon />
             </IconButton>
 
-
-            {/* Sidebar */}
-
             <Drawer
                 anchor="left"
                 open={isDrawerOpen}
-                onClose={toggleDrawer(false)}
+                onClose={toggleDrawer} // Ripristina l'onClose per il pulsante
+                PaperProps={{
+                    style: { top: '64px', height: 'calc(100% - 64px)' } // Posiziona sotto l'header
+                }}
+
             >
                 <div
                     role="presentation"
-                    onClick={toggleDrawer(false)}
-                    onKeyDown={toggleDrawer(false)}
-                    style={{ width: 250}}
+                    style={{ width: 250 }}
                 >
-
                     <List>
                         <ListItem>
                             <ListItemText primary="PiscopoGaty" />
@@ -50,7 +41,6 @@ const SidebarMenu = () => {
                     </List>
                 </div>
             </Drawer>
-
         </div>
     );
 };

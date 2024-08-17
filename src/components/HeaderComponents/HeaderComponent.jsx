@@ -8,7 +8,8 @@ import Container from '@mui/material/Container';
 
 import Loading from '../../pages/LoadingPage'
 import UserInfo from './UserInfoComponent'
-import SidebarMenu from "../SidebarMenuComponent";
+import SidebarMenu from "../SidebarComponents/SidebarMenuComponent";
+import AddWarehouse from "../SidebarComponents/AddWarehouseComponent";
 
 import logo from '../../images/warehouseLogo-removebg-preview-fotor-2024081683521.png'
 
@@ -26,6 +27,8 @@ function Header() {
             <Container maxWidth="100vw">
                 <Toolbar disableGutters>
                     <Box className="headerBar">
+
+                        <AddWarehouse />
                         <img className="headerLogo" src={logo} alt="logo"/>
                         <UserInfo className="headerAvatar"/>
                     </Box>

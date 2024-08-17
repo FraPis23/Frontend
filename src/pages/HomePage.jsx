@@ -7,7 +7,6 @@ import {UserContext} from "../contexts/UserContext";
 import '../rendering/pages/HomePage.css'
 
 import Header from "../components/HeaderComponents/HeaderComponent";
-import Navbar from "../components/NavbarComponents/NavbarComponent";
 import Main from "../components/MainComponents/MainComponent";
 
 
@@ -83,7 +82,6 @@ function HomePage() {
                 </div>
             </div>
             <div className='homeBody'>
-                <Navbar className="homeNavbar"/>
                 <Main />
             </div>
         </div>
