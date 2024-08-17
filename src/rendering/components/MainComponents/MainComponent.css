@@ -1,0 +1,26 @@
+.main{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left:20px;
+    margin-right:20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif ;
+    font-size: 60px ;
+    font-weight: bold ;
+    letter-spacing: 1px;
+    color: inherit;
+}
+
+.warehouses{
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.warehouseName{
+    text-align: center !important;
+    font-family: 'Arial', sans-serif !important;
+    font-size: 20px !important ;
+    font-weight: bold !important;
+}

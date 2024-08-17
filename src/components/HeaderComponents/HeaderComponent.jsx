@@ -11,6 +11,7 @@ import UserInfo from './UserInfoComponent'
 import SidebarMenu from "../SidebarComponents/SidebarMenuComponent";
 import AddWarehouse from "../SidebarComponents/AddWarehouseComponent";
 
+
 import logo from '../../images/warehouseLogo-removebg-preview-fotor-2024081683521.png'
 
 import '../../rendering/components/HeaderComponents/HeaderComponent.css'
