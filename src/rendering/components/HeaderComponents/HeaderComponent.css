@@ -6,14 +6,8 @@
     height: 6.81vh;
 }
 
-.headerAvatar {
-    margin-left: auto;
-}
 
 .headerLogo {
     max-width: 130px;
     height: auto;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }

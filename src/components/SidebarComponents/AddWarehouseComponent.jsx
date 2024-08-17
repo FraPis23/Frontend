@@ -23,9 +23,9 @@ const NewWarehouseIcon = ({ onCreate }) => {
                 color="inherit"
                 aria-label="add warehouse"
                 onClick={handleOpen}
-                //sx={{ position: 'fixed', top: 10, left: 10 }}
+                sx={{ position: 'fixed', top: 5, left: 10 }}
             >
-                <AddCircleOutlineIcon style={{ fontSize: 50 }} />
+                <AddCircleOutlineIcon style={{ fontSize: 40 }} />
             </IconButton>
 
             {/* Scritta sotto l'icona */}
