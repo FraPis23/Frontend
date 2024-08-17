@@ -1,6 +1,6 @@
 import '../rendering/pages/LoginPage.css';
 
-import LoginButtonComponent from "../components/LoginButtonComponent";
+import LoginButtonComponent from "../components/LoginComponents/LoginButtonComponent";
 
 import warehouseLogo from '../images/warehouseLogo-removebg-preview.png';
 

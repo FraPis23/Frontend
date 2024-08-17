@@ -1,0 +1,19 @@
+.headerBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 6.81vh;
+}
+
+.headerAvatar {
+    margin-left: auto;
+}
+
+.headerLogo {
+    max-width: 130px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}

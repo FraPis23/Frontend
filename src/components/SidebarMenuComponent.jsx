@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import UserInfo from '../components/UserInfoComponent';
+import UserInfo from './HeaderComponents/UserInfoComponent';
 
 
 

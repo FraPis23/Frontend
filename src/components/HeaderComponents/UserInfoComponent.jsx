@@ -8,20 +8,19 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import LogoutIcon from '@mui/icons-material/Logout';
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
-import Loading from '../pages/LoadingPage'
+import Loading from '../../pages/LoadingPage'
 
-import {UserContext} from "../contexts/UserContext";
+import {UserContext} from "../../contexts/UserContext";
 
 
-import '../rendering/components/UserInfoComponent.css'
+import '../../rendering/components/HeaderComponents/UserInfoComponent.css'
+import LogoutButton from "./LogoutButtonComponent";
 
 
 const UserInfo = () => {
-    const {account} = useContext(UserContext);
-    const { logout } = useAuth0();
+    const { account } = useContext(UserContext);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenUserMenu = (event) => {
@@ -30,10 +29,6 @@ const UserInfo = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
-    };
-
-    const handleLogout = () => {
-        logout({ logoutParams: { returnTo: window.location.origin } });
     };
 
     if (!account) {
@@ -48,7 +43,7 @@ const UserInfo = () => {
                 </IconButton>
             </Tooltip>
             <Menu
-                sx={{ mt: '45px', minWidth: '850px' }}
+                sx={{ mt: '45px' }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -74,9 +69,7 @@ const UserInfo = () => {
                 <MenuItem>
                     <Typography className="headerNickname"><PersonOutlineIcon/> <span className="headerNicknameSpan">{account.nickname}</span></Typography>
                 </MenuItem>
-                <MenuItem onClick={handleLogout}>
-                    <Typography className="headerExit"><LogoutIcon /> Esci</Typography>
-                </MenuItem>
+                <LogoutButton />
             </Menu>
         </Box>
     )

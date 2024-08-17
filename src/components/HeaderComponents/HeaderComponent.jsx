@@ -5,15 +5,14 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
-import MenuIcon from '@mui/icons-material/Menu';
 
-import Loading from '../pages/LoadingPage'
-import UserInfo from '../components/UserInfoComponent'
-import SidebarMenu from "./SidebarMenuComponent";
+import Loading from '../../pages/LoadingPage'
+import UserInfo from './UserInfoComponent'
+import SidebarMenu from "../SidebarMenuComponent";
 
-import logo from '../images/warehouseLogo-removebg-preview-fotor-2024081683521.png'
+import logo from '../../images/warehouseLogo-removebg-preview-fotor-2024081683521.png'
 
-import '../rendering/components/HeaderComponent.css'
+import '../../rendering/components/HeaderComponents/HeaderComponent.css'
 
 
 function Header() {
@@ -27,9 +26,8 @@ function Header() {
             <Container maxWidth="100vw">
                 <Toolbar disableGutters>
                     <Box className="headerBar">
-                        <SidebarMenu />
                         <img className="headerLogo" src={logo} alt="logo"/>
-                        <UserInfo />
+                        <UserInfo className="headerAvatar"/>
                     </Box>
                 </Toolbar>
             </Container>

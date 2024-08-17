@@ -6,7 +6,9 @@ import {UserContext} from "../contexts/UserContext";
 
 import '../rendering/pages/HomePage.css'
 
-import Header from "../components/HeaderComponent";
+import Header from "../components/HeaderComponents/HeaderComponent";
+import Navbar from "../components/NavbarComponents/NavbarComponent";
+import Main from "../components/MainComponents/MainComponent";
 
 
 
@@ -75,12 +77,14 @@ function HomePage() {
         <div>
             <Header />
             <div className='homePage'>
-
-
                 <div className='sidebarToggle'>
                     <section className='warehousesList'>
                     </section>
                 </div>
+            </div>
+            <div className='homeBody'>
+                <Navbar className="homeNavbar"/>
+                <Main />
             </div>
         </div>
     )
