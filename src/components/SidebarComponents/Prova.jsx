@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { IconButton, Modal, Box, Typography, TextField, Button } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
-import zIndex from "@mui/material/styles/zIndex";
 import '../../rendering/components/HeaderComponents/AddWarehouseComponent.css'
 
 const libraries = ['places'];
