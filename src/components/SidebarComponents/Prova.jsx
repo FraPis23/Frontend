@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { IconButton, Modal, Box, Typography, TextField, Button } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
+import zIndex from "@mui/material/styles/zIndex";
+import '../../rendering/components/HeaderComponents/AddWarehouseComponent.css'
 
 const libraries = ['places'];
 
@@ -11,6 +13,8 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [description, setDescription] = useState('');
     const [coordinates, setCoordinates] = useState([]);
     const [autocomplete, setAutocomplete] = useState(null);
+    const [lsAdminsId, setLsAdminsId] = useState('');
+    const [lsUsersId, setLsUsersId] = useState('');
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -126,6 +130,24 @@ const NewWarehouseIcon = ({ onCreate }) => {
                             />
                         </Autocomplete>
                     )}
+
+                    <TextField
+                        fullWidth
+                        label="IDs degli Amministratori (separati da virgola)"
+                        variant="outlined"
+                        value={lsAdminsId}
+                        onChange={(e) => setLsAdminsId(e.target.value)}
+                        sx={{ mt: 2 }}
+                    />
+
+                    <TextField
+                        fullWidth
+                        label="IDs degli Utenti (separati da virgola)"
+                        variant="outlined"
+                        value={lsUsersId}
+                        onChange={(e) => setLsUsersId(e.target.value)}
+                        sx={{ mt: 2 }}
+                    />
 
                     <Button
                         variant="contained"
