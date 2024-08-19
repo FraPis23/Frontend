@@ -32,8 +32,8 @@ const NewWarehouseIcon = ({ onCreate }) => {
     };
 
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: 'YOUR_GOOGLE_MAPS_API_KEY', // Sostituisci con la tua API key
-        libraries,
+        googleMapsApiKey: 'AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw', // Sostituisci con la tua API key
+        libraries: libraries,
     });
 
     const onLoad = (autocompleteInstance) => {
