@@ -10,9 +10,8 @@ import Header from "../components/HeaderComponents/HeaderComponent";
 import Main from "../components/MainComponents/MainComponent";
 
 
-
 function HomePage() {
-    const {setAccount, setToken, setSub} = useContext(UserContext);
+    const {setAccount, setToken, setSub, token} = useContext(UserContext);
     const {isAuthenticated, getAccessTokenSilently, user, logout, isLoading} = useAuth0();
     const api_url = process.env.REACT_APP_API_URL;
 
@@ -73,6 +72,7 @@ function HomePage() {
     }, [isAuthenticated, getAccessTokenSilently, setAccount])
 
     return (
+        token ? (
         <div>
             <Header />
             <div className='homePage'>
@@ -85,6 +85,9 @@ function HomePage() {
                 <Main />
             </div>
         </div>
+    ) : (
+        <div></div>
+    )
     )
 }
 
