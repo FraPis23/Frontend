@@ -12,27 +12,15 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [description, setDescription] = useState('');
     const [coordinates, setCoordinates] = useState([]);
     const [autocomplete, setAutocomplete] = useState(null);
-    const [lsAdminsId, setLsAdminsId] = useState('');
-    const [lsUsersId, setLsUsersId] = useState('');
+    const [lsAdminsId, setLsAdminsId] = useState([]);
+    const [newAdminId, setNewAdminId] = useState('');
+    const [lsUsersId, setLsUsersId] = useState([]);
+    const [newUserId, setNewUserId] = useState('');
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleCreate = () => {
-        if (onCreate && warehouseName && coordinates.length > 0) {
-            onCreate({
-                name: warehouseName,
-                description,
-                location: {
-                    type: 'Point',
-                    coordinates,
-                },
-            });
-            handleClose(); // Chiude la modale dopo aver creato il magazzino
-        } else {
-            console.log("Errore: Informazioni incomplete");
-        }
-    };
+
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: 'AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw', // Sostituisci con la tua API key
@@ -58,6 +46,43 @@ const NewWarehouseIcon = ({ onCreate }) => {
             }
         }
     };
+
+    const handleAddAdmin = () => {
+        if (newAdminId.trim()) { // Check if input is not empty
+            setLsAdminsId([...lsAdminsId, newAdminId]);
+            setNewAdminId('');
+            console.log('Final Admins List:', lsAdminsId)// Clear the input field after adding
+        }
+    };
+
+    const handleAddUser = () => {
+        if (newUserId.trim()) { // Check if input is not empty
+            setLsUsersId([...lsUsersId, newUserId]);
+            setNewUserId(''); // Clear the input field after adding
+            console.log('Final Admins List:', lsUsersId)
+        }
+    };
+
+
+    const handleCreate = () => {
+        console.log('onCreate:', onCreate);
+        console.log('warehouseName:', warehouseName);
+        console.log('coordinates:', coordinates);
+        if (onCreate && warehouseName && coordinates.length>0) {
+            onCreate({
+                name: warehouseName,
+                description: description,
+                location: {
+                    type: 'Point',
+                    coordinates,
+                },
+            });
+            handleClose(); // Chiude la modale dopo aver creato il magazzino
+        } else {
+            console.log("Errore: Informazioni incomplete");
+        }
+    };
+
 
     return (
         <div style={{ textAlign: 'center' }}>
@@ -132,21 +157,38 @@ const NewWarehouseIcon = ({ onCreate }) => {
 
                     <TextField
                         fullWidth
-                        label="IDs degli Amministratori (separati da virgola)"
+                        label="IDs degli Amministratori"
                         variant="outlined"
-                        value={lsAdminsId}
-                        onChange={(e) => setLsAdminsId(e.target.value)}
-                        sx={{ mt: 2 }}
+                        value={newAdminId}
+                        onChange={(e) => setNewAdminId(e.target.value)}
+                        sx={{ mt: 2}}
                     />
+                    <IconButton
+                        color="primary"
+                        aria-label="add Admin"
+                        onClick={handleAddAdmin}
+                        sx={{ position: 'fixed', top: 296, right: 35 }}
+                    >
+                        <AddCircleOutlineIcon style={{ fontSize: 40 }} />
+                    </IconButton>
+
 
                     <TextField
                         fullWidth
-                        label="IDs degli Utenti (separati da virgola)"
+                        label="IDs degli Utenti"
                         variant="outlined"
-                        value={lsUsersId}
-                        onChange={(e) => setLsUsersId(e.target.value)}
-                        sx={{ mt: 2 }}
+                        value={newUserId}
+                        onChange={(e) => setNewUserId(e.target.value)}
+                        sx={{ mt: 2}}
                     />
+                    <IconButton
+                        color="primary"
+                        aria-label="add User"
+                        onClick={handleAddUser}
+                        sx={{ position: 'fixed', top: 368, right: 35 }}
+                    >
+                        <AddCircleOutlineIcon style={{ fontSize: 40 }} />
+                    </IconButton>
 
                     <Button
                         variant="contained"
