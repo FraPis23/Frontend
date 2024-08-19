@@ -10,6 +10,7 @@ import Loading from '../../pages/LoadingPage'
 import UserInfo from './UserInfoComponent'
 import SidebarMenu from "../SidebarComponents/SidebarMenuComponent";
 import AddWarehouse from "../SidebarComponents/AddWarehouseComponent";
+import NewWarehouse from "../SidebarComponents/Prova";
 
 
 import logo from '../../images/warehouseLogo-removebg-preview-fotor-2024081683521.png'
@@ -29,7 +30,7 @@ function Header() {
                 <Toolbar disableGutters>
                     <Box className="headerBar">
 
-                        <AddWarehouse />
+                        <NewWarehouse />
                         <img className="headerLogo" src={logo} alt="logo"/>
                         <UserInfo className="headerAvatar"/>
                     </Box>
