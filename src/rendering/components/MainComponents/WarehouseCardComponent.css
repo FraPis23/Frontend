@@ -1,0 +1,19 @@
+.warehouseCardConteiner {
+    width: 230px;
+    margin: auto
+}
+
+.warehouseCardIcon {
+    font-size: 150px !important
+}
+
+.warehouseCardName{
+    font-family: 'Arial', sans-serif !important;
+    font-size: 20px !important ;
+    font-weight: bold !important;
+}
+
+.warehouseCardMap {
+    width: 70px !important;
+    height: 70px !important;
+}

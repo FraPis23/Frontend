@@ -5,7 +5,7 @@ import {getWarehousesId, getWarehouse} from "../../services/HomePageSetupService
 
 import '../../rendering/components/MainComponents/MainComponent.css';
 
-import ViewYourWarehouses from "./ViewYourWarehousesComponent";
+import WarehouseCard from "./WarehouseCardComponent";
 import Loading from "../../pages/LoadingPage";
 
 const Main = () => {
@@ -33,7 +33,7 @@ const Main = () => {
             I miei Magazzini
             <div className="warehouses">
                 {warehouses.map((warehouse, index) => (
-                    <ViewYourWarehouses warehouse={warehouse} key={index} />
+                    <WarehouseCard warehouse={warehouse} key={index} />
                 ))}
             </div>
         </main>
