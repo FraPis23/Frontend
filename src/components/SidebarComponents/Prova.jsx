@@ -3,6 +3,7 @@ import { IconButton, Modal, Box, Typography, TextField, Button } from '@mui/mate
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
 import '../../rendering/components/HeaderComponents/AddWarehouseComponent.css'
+import IconChoose from "./IconChoose";
 
 
 const NewWarehouseIcon = ({ onCreate }) => {
@@ -88,20 +89,15 @@ const NewWarehouseIcon = ({ onCreate }) => {
     return (
         <div style={{ textAlign: 'center' }}>
             <IconButton
-                color="inherit"
+                color="primary"
                 aria-label="add warehouse"
                 onClick={handleOpen}
-                sx={{ position: 'fixed', top: 5, left: 10 }}
+
             >
-                <AddCircleOutlineIcon style={{ fontSize: 40 }} />
+                <AddCircleOutlineIcon style={{ fontSize: 130 }} />
             </IconButton>
 
-            <Typography
-                variant="body1"
-                sx={{ position: 'fixed', bottom: 20, right: 20 }}
-            >
-                Crea Magazzino
-            </Typography>
+
 
             <Modal
                 open={open}
@@ -190,6 +186,9 @@ const NewWarehouseIcon = ({ onCreate }) => {
                     >
                         <AddCircleOutlineIcon style={{ fontSize: 40 }} />
                     </IconButton>
+
+                    <IconChoose />
+
 
                     <Button
                         variant="contained"

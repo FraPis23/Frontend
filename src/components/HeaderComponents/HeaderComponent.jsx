@@ -30,7 +30,7 @@ function Header() {
                 <Toolbar disableGutters>
                     <Box className="headerBar">
 
-                        <NewWarehouseIcon />
+
                         <img className="headerLogo" src={logo} alt="logo"/>
                         <UserInfo className="headerAvatar"/>
                     </Box>
