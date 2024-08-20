@@ -19,7 +19,7 @@ export async function postUser(user, token) {
                         authorization: `Bearer ${token}`,
                     },
                 }
-            )
+            );
 
     } catch (error) {
         console.log(error);
@@ -39,9 +39,53 @@ export async function getUser(user, token) {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
-            });
+            }
+        );
 
         return response.data;
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function getWarehousesId(sub, token) {
+    try {
+
+        const response = await axios.post(
+                `${api_url}/users/returnWarehouses`,
+                {
+                    sub: sub
+                },
+                {
+                    withCredentials: true,
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    }
+                }
+            );
+
+        return response.data;
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function getWarehouses(element, token) {
+    try {
+
+        const response = await axios.get(
+                `${api_url}/warehouses/${element}`,
+                {
+                    withCredentials: true,
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    }
+                }
+            );
+
+        return response.data
 
     } catch (error) {
         console.log(error);

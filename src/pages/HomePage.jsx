@@ -3,7 +3,7 @@ import {useAuth0} from "@auth0/auth0-react";
 import {useEffect} from "react";
 import {UserContext} from "../contexts/UserContext";
 
-import {postUser, getUser} from "../services/SetupService";
+import {postUser, getUser} from "../services/HomePageSetupService";
 
 import '../rendering/pages/HomePage.css'
 
@@ -21,14 +21,14 @@ function HomePage() {
             if (isAuthenticated) {
                 getAccessTokenSilently()
                     .then(async (token) => {
+                        setToken(token);
+                        setSub(user.sub);
                         await postUser(user, token)
                         const response = await getUser(user, token);
                         setAccount({
                             picture: response.picture,
                             nickname: response.nickname
                         });
-                            setToken(token);
-                            setSub(user.sub);
                 })
                 .catch((error) => {
                     console.log(error);
