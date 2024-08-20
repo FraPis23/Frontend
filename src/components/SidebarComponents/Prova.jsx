@@ -4,7 +4,6 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
 import '../../rendering/components/HeaderComponents/AddWarehouseComponent.css'
 
-const libraries = ['places'];
 
 const NewWarehouseIcon = ({ onCreate }) => {
     const [open, setOpen] = useState(false);
@@ -17,13 +16,15 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [lsUsersId, setLsUsersId] = useState([]);
     const [newUserId, setNewUserId] = useState('');
 
+    const libraries = ['places'];
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
 
 
     const { isLoaded } = useLoadScript({
-        googleMapsApiKey: 'AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw', // Sostituisci con la tua API key
+        googleMapsApiKey: "AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw",
         libraries: libraries,
     });
 

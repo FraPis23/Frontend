@@ -10,7 +10,7 @@ const Main = () => {
     const api_url = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        setWarehouses([]); //
+        setWarehouses([]); //reset the list
             axios
                 .post(
                     `${api_url}/users/returnWarehouse`,
