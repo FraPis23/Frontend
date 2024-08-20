@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
+import React from 'react';
+import { Card, CardContent, Typography, IconButton } from '@mui/material';
 import StoreIcon from '@mui/icons-material/Store';
 import '../../rendering/components/MainComponents/MainComponent.css';
 
@@ -17,7 +17,6 @@ const ViewYourWarehouses = ({warehouse}) => {
                     className="warehouseName"
                 >
                     {warehouse.name}
-                    Ciao
                 </Typography>
             </CardContent>
         </Card>

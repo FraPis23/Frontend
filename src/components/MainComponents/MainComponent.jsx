@@ -28,7 +28,7 @@ const Main = () => {
     }, []);
 
     return (
-        (warehouses && warehouses.length > 0) ? (
+        (warehouses) ? (
         <main className="main">
             I miei Magazzini
             <div className="warehouses">
