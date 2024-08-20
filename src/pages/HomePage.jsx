@@ -6,6 +6,7 @@ import {UserContext} from "../contexts/UserContext";
 
 import '../rendering/pages/HomePage.css'
 
+import Loading from "./LoadingPage";
 import Header from "../components/HeaderComponents/HeaderComponent";
 import Main from "../components/MainComponents/MainComponent";
 
@@ -86,7 +87,7 @@ function HomePage() {
             </div>
         </div>
     ) : (
-        <div></div>
+        <Loading />
     )
     )
 }

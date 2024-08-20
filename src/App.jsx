@@ -8,13 +8,11 @@ import AutenticationGuard from "./AutenticationGuard";
 
 import './App.css';
 
-import LoadingPage from "./pages/LoadingPage";
+import Loading from "./pages/LoadingPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
-import WarehousePage from "./pages/WarehousePage";
 
 import {UserProvider} from "./contexts/UserContext"
-import {WarehouseProvider} from "./contexts/WarehouseContext"
 
 
 
@@ -30,7 +28,7 @@ function App() {
 
     if (isLoading) {
         return (
-            <LoadingPage />
+            <Loading />
         );
     }
     return (
@@ -43,11 +41,6 @@ function App() {
                     <Route path="/home" element={<AutenticationGuard component={HomePage}/>} />
                 </Routes>
             </UserProvider>
-            <WarehouseProvider>
-                <Routes>
-                    <Route path="/warehouse" element={<AutenticationGuard component={WarehousePage}/>} />
-                </Routes>
-            </WarehouseProvider>
         </main>
   );
 }
