@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
 import StoreIcon from '@mui/icons-material/Store';
 import '../../rendering/components/MainComponents/MainComponent.css';
 
-const ViewYourWarehouses = () => {
+const ViewYourWarehouses = ({warehouse}) => {
+
+
     return (
         <Card sx={{ maxWidth: 345, margin: 'auto' }}>
             <CardContent style={{ textAlign: 'center' }}>
@@ -14,7 +16,8 @@ const ViewYourWarehouses = () => {
                     variant="h5"
                     className="warehouseName"
                 >
-                    Jany
+                    {warehouse.name}
+                    Ciao
                 </Typography>
             </CardContent>
         </Card>

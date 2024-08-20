@@ -72,7 +72,7 @@ export async function getWarehousesId(sub, token) {
     }
 }
 
-export async function getWarehouses(element, token) {
+export async function getWarehouse(element, token) {
     try {
 
         const response = await axios.get(

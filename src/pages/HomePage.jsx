@@ -36,7 +36,7 @@ function HomePage() {
                         logout({returnTo: window.location.origin});
                 });
             }
-    }, [isAuthenticated, getAccessTokenSilently, setAccount])
+    }, [isAuthenticated, getAccessTokenSilently])
 
     return (
         token ? (
