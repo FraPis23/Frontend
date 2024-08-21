@@ -1,7 +1,7 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {UserContext} from "../../contexts/UserContext";
 
-import {getWarehousesId, getWarehouse} from "../../services/HomePageSetupService";
+import {getWarehousesId, getWarehouse, addWarehouse} from "../../services/HomePageSetupService";
 
 import '../../rendering/components/MainComponents/MainComponent.css';
 
@@ -11,7 +11,18 @@ import NewWarehouseIcon from "../SidebarComponents/Prova";
 
 
 const Main = () => {
+
     const {sub, token, setWarehouses, warehouses} = useContext(UserContext);
+
+    const handleCreateWarehouse = async (newWarehouse) => {
+        const createdWarehouse = await addWarehouse(newWarehouse, token);
+        console.log("Magazzino creato:", createdWarehouse);
+
+        // Aggiungi il nuovo magazzino alla lista dei magazzini visualizzati
+      //  setWarehouses(prevWarehouses => [...prevWarehouses, createdWarehouse]);
+    };
+
+
 
     useEffect(() => {
         setWarehouses([]); //Reset the list
@@ -39,7 +50,7 @@ const Main = () => {
                     <WarehouseCard warehouse={warehouse} key={index} />
                 ))}
 
-                <NewWarehouseIcon />
+                <NewWarehouseIcon onCreate={handleCreateWarehouse}/>
             </div>
 
 

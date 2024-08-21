@@ -91,3 +91,35 @@ export async function getWarehouse(element, token) {
         console.log(error);
     }
 }
+
+
+export async function addWarehouse (warehouse, token) {
+    try {
+
+        console.log(warehouse);
+
+        const response = await axios.post(
+            `${api_url}/warehouses`,
+            {
+                name : warehouse.name,
+                description : warehouse.description,
+                location : warehouse.location.coordinates,
+                //lsThings : [],
+                lsAdminsId : warehouse.lsAdminsId,
+                lsUsersId : warehouse.lsUsersId,
+                //lsOperations : []
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+
+    } catch (error) {
+        console.error("Errore durante la creazione del magazzino:", error);
+        throw error;
+    }
+}

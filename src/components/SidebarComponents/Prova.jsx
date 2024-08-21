@@ -78,12 +78,17 @@ const NewWarehouseIcon = ({ onCreate }) => {
                     type: 'Point',
                     coordinates,
                 },
+                lsUsersId : lsUsersId,
+                lsAdminsId :lsAdminsId
             });
             handleClose(); // Chiude la modale dopo aver creato il magazzino
         } else {
             console.log("Errore: Informazioni incomplete");
         }
     };
+
+
+
 
 
     return (
