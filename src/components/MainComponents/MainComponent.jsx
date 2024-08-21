@@ -12,10 +12,10 @@ import NewWarehouseIcon from "../SidebarComponents/Prova";
 
 const Main = () => {
 
-    const {sub, token, setWarehouses, warehouses} = useContext(UserContext);
+    const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
 
     const handleCreateWarehouse = async (newWarehouse) => {
-        const createdWarehouse = await addWarehouse(newWarehouse, token);
+        const createdWarehouse = await addWarehouse(account, newWarehouse, token);
         console.log("Magazzino creato:", createdWarehouse);
 
         // Aggiungi il nuovo magazzino alla lista dei magazzini visualizzati

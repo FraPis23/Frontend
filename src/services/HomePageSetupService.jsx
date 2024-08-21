@@ -4,7 +4,6 @@ const api_url = process.env.REACT_APP_API_URL;
 
 export async function postUser(user, token) {
     try {
-
         await axios.post(
                 `${api_url}/users`,
                 {
@@ -20,30 +19,6 @@ export async function postUser(user, token) {
                     },
                 }
             );
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-export async function getUser(user, token) {
-    try {
-
-        const response = await axios.post(
-            `${api_url}/users/sub`,
-            {
-                sub: user.sub,
-            },
-            {
-                withCredentials: true,
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            }
-        );
-
-        return response.data;
-
     } catch (error) {
         console.log(error);
     }
@@ -92,21 +67,21 @@ export async function getWarehouse(element, token) {
     }
 }
 
-
-export async function addWarehouse (warehouse, token) {
+export async function addWarehouse (account, warehouse, token) {
     try {
-
-        console.log(warehouse);
+        console.log("Account", account);
+        console.log("Warehouse", warehouse);
 
         const response = await axios.post(
             `${api_url}/warehouses`,
             {
-                name : warehouse.name,
-                description : warehouse.description,
-                location : warehouse.location.coordinates,
+                sub: account.sub,
+                name: warehouse.name,
+                description: warehouse.description,
+                location: warehouse.location.coordinates,
                 //lsThings : [],
-                lsAdminsId : warehouse.lsAdminsId,
-                lsUsersId : warehouse.lsUsersId,
+                lsAdminsId: warehouse.lsAdminsId,
+                lsUsersId: warehouse.lsUsersId,
                 //lsOperations : []
             },
             {
@@ -116,10 +91,10 @@ export async function addWarehouse (warehouse, token) {
                 },
             }
         );
+
         return response.data;
 
     } catch (error) {
-        console.error("Errore durante la creazione del magazzino:", error);
-        throw error;
+        console.log(error);
     }
 }
