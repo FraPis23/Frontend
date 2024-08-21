@@ -98,3 +98,25 @@ export async function addWarehouse (account, warehouse, token) {
         console.log(error);
     }
 }
+
+export async function searchUserByNickname (text, token) {
+    try {
+
+        const response = await axios.post(
+            `${api_url}/warehouses/search?text=${text}`,
+            {
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        return response.data;
+
+    } catch (error) {
+        console.log(error);
+    }
+}

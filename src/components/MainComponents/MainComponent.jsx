@@ -10,6 +10,7 @@ import Loading from "../../pages/LoadingPage";
 import NewWarehouseIcon from "../SidebarComponents/Prova";
 
 
+
 const Main = () => {
 
     const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
@@ -49,6 +50,7 @@ const Main = () => {
                 {warehouses.map((warehouse, index) => (
                     <WarehouseCard warehouse={warehouse} key={index} />
                 ))}
+
 
                 <NewWarehouseIcon onCreate={handleCreateWarehouse}/>
             </div>
