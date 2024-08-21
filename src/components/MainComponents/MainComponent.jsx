@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {UserContext} from "../../contexts/UserContext";
 
 import {getWarehousesId, getWarehouse, addWarehouse} from "../../services/HomePageSetupService";
@@ -8,6 +8,7 @@ import '../../rendering/components/MainComponents/MainComponent.css';
 import WarehouseCard from "./WarehouseCardComponent";
 import Loading from "../../pages/LoadingPage";
 import NewWarehouseIcon from "../SidebarComponents/Prova";
+import SearchDinamically from "../SearchDinamicallyComponent";
 
 
 
@@ -51,7 +52,7 @@ const Main = () => {
                     <WarehouseCard warehouse={warehouse} key={index} />
                 ))}
 
-
+                <SearchDinamically scope="Utenti" />
                 <NewWarehouseIcon onCreate={handleCreateWarehouse}/>
             </div>
 
