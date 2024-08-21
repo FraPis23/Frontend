@@ -29,8 +29,6 @@ function Header() {
             <Container maxWidth="100vw">
                 <Toolbar disableGutters>
                     <Box className="headerBar">
-
-
                         <img className="headerLogo" src={logo} alt="logo"/>
                         <UserInfo className="headerAvatar"/>
                     </Box>
