@@ -8,7 +8,6 @@ import '../../rendering/components/MainComponents/MainComponent.css';
 import WarehouseCard from "./WarehouseCardComponent";
 import Loading from "../../pages/LoadingPage";
 import NewWarehouseIcon from "../SidebarComponents/Prova";
-import SearchDinamically from "../SearchDinamicallyComponent";
 
 
 
@@ -23,8 +22,6 @@ const Main = () => {
         // Aggiungi il nuovo magazzino alla lista dei magazzini visualizzati
       //  setWarehouses(prevWarehouses => [...prevWarehouses, createdWarehouse]);
     };
-
-
 
     useEffect(() => {
         setWarehouses([]); //Reset the list
@@ -51,8 +48,6 @@ const Main = () => {
                 {warehouses.map((warehouse, index) => (
                     <WarehouseCard warehouse={warehouse} key={index} />
                 ))}
-
-                <SearchDinamically scope="Utenti" />
                 <NewWarehouseIcon onCreate={handleCreateWarehouse}/>
             </div>
 

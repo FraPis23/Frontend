@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
 import { IconButton, Modal, Box, Typography, TextField, Button } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
+
 import '../../rendering/components/HeaderComponents/AddWarehouseComponent.css'
+
 import IconChoose from "./IconChoose";
+import SearchDinamically from "../SearchDinamicallyComponent";
+
+import {UserContext} from "../../contexts/UserContext";
 
 
 const NewWarehouseIcon = ({ onCreate }) => {
@@ -12,10 +18,9 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [description, setDescription] = useState('');
     const [coordinates, setCoordinates] = useState([]);
     const [autocomplete, setAutocomplete] = useState(null);
-    const [lsAdminsId, setLsAdminsId] = useState([]);
-    const [newAdminId, setNewAdminId] = useState('');
-    const [lsUsersId, setLsUsersId] = useState([]);
-    const [newUserId, setNewUserId] = useState('');
+    const [lsAdminsNickname, setLsAdminsNickname] = useState([]);
+    const [lsUsersNickname, setLsUsersNickname] = useState([]);
+    const {newNickname, setNewNickname} = useContext(UserContext);
 
     const libraries = ['places'];
 
@@ -50,18 +55,18 @@ const NewWarehouseIcon = ({ onCreate }) => {
     };
 
     const handleAddAdmin = () => {
-        if (newAdminId.trim()) { // Check if input is not empty
-            setLsAdminsId([...lsAdminsId, newAdminId]);
-            setNewAdminId('');
-            console.log('Final Admins List:', lsAdminsId)// Clear the input field after adding
+        if (newNickname.trim()) { // Check if input is not empty
+            setLsAdminsNickname([...lsAdminsNickname, newNickname]);
+            setNewNickname('');
+            console.log('Final Admins List:', lsAdminsNickname)// Clear the input field after adding
         }
     };
 
     const handleAddUser = () => {
-        if (newUserId.trim()) { // Check if input is not empty
-            setLsUsersId([...lsUsersId, newUserId]);
-            setNewUserId(''); // Clear the input field after adding
-            console.log('Final Admins List:', lsUsersId)
+        if (newNickname.trim()) { // Check if input is not empty
+            setLsUsersNickname([...lsUsersNickname, newNickname]);
+            setNewNickname(''); // Clear the input field after adding
+            console.log('Final Users List:', lsUsersNickname)
         }
     };
 
@@ -74,12 +79,9 @@ const NewWarehouseIcon = ({ onCreate }) => {
             onCreate({
                 name: warehouseName,
                 description: description,
-                location: {
-                    type: 'Point',
-                    coordinates,
-                },
-                lsUsersId : lsUsersId,
-                lsAdminsId :lsAdminsId
+                coordinates: coordinates,
+                lsUsersNickname : lsUsersNickname,
+                lsAdminsNickname :lsAdminsNickname
             });
             handleClose(); // Chiude la modale dopo aver creato il magazzino
         } else {
@@ -157,14 +159,8 @@ const NewWarehouseIcon = ({ onCreate }) => {
                         </Autocomplete>
                     )}
 
-                    <TextField
-                        fullWidth
-                        label="IDs degli Amministratori"
-                        variant="outlined"
-                        value={newAdminId}
-                        onChange={(e) => setNewAdminId(e.target.value)}
-                        sx={{ mt: 2}}
-                    />
+                    <SearchDinamically scope="Amministratori"/>
+
                     <IconButton
                         color="primary"
                         aria-label="add Admin"
@@ -174,15 +170,8 @@ const NewWarehouseIcon = ({ onCreate }) => {
                         <AddCircleOutlineIcon style={{ fontSize: 40 }} />
                     </IconButton>
 
+                    <SearchDinamically scope="Utenti"/>
 
-                    <TextField
-                        fullWidth
-                        label="IDs degli Utenti"
-                        variant="outlined"
-                        value={newUserId}
-                        onChange={(e) => setNewUserId(e.target.value)}
-                        sx={{ mt: 2}}
-                    />
                     <IconButton
                         color="primary"
                         aria-label="add User"
@@ -193,7 +182,6 @@ const NewWarehouseIcon = ({ onCreate }) => {
                     </IconButton>
 
                     <IconChoose />
-
 
                     <Button
                         variant="contained"
@@ -211,3 +199,23 @@ const NewWarehouseIcon = ({ onCreate }) => {
 };
 
 export default NewWarehouseIcon;
+
+/*
+                    <TextField
+                        fullWidth
+                        label="IDs degli Amministratori"
+                        variant="outlined"
+                        value={newAdminNickname}
+                        onChange={(e) => setNewAdminNickname(e.target.value)}
+                        sx={{ mt: 2}}
+                    />
+
+                    <TextField
+                        fullWidth
+                        label="IDs degli Utenti"
+                        variant="outlined"
+                        value={newUserNickname}
+                        onChange={(e) => setNewUserNickname(e.target.value)}
+                        sx={{ mt: 2}}
+                    />
+*/

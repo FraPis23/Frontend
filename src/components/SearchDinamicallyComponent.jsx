@@ -3,11 +3,12 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 import {searchUserByNickname} from '../services/HomePageSetupService';
+
 import {UserContext} from "../contexts/UserContext";
 
 const SearchDinamically = ({scope}) => {
     const scopeToSend = `Seleziona ${scope}`
-    const {token} = useContext(UserContext);
+    const {token, newNickname, setNewNickname} = useContext(UserContext);
     const [searchQuery, setSearchQuery] = useState('');
     const [nicknameArray, setNicknameArray] = useState([])
 
@@ -21,6 +22,7 @@ const SearchDinamically = ({scope}) => {
                     console.error('Error fetching nicknames:', error);
                     setNicknameArray([]);
                 });
+            console.log(newNickname);
         } else {
             setNicknameArray([]);
         }
@@ -30,11 +32,13 @@ const SearchDinamically = ({scope}) => {
             <Autocomplete
                 id="free-solo-demo"
                 freeSolo
-                sx={{ width: 300 }}
+                sx={{ width: '100%' }}
                 options={nicknameArray}
                 onInputChange={(event, newInputValue) => {
                     setSearchQuery(newInputValue);
+                    setNewNickname(newInputValue);
                 }}
+                clearIcon={null}
                 renderInput={(params) => (
                     <TextField
                         {...params}
@@ -43,6 +47,7 @@ const SearchDinamically = ({scope}) => {
                             ...params.InputProps,
                             type: 'search',
                         }}
+                        sx={{ mt: 2 }}
                     />
                 )}
             />
