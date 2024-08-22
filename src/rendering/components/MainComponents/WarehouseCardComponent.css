@@ -1,19 +1,54 @@
 .warehouseCardConteiner {
-    width: 230px;
-    margin: auto
+    width: 230px !important;
+    height: 350px !important;
+    box-shadow: none !important; /* Corrisponde a 'boxShadow: 0' */
+    border-radius: 5px !important;
+    border: 2px solid rgba(0, 0, 0, 0.2) !important;
+    overflow: hidden !important;
+    margin-top: 16px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-content: center !important;
+    position: relative !important;
+    padding-bottom: 60px !important;
+    justify-content: center !important;
 }
 
-.warehouseCardIcon {
-    font-size: 150px !important
+.place{
+    margin-bottom: 5px !important;
+    height: 38px !important;
+    width: 38px !important;
+
 }
+
+.placeBox{
+    position: absolute !important;
+    bottom: 15px !important; /* Posiziona il box a 15px dal bordo inferiore della card */
+    left: 50%; /* Centra orizzontalmente il box */
+    transform: translateX(-50%);
+    flex-direction: row!important;
+    background-color: #1976D2 !important;
+    border-radius: 50px !important;
+    width: fit-content !important;
+    text-transform: none !important;
+    height: 45px !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.icon{
+
+    width: 150px !important;
+}
+
 
 .warehouseCardName{
     font-family: 'Arial', sans-serif !important;
-    font-size: 20px !important ;
+    font-size: 25px !important ;
     font-weight: bold !important;
 }
 
-.warehouseCardMap {
-    width: 70px !important;
-    height: 70px !important;
+.warehouseCardDescription{
+    font-size: 15px !important ;
+    font-weight: bold !important;
+    margin-top: 5px !important;
 }

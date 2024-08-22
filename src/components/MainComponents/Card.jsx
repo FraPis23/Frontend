@@ -7,12 +7,18 @@ import Button from '@mui/material/Button'; // Usa Button invece di IconButton
 import Typography from '@mui/material/Typography';
 import PlaceIcon from '@mui/icons-material/Place';
 import { alpha } from '@mui/material/styles';
+import '../../rendering/components/MainComponents/WarehouseCardComponent.css';
 
-import logo from '../../images/HomeImages/WarehouseCardImages/dick.png';
+import logo1 from '../../images/HomeImages/WarehouseCardImages/warehouse.png';
+import logo2 from '../../images/HomeImages/WarehouseCardImages/dick.png';
+import logo3 from '../../images/HomeImages/WarehouseCardImages/building.png';
+import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-management.png';
+
 
 const WarehouseCard = ({ warehouse }) => {
     const apiKey = "AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw";
     const theme = useTheme();
+
 
     const handleClick = () => {
         // Aggiungi la logica per gestire il clic qui
@@ -20,56 +26,48 @@ const WarehouseCard = ({ warehouse }) => {
     };
 
 
+    const getLogo = (selectedImage) => {
+        console.log("Immagine ", selectedImage);
+        switch(selectedImage) {
+            case 1:
+                return logo1;
+            case 2:
+                return logo2;
+            case 3:
+                return logo3;
+            case 4:
+                return logo4;
+            default:
+                return null; // Oppure un logo di default se preferisci
+        }
+    };
+    const logo = getLogo(warehouse.icon);
+
+
 
     return (
-        <Card
-            sx={{
-                alignItem: 'raw',
-                display: 'flex',
-                boxShadow: 0,
-                borderRadius: 5,
-                border: '2px solid rgba(0, 0, 0, 0.2)',
-                overflow: 'hidden',
-                mt:2,
-            }}
-        >
-            <CardContent sx={{ flex: 1 }}>
+        <Card className="warehouseCardConteiner">
+            <CardContent >
                 <CardMedia
+                    className="icon"
                     component="img"
-                    sx={{
-
-                        width: 150,
-                        objectFit: 'cover',
-                    }}
                     image={logo}
                     alt="icona"
                 />
-                <Typography component="div" variant="h5" sx={{ textAlign: 'center' }}>
+                <Typography component="div" variant="h5" className="warehouseCardName">
                     {warehouse.name}
                 </Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div" sx={{ textAlign: 'center' }}>
+                <Typography variant="subtitle1" color="text.secondary" component="div" className="warehouseCardDescription">
                     {warehouse.description}
                 </Typography>
+
+
                 <Button
+                    className="placeBox"
                     onClick={handleClick} // Gestisce il clic
                     variant="contained"
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        backgroundColor: '#1976D2',
-                        borderRadius: '50px',
-                        padding: '8px 16px',
-                        width: 'fit-content',
-                        marginTop: '15px',
-                        textTransform: 'none',
-                        boxShadow: 0,
-                        height: '45px',
-                        '&:hover': {
-                            backgroundColor: alpha('#1976D2', 0.8),
-                        },
-                    }}
                 >
-                    <PlaceIcon sx={{ height: 38, width: 38, color: 'white'  }} />
+                    <PlaceIcon className="place" />
                     <Typography
                         sx={{
                             color: 'white',
