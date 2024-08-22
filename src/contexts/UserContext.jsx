@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 
 export const UserContext = createContext();
 
@@ -9,6 +9,8 @@ export const UserProvider = ({ children }) => {
     const [warehouses, setWarehouses] = useState([]);
     const [newNickname, setNewNickname] = useState('');
     const [selectedImage, setSelectedImage] = useState('');
+    const [lsAdminsNickname, setLsAdminsNickname] = useState([]);
+    const [lsUsersNickname, setLsUsersNickname] = useState([]);
 
     return (
         <UserContext.Provider value={{
@@ -17,7 +19,9 @@ export const UserProvider = ({ children }) => {
             sub, setSub,
             warehouses, setWarehouses,
             newNickname, setNewNickname,
-            selectedImage, setSelectedImage
+            selectedImage, setSelectedImage,
+            lsAdminsNickname, setLsAdminsNickname,
+            lsUsersNickname, setLsUsersNickname
         }}>
             {children}
         </UserContext.Provider>

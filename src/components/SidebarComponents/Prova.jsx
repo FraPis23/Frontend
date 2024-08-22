@@ -18,8 +18,8 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [description, setDescription] = useState('');
     const [coordinates, setCoordinates] = useState([]);
     const [autocomplete, setAutocomplete] = useState(null);
-    const [lsAdminsNickname, setLsAdminsNickname] = useState([]);
-    const [lsUsersNickname, setLsUsersNickname] = useState([]);
+    const {lsAdminsNickname, setLsAdminsNickname} = useContext(UserContext);
+    const {lsUsersNickname, setLsUsersNickname} = useContext(UserContext);
     const {newNickname, setNewNickname} = useContext(UserContext);
     const {selectedImage, setSelectedImage} = useContext(UserContext);
 
@@ -55,21 +55,6 @@ const NewWarehouseIcon = ({ onCreate }) => {
         }
     };
 
-    const handleAddAdmin = () => {
-        if (newNickname.trim()) { // Check if input is not empty
-            setLsAdminsNickname([...lsAdminsNickname, newNickname]);
-            setNewNickname('');
-            console.log('Final Admins List:', lsAdminsNickname)// Clear the input field after adding
-        }
-    };
-
-    const handleAddUser = () => {
-        if (newNickname.trim()) { // Check if input is not empty
-            setLsUsersNickname([...lsUsersNickname, newNickname]);
-            setNewNickname(''); // Clear the input field after adding
-            console.log('Final Users List:', lsUsersNickname)
-        }
-    };
 
 
     const handleCreate = () => {
@@ -163,25 +148,9 @@ const NewWarehouseIcon = ({ onCreate }) => {
 
                     <SearchDinamically scope="Amministratori"/>
 
-                    <IconButton
-                        color="primary"
-                        aria-label="add Admin"
-                        onClick={handleAddAdmin}
-                        sx={{ position: 'fixed', top: 296, right: 35 }}
-                    >
-                        <AddCircleOutlineIcon style={{ fontSize: 40 }} />
-                    </IconButton>
 
                     <SearchDinamically scope="Utenti"/>
 
-                    <IconButton
-                        color="primary"
-                        aria-label="add User"
-                        onClick={handleAddUser}
-                        sx={{ position: 'fixed', top: 368, right: 35 }}
-                    >
-                        <AddCircleOutlineIcon style={{ fontSize: 40 }} />
-                    </IconButton>
 
                     <IconChoose />
 
