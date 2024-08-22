@@ -8,7 +8,7 @@ import '../../rendering/components/MainComponents/MainComponent.css';
 import WarehouseCard from "./WarehouseCardComponent";
 import Loading from "../../pages/LoadingPage";
 import NewWarehouseIcon from "../SidebarComponents/Prova";
-
+import Card from "./Card";
 
 
 const Main = () => {
@@ -46,7 +46,7 @@ const Main = () => {
 
             <div className="warehouses">
                 {warehouses.map((warehouse, index) => (
-                    <WarehouseCard warehouse={warehouse} key={index} />
+                    <Card warehouse={warehouse} key={index} />
                 ))}
                 <NewWarehouseIcon onCreate={handleCreateWarehouse}/>
             </div>

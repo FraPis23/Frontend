@@ -8,9 +8,10 @@ import Typography from '@mui/material/Typography';
 import PlaceIcon from '@mui/icons-material/Place';
 import { alpha } from '@mui/material/styles';
 
-import logo from '../../images/HomeImages/WarehouseCardImages/warehouse_2066616.png';
+import logo from '../../images/HomeImages/WarehouseCardImages/dick.png';
 
-export default function MediaControlCard() {
+const WarehouseCard = ({ warehouse }) => {
+    const apiKey = "AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw";
     const theme = useTheme();
 
     const handleClick = () => {
@@ -18,32 +19,36 @@ export default function MediaControlCard() {
         console.log('Pulsante cliccato');
     };
 
+
+
     return (
         <Card
             sx={{
+                alignItem: 'raw',
                 display: 'flex',
                 boxShadow: 0,
                 borderRadius: 5,
                 border: '2px solid rgba(0, 0, 0, 0.2)',
                 overflow: 'hidden',
+                mt:2,
             }}
         >
             <CardContent sx={{ flex: 1 }}>
                 <CardMedia
                     component="img"
                     sx={{
+
                         width: 150,
                         objectFit: 'cover',
-
                     }}
                     image={logo}
                     alt="icona"
                 />
-                <Typography component="div" variant="h5" sx={{ textAlign: 'left' }}>
-                    Magazino dei piu forti
+                <Typography component="div" variant="h5" sx={{ textAlign: 'center' }}>
+                    {warehouse.name}
                 </Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div" sx={{ textAlign: 'left' }}>
-                    Mattia e figo
+                <Typography variant="subtitle1" color="text.secondary" component="div" sx={{ textAlign: 'center' }}>
+                    {warehouse.description}
                 </Typography>
                 <Button
                     onClick={handleClick} // Gestisce il clic
@@ -81,4 +86,4 @@ export default function MediaControlCard() {
     );
 }
 
-
+export default WarehouseCard;
