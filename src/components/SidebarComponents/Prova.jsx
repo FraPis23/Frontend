@@ -21,6 +21,7 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [lsAdminsNickname, setLsAdminsNickname] = useState([]);
     const [lsUsersNickname, setLsUsersNickname] = useState([]);
     const {newNickname, setNewNickname} = useContext(UserContext);
+    const {selectedImage, setSelectedImage} = useContext(UserContext);
 
     const libraries = ['places'];
 
@@ -81,7 +82,8 @@ const NewWarehouseIcon = ({ onCreate }) => {
                 description: description,
                 coordinates: coordinates,
                 lsUsersNickname : lsUsersNickname,
-                lsAdminsNickname :lsAdminsNickname
+                lsAdminsNickname :lsAdminsNickname,
+                selectedImage: selectedImage
             });
             handleClose(); // Chiude la modale dopo aver creato il magazzino
         } else {

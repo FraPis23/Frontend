@@ -1,15 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import image1 from '../../images/HomeImages/WarehouseCardImages/building.png'
 import image2 from '../../images/HomeImages/WarehouseCardImages/dick.png'
 import image3 from '../../images/HomeImages/WarehouseCardImages/warehouse.png'
 import image4 from '../../images/HomeImages/WarehouseCardImages/warehouse-management.png'
+import {UserContext} from "../../contexts/UserContext";
 
 
 
 
 const IconChoose = () => {
 
-    const [selectedImage, setSelectedImage] = useState(null);
+    const {selectedImage, setSelectedImage} = useContext(UserContext);
 
     const handleImageClick = (imageId) => {
         setSelectedImage(imageId); // Aggiorna lo stato con l'immagine cliccata

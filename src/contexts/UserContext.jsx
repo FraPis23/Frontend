@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
     const [sub, setSub] = useState("");
     const [warehouses, setWarehouses] = useState([]);
     const [newNickname, setNewNickname] = useState('');
+    const [selectedImage, setSelectedImage] = useState('');
 
     return (
         <UserContext.Provider value={{
@@ -15,7 +16,8 @@ export const UserProvider = ({ children }) => {
             token, setToken,
             sub, setSub,
             warehouses, setWarehouses,
-            newNickname, setNewNickname
+            newNickname, setNewNickname,
+            selectedImage, setSelectedImage
         }}>
             {children}
         </UserContext.Provider>

@@ -78,11 +78,10 @@ export async function addWarehouse (account, warehouse, token) {
                 sub: account.sub,
                 name: warehouse.name,
                 description: warehouse.description,
-                location: warehouse.location.coordinates,
-                //lsThings : [],
-                lsAdminsId: warehouse.lsAdminsId,
-                lsUsersId: warehouse.lsUsersId,
-                //lsOperations : []
+                coordinates: warehouse.coordinates,
+                lsAdminsNickname: warehouse.lsAdminsNickname,
+                lsUsersNickname: warehouse.lsUsersNickname,
+                icon: warehouse.selectedImage,
             },
             {
                 withCredentials: true,

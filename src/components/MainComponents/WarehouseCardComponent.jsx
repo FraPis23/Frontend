@@ -9,7 +9,7 @@ const WarehouseCard = ({ warehouse }) => {
     const zoomLevel = 22;
 
     // Costruisci l'URL dell'immagine della mappa
-    const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${warehouse.location[1]},${warehouse.location[0]}&zoom=15&size=150x150&maptype=roadmap&markers=color:red%7C${warehouse.location[1]},${warehouse.location[0]}&style=element:geometry%7Ccolor:0xe3f2fd&style=element:labels.text.stroke%7Ccolor:0xe3f2fd&style=element:labels.text.fill%7Ccolor:0x37474f&style=feature:road%7Celement:geometry%7Ccolor:0xb0bec5&style=feature:water%7Celement:geometry%7Ccolor:0x64b5f6&style=feature:landscape%7Ccolor:0xc8e6c9&key=${apiKey}`;
+    //const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${warehouse.location[1]},${warehouse.location[0]}&zoom=15&size=150x150&maptype=roadmap&markers=color:red%7C${warehouse.location[1]},${warehouse.location[0]}&style=element:geometry%7Ccolor:0xe3f2fd&style=element:labels.text.stroke%7Ccolor:0xe3f2fd&style=element:labels.text.fill%7Ccolor:0x37474f&style=feature:road%7Celement:geometry%7Ccolor:0xb0bec5&style=feature:water%7Celement:geometry%7Ccolor:0x64b5f6&style=feature:landscape%7Ccolor:0xc8e6c9&key=${apiKey}`;
 
     return (
         <Card className="warehouseCardContainer">
@@ -27,7 +27,7 @@ const WarehouseCard = ({ warehouse }) => {
                     className="warehouseCardMap"
                     component="img"
                     alt="Mappa del magazzino"
-                    image={mapUrl}
+                    //image={mapUrl}
                     title="Mappa del magazzino"
                 />
             </CardContent>
