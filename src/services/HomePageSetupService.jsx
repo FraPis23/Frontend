@@ -98,11 +98,13 @@ export async function addWarehouse (account, warehouse, token) {
     }
 }
 
-export async function searchUserByNickname (text, token) {
+export async function searchUserByNickname (text, token, sub) {
     try {
         const response = await axios.post(
             `${api_url}/users/search?text=${text}`,
-            {},
+            {
+                sub: sub
+            },
             {
                 withCredentials: true,
                 headers: {

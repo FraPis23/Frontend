@@ -13,7 +13,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 const SearchDinamically = ({scope}) => {
     const scopeToSend = `Seleziona ${scope}`
-    const {token, newNickname, setNewNickname} = useContext(UserContext);
+    const {token, sub, newNickname, setNewNickname} = useContext(UserContext);
     const [searchQuery, setSearchQuery] = useState('');
     const [nicknameArray, setNicknameArray] = useState([]);
     const {lsAdminsNickname, setLsAdminsNickname} = useContext(UserContext);
@@ -25,7 +25,7 @@ const SearchDinamically = ({scope}) => {
 
     useEffect(() => {
         if (searchQuery.trim() !== '') {
-            searchUserByNickname(searchQuery, token)
+            searchUserByNickname(searchQuery, token, sub)
                 .then((nicknames) => {
                     setNicknameArray(nicknames || []);
                 })
@@ -33,7 +33,6 @@ const SearchDinamically = ({scope}) => {
                     console.error('Error fetching nicknames:', error);
                     setNicknameArray([]);
                 });
-            console.log(newNickname);
         } else {
             setNicknameArray([]);
         }
