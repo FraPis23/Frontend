@@ -1,7 +1,7 @@
 .warehouseCardConteiner {
     width: 230px !important;
-    height: 350px !important;
-    box-shadow: none !important; /* Corrisponde a 'boxShadow: 0' */
+    height: 320px !important;
+    box-shadow: none !important;
     border-radius: 5px !important;
     border: 2px solid rgba(0, 0, 0, 0.2) !important;
     overflow: hidden !important;
@@ -12,6 +12,7 @@
     position: relative !important;
     padding-bottom: 60px !important;
     justify-content: center !important;
+    margin-left: 6px !important;
 }
 
 .place{
@@ -23,7 +24,7 @@
 
 .placeBox{
     position: absolute !important;
-    bottom: 15px !important; /* Posiziona il box a 15px dal bordo inferiore della card */
+    bottom: 15px !important;
     left: 50%; /* Centra orizzontalmente il box */
     transform: translateX(-50%);
     flex-direction: row!important;
@@ -36,12 +37,20 @@
 }
 
 .icon{
-
+    left: 10%;
+    justify-content: center !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-content: center !important;
+    position: relative !important;
     width: 150px !important;
 }
 
 
 .warehouseCardName{
+    background-color: rgba(25, 118, 210, 0.5);
+    width: 200px !important;
+    margin-top: 10px !important;
     font-family: 'Arial', sans-serif !important;
     font-size: 25px !important ;
     font-weight: bold !important;

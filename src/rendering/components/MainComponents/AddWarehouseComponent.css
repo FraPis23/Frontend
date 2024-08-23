@@ -1,0 +1,15 @@
+.CardConteiner {
+    width: 230px !important;
+    height: 383px !important;
+    border-radius: 5px !important;
+    border: 2px solid rgba(0, 0, 0, 0.2) !important;
+    overflow: hidden !important;
+    margin-top: 16px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-content: center !important;
+    position: relative !important;
+    padding-bottom: 60px !important;
+    justify-content: center !important;
+    margin-left: 6px !important;
+}
