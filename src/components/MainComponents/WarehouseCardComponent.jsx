@@ -20,8 +20,14 @@ const WarehouseCard = ({ warehouse }) => {
 
 
     const handleClick = () => {
-        // Aggiungi la logica per gestire il clic qui
-        console.log('Pulsante cliccato');
+        // Verifica che le coordinate siano presenti
+        if (warehouse.coordinates && warehouse.coordinates.length === 2) {
+            const [latitude, longitude] = warehouse.coordinates;
+            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${longitude},${latitude}`;
+            window.open(googleMapsUrl, '_blank');
+        } else {
+            console.log('Coordinate non disponibili');
+        }
     };
 
 
