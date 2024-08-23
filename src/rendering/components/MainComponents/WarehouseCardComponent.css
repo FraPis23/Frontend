@@ -1,6 +1,6 @@
 .warehouseCardConteiner {
     width: 230px !important;
-    height: 320px !important;
+    height: 300px !important;
     box-shadow: none !important;
     border-radius: 5px !important;
     border: 2px solid rgba(0, 0, 0, 0.2) !important;
@@ -52,7 +52,7 @@
     width: 200px !important;
     margin-top: 10px !important;
     font-family: 'Arial', sans-serif !important;
-    font-size: 25px !important ;
+    font-size: 20px !important ;
     font-weight: bold !important;
 }
 
