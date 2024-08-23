@@ -8,10 +8,6 @@ import Container from '@mui/material/Container';
 
 import Loading from '../../pages/LoadingPage'
 import UserInfo from './UserInfoComponent'
-import SidebarMenu from "../SidebarComponents/SidebarMenuComponent";
-import AddWarehouse from "../SidebarComponents/AddWarehouseComponent";
-import NewWarehouseIcon from "../SidebarComponents/Prova";
-
 
 import logo from '../../images/HomeImages/warehouseLogo-removebg-preview-fotor-2024081683521.png'
 

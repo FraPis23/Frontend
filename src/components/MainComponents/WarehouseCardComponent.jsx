@@ -1,38 +1,86 @@
 import React from 'react';
-import { Card, CardContent, Typography, IconButton, CardMedia } from '@mui/material';
-import StoreIcon from '@mui/icons-material/Store';
-
+import { useTheme } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import PlaceIcon from '@mui/icons-material/Place';
 import '../../rendering/components/MainComponents/WarehouseCardComponent.css';
+
+import logo3 from '../../images/HomeImages/WarehouseCardImages/warehouse.png';
+import logo2 from '../../images/HomeImages/WarehouseCardImages/dick.png';
+import logo1 from '../../images/HomeImages/WarehouseCardImages/building.png';
+import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-management.png';
+
 
 const WarehouseCard = ({ warehouse }) => {
     const apiKey = "AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw";
-    const zoomLevel = 22;
+    const theme = useTheme();
 
-    // Costruisci l'URL dell'immagine della mappa
-    //const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${warehouse.location[1]},${warehouse.location[0]}&zoom=15&size=150x150&maptype=roadmap&markers=color:red%7C${warehouse.location[1]},${warehouse.location[0]}&style=element:geometry%7Ccolor:0xe3f2fd&style=element:labels.text.stroke%7Ccolor:0xe3f2fd&style=element:labels.text.fill%7Ccolor:0x37474f&style=feature:road%7Celement:geometry%7Ccolor:0xb0bec5&style=feature:water%7Celement:geometry%7Ccolor:0x64b5f6&style=feature:landscape%7Ccolor:0xc8e6c9&key=${apiKey}`;
+
+    const handleClick = () => {
+        // Aggiungi la logica per gestire il clic qui
+        console.log('Pulsante cliccato');
+    };
+
+
+    const getLogo = (selectedImage) => {
+        console.log("Immagine ", selectedImage);
+        switch(selectedImage) {
+            case 1:
+                return logo1;
+            case 2:
+                return logo2;
+            case 3:
+                return logo3;
+            case 4:
+                return logo4;
+            default:
+                return null;
+        }
+    };
+    const logo = getLogo(warehouse.icon);
+
+
 
     return (
-        <Card className="warehouseCardContainer">
-            <CardContent>
-                <IconButton color="primary" aria-label="add warehouse">
-                    <StoreIcon className="warehouseCardIcon" />
-                </IconButton>
-                <Typography variant="h5" className="warehouseCardName">
+        <Card className="warehouseCardConteiner">
+            <CardContent >
+                <CardMedia
+                    className="icon"
+                    component="img"
+                    image={logo}
+                    alt="icona"
+                />
+                <Typography component="div" variant="h5" className="warehouseCardName">
                     {warehouse.name}
                 </Typography>
-                <Typography variant="h6" className="warehouseCardDescription">
+                <Typography variant="subtitle1" color="text.secondary" component="div" className="warehouseCardDescription">
                     {warehouse.description}
                 </Typography>
-                <CardMedia
-                    className="warehouseCardMap"
-                    component="img"
-                    alt="Mappa del magazzino"
-                    //image={mapUrl}
-                    title="Mappa del magazzino"
-                />
+
+
+                <Button
+                    className="placeBox"
+                    onClick={handleClick}
+                    variant="contained"
+                >
+                    <PlaceIcon className="place" />
+                    <Typography
+                        sx={{
+                            color: 'white',
+                            marginLeft: '8px',
+                            alignItems: 'center',
+                        }}
+                    >
+                        Geolocalizza
+                    </Typography>
+                </Button>
             </CardContent>
+
         </Card>
     );
-};
+}
 
 export default WarehouseCard;

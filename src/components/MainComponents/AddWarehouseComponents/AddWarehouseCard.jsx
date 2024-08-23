@@ -2,10 +2,10 @@ import React, { useState, useContext } from 'react';
 import { Card, CardContent, CardActions, Typography, TextField, Button, IconButton, Modal, Box } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
-import IconChoose from "../SidebarComponents/IconChoose";
-import SearchDinamically from "../SearchDinamicallyComponent";
-import { UserContext } from "../../contexts/UserContext";
-import '../../rendering/components/MainComponents/AddWarehouseComponent.css';
+import IconChoose from "./IconChoose";
+import SearchDinamically from "./SearchDinamicallyComponent";
+import { UserContext } from "../../../contexts/UserContext";
+import '../../../rendering/components/MainComponents/AddWarehouseComponent.css';
 
 const NewWarehouseIcon = ({ onCreate }) => {
     const [open, setOpen] = useState(false);

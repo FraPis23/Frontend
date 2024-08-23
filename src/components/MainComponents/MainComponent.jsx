@@ -5,11 +5,9 @@ import {getWarehousesId, getWarehouse, addWarehouse} from "../../services/HomePa
 
 import '../../rendering/components/MainComponents/MainComponent.css';
 
-import WarehouseCard from "./WarehouseCardComponent";
 import Loading from "../../pages/LoadingPage";
-import NewWarehouseIcon from "../SidebarComponents/Prova";
-import AddWarehouseCard from "./AddWarehouseCard";
-import Card from "./Card";
+import AddWarehouseCard from "./AddWarehouseComponents/AddWarehouseCard";
+import Card from "./WarehouseCardComponent";
 
 
 const Main = () => {

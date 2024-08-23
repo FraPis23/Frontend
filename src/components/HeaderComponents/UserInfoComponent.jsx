@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
 
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';

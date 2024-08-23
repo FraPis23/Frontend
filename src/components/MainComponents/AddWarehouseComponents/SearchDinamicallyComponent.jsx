@@ -2,11 +2,9 @@ import React, {useContext, useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-import {searchUserByNickname} from '../services/HomePageSetupService';
-import handleAddAdmin from './SidebarComponents/Prova';
-import {UserContext} from "../contexts/UserContext";
+import {searchUserByNickname} from '../../../services/HomePageSetupService';
+import {UserContext} from "../../../contexts/UserContext";
 
-import {IconButton} from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 
@@ -67,10 +65,10 @@ const SearchDinamically = ({scope}) => {
                     setSearchQuery(newInputValue);
                     setNewNickname(newInputValue);
                 }}
+                onClick={handleAddAdmin}
                 clearIcon={<AddCircleOutlineIcon
                     //color="primary"
                     style={{ fontSize: 40 }}
-                    onClick={handleAddAdmin}
                 />}
                 renderInput={(params) => (
                     <TextField
@@ -87,9 +85,6 @@ const SearchDinamically = ({scope}) => {
                     />
                 )}
             />
-
-
-
         </div>
     );
 }
