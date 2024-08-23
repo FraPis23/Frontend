@@ -15,8 +15,6 @@ import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-managem
 
 
 const WarehouseCard = ({ warehouse }) => {
-    const apiKey = "AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw";
-    const theme = useTheme();
 
 
     const handleClick = () => {
