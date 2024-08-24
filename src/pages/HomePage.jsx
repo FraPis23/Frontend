@@ -1,6 +1,6 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {useAuth0} from "@auth0/auth0-react";
-import {useEffect} from "react";
+import {Route, Routes} from "react-router-dom";
 import {UserContext} from "../contexts/UserContext";
 
 import {postUser} from "../services/HomePageSetupService";
@@ -8,9 +8,9 @@ import {postUser} from "../services/HomePageSetupService";
 import '../rendering/pages/HomePage.css'
 
 import Loading from "./LoadingPage";
-import Header from "../components/HeaderComponents/HeaderComponent";
-import Main from "../components/MainComponents/MainComponent";
-
+import Header from "../components/HomeHeaderComponents/HeaderComponent";
+import Main from "../components/HomeMainComponents/MainComponent";
+import Warehouse from "../components/HomeMainComponents/WarehouseComponents/WarehouseComponent";
 
 function HomePage() {
     const {setAccount, setToken, setSub, token} = useContext(UserContext);
@@ -42,14 +42,11 @@ function HomePage() {
         (token) ? (
         <div>
             <Header />
-            <div className='homePage'>
-                <div className='sidebarToggle'>
-                    <section className='warehousesList'>
-                    </section>
-                </div>
-            </div>
             <div className='homeBody'>
-                <Main />
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/warehouse" component={<Warehouse />} />
+                </Routes>
             </div>
         </div>
     ) : (

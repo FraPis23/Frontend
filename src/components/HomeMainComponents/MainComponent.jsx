@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import {UserContext} from "../../contexts/UserContext";
 
 import {getWarehousesId, getWarehouse, addWarehouse} from "../../services/HomePageSetupService";
@@ -8,10 +9,9 @@ import '../../rendering/components/MainComponents/MainComponent.css';
 import Loading from "../../pages/LoadingPage";
 import AddWarehouseCard from "./AddWarehouseComponents/AddWarehouseCard";
 import WarehouseCard from "./WarehouseCardComponent";
-import Warehouse from "./WarehouseComponents/WarehouseComponent"
 
 const Main = () => {
-
+    const navigate = useNavigate();
     const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
     const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
@@ -40,7 +40,7 @@ const Main = () => {
     };
 
     if (selectedWarehouse) {
-        return <Warehouse warehouse={selectedWarehouse} />;
+        navigate('/home/warehouse');
     }
 
     return (
