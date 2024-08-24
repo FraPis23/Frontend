@@ -13,9 +13,9 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [description, setDescription] = useState('');
     const [coordinates, setCoordinates] = useState([]);
     const [autocomplete, setAutocomplete] = useState(null);
-    const { lsAdminsNickname, setLsAdminsNickname } = useContext(UserContext);
-    const { lsUsersNickname, setLsUsersNickname } = useContext(UserContext);
-    const { selectedImage, setSelectedImage } = useContext(UserContext);
+    const { lsAdminsNickname } = useContext(UserContext);
+    const { lsUsersNickname } = useContext(UserContext);
+    const { selectedImage } = useContext(UserContext);
 
     const libraries = ['places'];
 
@@ -36,8 +36,8 @@ const NewWarehouseIcon = ({ onCreate }) => {
             const place = autocomplete.getPlace();
             if (place && place.geometry) {
                 const locationCoordinates = [
-                    place.geometry.location.lng(), // Longitudine
-                    place.geometry.location.lat()  // Latitudine
+                    place.geometry.location.lng(),
+                    place.geometry.location.lat()
                 ];
                 setCoordinates(locationCoordinates);
                 console.log("Coordinate selezionate: ", locationCoordinates);
@@ -57,7 +57,7 @@ const NewWarehouseIcon = ({ onCreate }) => {
                 lsAdminsNickname: lsAdminsNickname,
                 selectedImage: selectedImage
             });
-            handleClose(); // Chiude la modale dopo aver creato il magazzino
+            handleClose();
         } else {
             console.log("Errore: Informazioni incomplete");
         }
@@ -71,7 +71,9 @@ const NewWarehouseIcon = ({ onCreate }) => {
                 onClick={handleOpen}
                 className="CardConteiner"
             >
-                <AddCircleOutlineIcon style={{ fontSize: 130 }} />
+                <AddCircleOutlineIcon
+                    className="Add"
+                    style={{ fontSize: 130 }} />
             </IconButton>
 
             <Modal

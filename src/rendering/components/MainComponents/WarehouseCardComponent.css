@@ -37,7 +37,7 @@
 }
 
 .icon{
-    left: 10%;
+    left: 12%;
     justify-content: center !important;
     display: flex !important;
     flex-direction: row !important;
@@ -50,14 +50,38 @@
 .warehouseCardName{
     background-color: rgba(25, 118, 210, 0.5);
     width: 200px !important;
+    height: 30px !important;
+    border-radius: 5px !important;
     margin-top: 10px !important;
+    padding: 4px 6px !important;
     font-family: 'Arial', sans-serif !important;
     font-size: 20px !important ;
     font-weight: bold !important;
+    white-space: nowrap !important; /* Mantiene il testo su una singola riga */
+
+    overflow: hidden !important; /* Nasconde il testo che esce dai bordi */
+
+    cursor: pointer !important; /* Cambia il cursore per indicare che il testo è interattivo */
 }
 
-.warehouseCardDescription{
-    font-size: 15px !important ;
+.warehouseCardName:hover,
+.warehouseCardDescription:hover {
+    overflow-x: auto !important; /* Permette lo scorrimento orizzontale al passaggio del mouse */
+}
+
+.warehouseCardName::-webkit-scrollbar,
+.warehouseCardDescription::-webkit-scrollbar {
+    display: none; /* Nasconde la barra di scorrimento per i browser WebKit */
+}
+
+
+
+.warehouseCardDescription {
+    font-size: 15px !important;
     font-weight: bold !important;
     margin-top: 5px !important;
+    overflow: scroll !important; /* Nasconde il testo che esce dai bordi */
+    width: 200px !important;
+    height: 80px !important;
+    cursor: pointer !important; /* Cambia il cursore per indicare che il testo è interattivo */
 }

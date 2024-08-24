@@ -14,11 +14,13 @@ import logo1 from '../../images/HomeImages/WarehouseCardImages/building.png';
 import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-management.png';
 
 
-const WarehouseCard = ({ warehouse }) => {
-
+const WarehouseCard = ({ warehouse, onClick }) => {
 
     const handleClick = () => {
-        // Verifica che le coordinate siano presenti
+        onClick(warehouse);
+    };
+
+    const handleLocationClick = () => {
         if (warehouse.coordinates && warehouse.coordinates.length === 2) {
             const [latitude, longitude] = warehouse.coordinates;
             const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${longitude},${latitude}`;
@@ -49,9 +51,12 @@ const WarehouseCard = ({ warehouse }) => {
 
 
     return (
-        <Card className="warehouseCardConteiner">
+        <Card
+            className="warehouseCardConteiner"
+        >
             <CardContent >
                 <CardMedia
+                    onClick={handleClick}
                     className="icon"
                     component="img"
                     image={logo}
@@ -67,7 +72,7 @@ const WarehouseCard = ({ warehouse }) => {
 
                 <Button
                     className="placeBox"
-                    onClick={handleClick}
+                    onClick={handleLocationClick}
                     variant="contained"
                 >
                     <PlaceIcon className="place" />

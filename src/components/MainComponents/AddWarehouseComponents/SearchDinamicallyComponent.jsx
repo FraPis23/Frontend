@@ -65,10 +65,10 @@ const SearchDinamically = ({scope}) => {
                     setSearchQuery(newInputValue);
                     setNewNickname(newInputValue);
                 }}
-                onClick={handleAddAdmin}
                 clearIcon={<AddCircleOutlineIcon
                     //color="primary"
                     style={{ fontSize: 40 }}
+                    onClick={handleAddAdmin}
                 />}
                 renderInput={(params) => (
                     <TextField

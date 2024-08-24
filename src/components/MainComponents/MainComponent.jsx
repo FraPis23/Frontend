@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {UserContext} from "../../contexts/UserContext";
 
 import {getWarehousesId, getWarehouse, addWarehouse} from "../../services/HomePageSetupService";
@@ -7,19 +7,16 @@ import '../../rendering/components/MainComponents/MainComponent.css';
 
 import Loading from "../../pages/LoadingPage";
 import AddWarehouseCard from "./AddWarehouseComponents/AddWarehouseCard";
-import Card from "./WarehouseCardComponent";
-
+import WarehouseCard from "./WarehouseCardComponent";
+import Warehouse from "./WarehouseComponents/WarehouseComponent"
 
 const Main = () => {
 
     const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
+    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
     const handleCreateWarehouse = async (newWarehouse) => {
-        const createdWarehouse = await addWarehouse(account, newWarehouse, token);
-        console.log("Magazzino creato:", createdWarehouse);
-
-        // Aggiungi il nuovo magazzino alla lista dei magazzini visualizzati
-      //  setWarehouses(prevWarehouses => [...prevWarehouses, createdWarehouse]);
+        await addWarehouse(account, newWarehouse, token);
     };
 
     useEffect(() => {
@@ -38,6 +35,14 @@ const Main = () => {
             })
     }, []);
 
+    const handleWarehouseClick = (warehouse) => {
+        setSelectedWarehouse(warehouse);
+    };
+
+    if (selectedWarehouse) {
+        return <Warehouse warehouse={selectedWarehouse} />;
+    }
+
     return (
         (warehouses) ? (
         <main className="main">
@@ -45,7 +50,11 @@ const Main = () => {
 
             <div className="warehouses">
                 {warehouses.map((warehouse, index) => (
-                    <Card warehouse={warehouse} key={index} />
+                    <WarehouseCard
+                        warehouse={warehouse}
+                        key={index}
+                        onClick={() => handleWarehouseClick(warehouse)}
+                    />
                 ))}
                 <AddWarehouseCard onCreate={handleCreateWarehouse}/>
             </div>
