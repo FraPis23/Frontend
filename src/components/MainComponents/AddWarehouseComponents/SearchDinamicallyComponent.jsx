@@ -7,7 +7,7 @@ import {UserContext} from "../../../contexts/UserContext";
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
-
+import '../../../rendering/components/MainComponents/AddWarehouseComponent.css'
 
 const SearchDinamically = ({scope}) => {
     const scopeToSend = `Seleziona ${scope}`
