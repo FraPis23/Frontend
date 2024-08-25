@@ -17,7 +17,8 @@ import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-managem
 const WarehouseCard = ({ warehouse, onClick }) => {
 
     const handleClick = () => {
-        onClick(warehouse);
+       onClick(warehouse);
+
     };
 
     const handleLocationClick = () => {

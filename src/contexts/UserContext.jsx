@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
             selectedImage, setSelectedImage,
             lsAdminsNickname, setLsAdminsNickname,
             lsUsersNickname, setLsUsersNickname,
-            selectedWarehouse, setSelectedWarehouse,
+            selectedWarehouse, setSelectedWarehouse
         }}>
             {children}
         </UserContext.Provider>

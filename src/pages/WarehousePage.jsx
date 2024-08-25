@@ -11,10 +11,27 @@ import Loading from "./LoadingPage";
 import Header from "../components/HomeHeaderComponents/HeaderComponent";
 import BinComponent from "../components/HomeMainComponents/WarehouseComponents/BinComponent";
 import Warehouse from "../components/HomeMainComponents/WarehouseComponents/WarehouseComponent";
+import Main from "../components/HomeMainComponents/MainComponent";
 
 function WarehousePage() {
-    const {setAccount, setToken, setSub, token, warehouse} = useContext(UserContext);
+    const {setAccount, setToken, setSub, token, selectedWarehouse, setSelectedWarehouse } = useContext(UserContext);
     const {isAuthenticated, getAccessTokenSilently, user, logout, isLoading} = useAuth0();
+
+
+    useEffect(() => {
+        if (selectedWarehouse) {
+            localStorage.setItem('selectedWarehouse', JSON.stringify(selectedWarehouse));
+        }
+    }, [selectedWarehouse]);
+
+    // Carica il selectedWarehouse da localStorage quando il componente viene montato
+    useEffect(() => {
+        const storedWarehouse = localStorage.getItem('selectedWarehouse');
+        if (storedWarehouse) {
+            setSelectedWarehouse(JSON.parse(storedWarehouse));
+        }
+    }, [setSelectedWarehouse]);
+
 
     useEffect(() => {
         if (!isLoading)
@@ -29,6 +46,7 @@ function WarehousePage() {
                         });
                         setToken(token);
                         setSub(user.sub);
+
                     })
                     .catch((error) => {
                         console.log(error);
@@ -44,7 +62,12 @@ function WarehousePage() {
                 <Header />
                 <BinComponent />
                 <div className='homeBody'>
-                    <Warehouse/>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<Warehouse selectedWarehouse={selectedWarehouse} />}
+                        />
+                    </Routes>
                 </div>
             </div>
         ) : (
@@ -52,5 +75,6 @@ function WarehousePage() {
         )
     )
 }
+
 
 export default WarehousePage;

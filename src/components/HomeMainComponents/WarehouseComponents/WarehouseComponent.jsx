@@ -6,16 +6,20 @@ import {UserContext} from "../../../contexts/UserContext";
 
 
 
-const Warehouse = () => {
-    const {setAccount, setToken, setSub, token, selectedWarehouse} = useContext(UserContext);
-
+const Warehouse = ({ selectedWarehouse }) => {
     return (
         <main className="main">
-            Porcamadonne
 
+            {selectedWarehouse ? (
+                <div>
+                    <h1>{selectedWarehouse.name}</h1>
+
+                </div>
+            ) : (
+                <p>DioPorco, non va ancora</p>
+            )}
         </main>
     );
-
 }
 
 export default Warehouse;
