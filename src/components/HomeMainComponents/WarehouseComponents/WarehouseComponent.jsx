@@ -1,14 +1,18 @@
 import React from 'react';
 import Bin from './BinComponent';
 import '../../../rendering/components/MainComponents/MainComponent.css';
+import {useContext} from "react";
+import {UserContext} from "../../../contexts/UserContext";
 
 
-const Warehouse = ({warehouse}) => {
+
+const Warehouse = () => {
+    const {setAccount, setToken, setSub, token, selectedWarehouse} = useContext(UserContext);
 
     return (
         <main className="main">
-            {warehouse.name}
-            <Bin />
+            Porcamadonne
+
         </main>
     );
 

@@ -13,7 +13,7 @@ import WarehouseCard from "./WarehouseCardComponent";
 const Main = () => {
     const navigate = useNavigate();
     const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
-    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+    const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
 
     const handleCreateWarehouse = async (newWarehouse) => {
         await addWarehouse(account, newWarehouse, token);

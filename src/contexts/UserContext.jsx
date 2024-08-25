@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
     const [selectedImage, setSelectedImage] = useState('');
     const [lsAdminsNickname, setLsAdminsNickname] = useState([]);
     const [lsUsersNickname, setLsUsersNickname] = useState([]);
+    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
     return (
         <UserContext.Provider value={{
@@ -21,7 +22,8 @@ export const UserProvider = ({ children }) => {
             newNickname, setNewNickname,
             selectedImage, setSelectedImage,
             lsAdminsNickname, setLsAdminsNickname,
-            lsUsersNickname, setLsUsersNickname
+            lsUsersNickname, setLsUsersNickname,
+            selectedWarehouse, setSelectedWarehouse,
         }}>
             {children}
         </UserContext.Provider>

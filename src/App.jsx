@@ -11,6 +11,7 @@ import './App.css';
 import Loading from "./pages/LoadingPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import WarehousePage from "./pages/WarehousePage";
 
 import {UserProvider} from "./contexts/UserContext"
 
@@ -39,6 +40,7 @@ function App() {
             <UserProvider>
                 <Routes>
                     <Route path="/home" element={<AutenticationGuard component={HomePage}/>} />
+                    <Route path="/home/warehouse/*" element={<AutenticationGuard component={WarehousePage}/>} />
                 </Routes>
             </UserProvider>
         </main>
