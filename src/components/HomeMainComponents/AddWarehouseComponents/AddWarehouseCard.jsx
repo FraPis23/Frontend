@@ -53,10 +53,12 @@ const NewWarehouseIcon = ({ onCreate }) => {
                 name: warehouseName,
                 description: description,
                 coordinates: coordinates,
-                lsUsersNickname: lsUsersNickname,
                 lsAdminsNickname: lsAdminsNickname,
+                lsUsersNickname: lsUsersNickname,
                 selectedImage: selectedImage
             });
+            console.log(lsAdminsNickname)
+            console.log(lsUsersNickname)
             handleClose();
         } else {
             console.log("Errore: Informazioni incomplete");

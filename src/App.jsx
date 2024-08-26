@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-import {BrowserRouter as useEffect, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {useAuth0} from "@auth0/auth0-react";
 import {useNavigate} from "react-router-dom";
 
@@ -11,11 +11,8 @@ import './App.css';
 import Loading from "./pages/LoadingPage";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
-import WarehousePage from "./pages/WarehousePage";
 
 import {UserProvider} from "./contexts/UserContext"
-
-
 
 function App() {
     const {isLoading, isAuthenticated} = useAuth0();
@@ -32,15 +29,13 @@ function App() {
             <Loading />
         );
     }
+
     return (
         <main>
-            <Routes>
-                <Route path="/" element={<LoginPage />} />
-            </Routes>
             <UserProvider>
                 <Routes>
-                    <Route path="/home" element={<AutenticationGuard component={HomePage}/>} />
-                    <Route path="/home/warehouse/*" element={<AutenticationGuard component={WarehousePage}/>} />
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/home/*" element={<AutenticationGuard component={HomePage}/>} />
                 </Routes>
             </UserProvider>
         </main>

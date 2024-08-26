@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {UserContext} from "../../contexts/UserContext";
 
@@ -10,10 +10,8 @@ import Loading from "../../pages/LoadingPage";
 import AddWarehouseCard from "./AddWarehouseComponents/AddWarehouseCard";
 import WarehouseCard from "./WarehouseCardComponent";
 
-const Main = () => {
-    const navigate = useNavigate();
+const HomeMain = () => {
     const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
-    const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
 
     const handleCreateWarehouse = async (newWarehouse) => {
         await addWarehouse(account, newWarehouse, token);
@@ -23,37 +21,30 @@ const Main = () => {
         setWarehouses([]); //Reset the list
         getWarehousesId(sub, token)
             .then((list) => {
-                list.forEach((element) => {
-                    getWarehouse(element, token)
-                        .then((warehouse) => {
-                            setWarehouses(prevWarehouses => [...prevWarehouses, warehouse]);
+                const warehousePromises = list.map((element) => {
+                    return getWarehouse(element, token);
+                });
+                Promise.all(warehousePromises)
+                    .then((warehouses) => {
+                        setWarehouses(warehouses);
                     })
-                })
             })
             .catch((error) => {
                 console.log(error);
-            })
+            });
     }, []);
 
-    const handleWarehouseClick = (warehouse) => {
-        setSelectedWarehouse(warehouse);
-    };
-
-    if (selectedWarehouse) {
-        navigate('/home/warehouse');
-    }
 
     return (
         (warehouses) ? (
         <main className="main">
             I miei Magazzini
 
-            <div className="warehouses">
+            <div className="mainWarehouses">
                 {warehouses.map((warehouse, index) => (
                     <WarehouseCard
                         warehouse={warehouse}
                         key={index}
-                        onClick={() => handleWarehouseClick(warehouse)}
                     />
                 ))}
                 <AddWarehouseCard onCreate={handleCreateWarehouse}/>
@@ -67,4 +58,4 @@ const Main = () => {
     )
 }
 
-export default Main;
+export default HomeMain;

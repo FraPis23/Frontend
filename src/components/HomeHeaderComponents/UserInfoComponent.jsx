@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -20,7 +20,7 @@ import LogoutButton from "./LogoutButtonComponent";
 
 const UserInfo = () => {
     const { account } = useContext(UserContext);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
@@ -29,10 +29,6 @@ const UserInfo = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
-    if (!account) {
-        return <Loading />;
-    }
 
     return (
         <Box className="headerAvatar" sx={{ flexGrow: 0 }}>

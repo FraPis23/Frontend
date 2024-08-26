@@ -1,31 +1,36 @@
 import React from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
+import {useNavigate} from "react-router-dom";
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 
-import Loading from '../../pages/LoadingPage'
-import UserInfo from './UserInfoComponent'
-
 import logo from '../../images/HomeImages/warehouseLogo-removebg-preview-fotor-2024081683521.png'
 
 import '../../rendering/components/HeaderComponents/HeaderComponent.css'
 
+import UserInfo from "../HomeHeaderComponents/UserInfoComponent";
 
-function Header() {
-    const { isLoading } = useAuth0();
 
-    if (isLoading)
-        return <Loading />
+function HeaderProva() {
+    const navigate = useNavigate();
+
+    const handleLogoClick = () => {
+        navigate('/home');
+    };
 
     return (
         <AppBar position="static">
             <Container maxWidth="100vw">
                 <Toolbar disableGutters>
                     <Box className="headerBar">
-                        <img className="headerLogo" src={logo} alt="logo"/>
+                        <img
+                            className="headerLogo"
+                            src={logo}
+                            alt="logo"
+                            onClick={handleLogoClick}
+                        />
                         <UserInfo className="headerAvatar"/>
                     </Box>
                 </Toolbar>
@@ -34,4 +39,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default HeaderProva;

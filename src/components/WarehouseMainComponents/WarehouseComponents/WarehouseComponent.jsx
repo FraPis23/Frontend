@@ -1,12 +1,17 @@
-import React from 'react';
-import Bin from './BinComponent';
+import React, {useContext, useEffect} from 'react';
+
 import '../../../rendering/components/MainComponents/MainComponent.css';
-import {useContext} from "react";
+
 import {UserContext} from "../../../contexts/UserContext";
 
+const Warehouse = () => {
+    const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
 
 
-const Warehouse = ({ selectedWarehouse }) => {
+    useEffect(() => {
+            setSelectedWarehouse(JSON.parse(sessionStorage.getItem("warehouse")));
+    }, []);
+
     return (
         <main className="main">
 

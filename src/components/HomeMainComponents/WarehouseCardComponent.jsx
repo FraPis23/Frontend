@@ -1,11 +1,13 @@
-import React from 'react';
-import { useTheme } from '@mui/material/styles';
+import React, {useContext, useState} from 'react';
+import {useNavigate} from "react-router-dom";
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PlaceIcon from '@mui/icons-material/Place';
+
 import '../../rendering/components/MainComponents/WarehouseCardComponent.css';
 
 import logo3 from '../../images/HomeImages/WarehouseCardImages/warehouse.png';
@@ -13,12 +15,16 @@ import logo2 from '../../images/HomeImages/WarehouseCardImages/dick.png';
 import logo1 from '../../images/HomeImages/WarehouseCardImages/building.png';
 import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-management.png';
 
+import {UserContext} from "../../contexts/UserContext";
 
-const WarehouseCard = ({ warehouse, onClick }) => {
 
-    const handleClick = () => {
-       onClick(warehouse);
+const WarehouseCard = ({ warehouse }) => {
+    const {setSelectedWarehouse} = useContext(UserContext);
+    const navigate = useNavigate();
 
+    const handleWarehouseClick = () => {
+        sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
+        navigate(`/home/warehouse/${warehouse._id}`);
     };
 
     const handleLocationClick = () => {
@@ -57,7 +63,7 @@ const WarehouseCard = ({ warehouse, onClick }) => {
         >
             <CardContent >
                 <CardMedia
-                    onClick={handleClick}
+                    onClick={handleWarehouseClick}
                     className="icon"
                     component="img"
                     image={logo}
