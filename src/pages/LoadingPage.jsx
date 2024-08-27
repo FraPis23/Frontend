@@ -4,7 +4,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 function Loading() {
     return (
         <div className="spinner">
-            <ProgressSpinner style={{ width: "50px", height: "50px" }} strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"/>
+            <ProgressSpinner style={{ width: "50px", height: "50px" }} strokeWidth="8" fill="var(--surface-ground)" animationDuration="1.5s"/>
         </div>
     );
 }

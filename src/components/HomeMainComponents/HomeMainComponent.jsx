@@ -1,17 +1,17 @@
-import React, {useContext, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useContext, useEffect, useState} from 'react';
 import {UserContext} from "../../contexts/UserContext";
 
 import {getWarehousesId, getWarehouse, addWarehouse} from "../../services/HomePageSetupService";
 
 import '../../rendering/components/MainComponents/MainComponent.css';
 
-import Loading from "../../pages/LoadingPage";
 import AddWarehouseCard from "./AddWarehouseComponents/AddWarehouseCard";
 import WarehouseCard from "./WarehouseCardComponent";
+import Loading from "../../pages/LoadingPage";
 
 const HomeMain = () => {
     const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
+    const [ready, setReady] = useState(false);
 
     const handleCreateWarehouse = async (newWarehouse) => {
         const addedWarehouse = await addWarehouse(account, newWarehouse, token);
@@ -19,43 +19,45 @@ const HomeMain = () => {
     };
 
     useEffect(() => {
-        setWarehouses([]); //Reset the list
-        getWarehousesId(sub, token)
-            .then((list) => {
-                const warehousePromises = list.map((element) => {
-                    return getWarehouse(element, token);
+        if (token) {
+            setWarehouses([]); //Reset the list
+            getWarehousesId(sub, token)
+                .then((list) => {
+                    const warehousePromises = list.map((element) => {
+                        return getWarehouse(element, token);
+                    });
+                    Promise.all(warehousePromises)
+                        .then((warehouses) => {
+                            setWarehouses(warehouses);
+                        })
+                    setReady(true)
+                })
+                .catch((error) => {
+                    console.log(error);
                 });
-                Promise.all(warehousePromises)
-                    .then((warehouses) => {
-                        setWarehouses(warehouses);
-                    })
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
+        }
+    }, [token]);
 
 
     return (
-        (warehouses) ? (
         <main className="main">
             I miei Magazzini
 
             <div className="mainWarehouses">
-                {warehouses.map((warehouse, index) => (
-                    <WarehouseCard
-                        warehouse={warehouse}
-                        key={index}
-                    />
-                ))}
+                {ready ? (
+                    warehouses.map((warehouse, index) => (
+                            <WarehouseCard
+                                warehouse={warehouse}
+                                key={index}
+                            />
+                        ))
+                ):(
+                    <Loading />
+                )}
+
                 <AddWarehouseCard onCreate={handleCreateWarehouse}/>
             </div>
-
-
         </main>
-        ) : (
-            <Loading />
-        )
     )
 }
 
