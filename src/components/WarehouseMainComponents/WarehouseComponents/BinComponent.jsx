@@ -10,13 +10,15 @@ import {UserContext} from "../../../contexts/UserContext";
 import {deleteWarehouse} from "../../../services/WarehousePageSetupService";
 
 function Bin() {
-    const {selectedWarehouse, token} = useContext(UserContext);
+    const {setWarehouses, warehouses, selectedWarehouse, token} = useContext(UserContext);
     const navigate = useNavigate();
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
+        const updatedWarehouses = await warehouses.filter(warehouse => warehouse._id !== selectedWarehouse);
+        setWarehouses(updatedWarehouses);
         deleteWarehouse(selectedWarehouse, token)
             .then(() => {
-                navigate('/home')
+                navigate('/home');
             })
     };
 
