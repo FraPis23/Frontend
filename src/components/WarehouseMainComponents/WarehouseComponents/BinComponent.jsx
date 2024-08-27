@@ -25,7 +25,7 @@ function Bin() {
             onClick={handleDelete}
             className="trash-can"
         >
-            <DeleteIcon sx={{ color: 'white', fontSize: '28px' }} />
+            <DeleteIcon sx={{ color: 'grey', fontSize: '40px' }} />
         </IconButton>
     );
 }

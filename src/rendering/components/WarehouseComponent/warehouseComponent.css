@@ -5,9 +5,36 @@ h1 {
     color: #333;
 }
 
-.Troia{
-    width: 500px;
+.name-container{
+    width: 30%;
     height: 300px;
-    border: 2px solid black;
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    margin:1%;
 }
+.object-container{
+    width: 60%;
+    height: 300px;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    margin:1%;
+}
+
+.user-container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+
+}
+
+.f{
+    width: 45%;
+    height: 300px;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1%;
+}
+
