@@ -3,6 +3,7 @@ import React, {useContext, useEffect} from 'react';
 import '../../../rendering/components/MainComponents/MainComponent.css';
 
 import {UserContext} from "../../../contexts/UserContext";
+import Bin from "./BinComponent";
 
 const Warehouse = () => {
     const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
@@ -17,6 +18,7 @@ const Warehouse = () => {
             {selectedWarehouse ? (
                 <div>
                     <h1>{selectedWarehouse.name}</h1>
+                    <Bin />
 
                 </div>
             ) : (
