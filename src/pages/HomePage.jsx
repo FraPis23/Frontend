@@ -41,7 +41,7 @@ function HomePage() {
 
     return (
         (token) ? (
-        <div>
+
             <div className='homeBody'>
                 <Routes>
                     <Route path="/" element={<>
@@ -56,7 +56,7 @@ function HomePage() {
                     />
                 </Routes>
             </div>
-        </div>
+
     ) : (
         <Loading />
     )
