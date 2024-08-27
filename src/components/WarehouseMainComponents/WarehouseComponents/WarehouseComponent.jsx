@@ -7,7 +7,6 @@ import {UserContext} from "../../../contexts/UserContext";
 const Warehouse = () => {
     const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
 
-
     useEffect(() => {
             setSelectedWarehouse(JSON.parse(sessionStorage.getItem("warehouse")));
     }, []);

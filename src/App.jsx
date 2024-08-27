@@ -1,8 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import {useAuth0} from "@auth0/auth0-react";
-import {useNavigate} from "react-router-dom";
 
 import AutenticationGuard from "./AutenticationGuard";
 
@@ -15,14 +14,7 @@ import HomePage from "./pages/HomePage";
 import {UserProvider} from "./contexts/UserContext"
 
 function App() {
-    const {isLoading, isAuthenticated} = useAuth0();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate("/home");
-        }
-    }, [isAuthenticated, navigate]);
+    const {isLoading} = useAuth0();
 
     if (isLoading) {
         return (
