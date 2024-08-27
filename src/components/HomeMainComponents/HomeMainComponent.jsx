@@ -14,7 +14,8 @@ const HomeMain = () => {
     const {sub, token, setWarehouses, warehouses, account} = useContext(UserContext);
 
     const handleCreateWarehouse = async (newWarehouse) => {
-        await addWarehouse(account, newWarehouse, token);
+        const addedWarehouse = await addWarehouse(account, newWarehouse, token);
+        setWarehouses((prevWarehouses) => [...prevWarehouses, addedWarehouse]);
     };
 
     useEffect(() => {
