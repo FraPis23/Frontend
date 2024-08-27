@@ -13,30 +13,32 @@
     padding-bottom: 60px !important;
     justify-content: center !important;
     margin-left: 6px !important;
+    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
 }
 
-.place{
+.place {
     margin-bottom: 5px !important;
     height: 38px !important;
     width: 38px !important;
-
+    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
 }
 
-.placeBox{
+.placeBox {
     position: absolute !important;
     bottom: 15px !important;
     left: 50%; /* Centra orizzontalmente il box */
     transform: translateX(-50%);
-    flex-direction: row!important;
+    flex-direction: row !important;
     background-color: #1976D2 !important;
     border-radius: 50px !important;
     width: fit-content !important;
     text-transform: none !important;
     height: 45px !important;
     transition: background-color 0.3s ease !important;
+    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
 }
 
-.icon{
+.icon {
     left: 12%;
     justify-content: center !important;
     display: flex !important;
@@ -44,23 +46,21 @@
     align-content: center !important;
     position: relative !important;
     width: 150px !important;
+    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
 }
 
-
-.warehouseCardName{
+.warehouseCardName {
     background-color: rgba(25, 118, 210, 0.5);
     width: 200px !important;
     height: 30px !important;
     border-radius: 5px !important;
     margin-top: 10px !important;
     padding: 4px 6px !important;
-    font-family: 'Arial', sans-serif !important;
-    font-size: 20px !important ;
+    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
+    font-size: 20px !important;
     font-weight: bold !important;
     white-space: nowrap !important; /* Mantiene il testo su una singola riga */
-
     overflow: hidden !important; /* Nasconde il testo che esce dai bordi */
-
     cursor: pointer !important; /* Cambia il cursore per indicare che il testo è interattivo */
 }
 
@@ -74,9 +74,8 @@
     display: none; /* Nasconde la barra di scorrimento per i browser WebKit */
 }
 
-
-
 .warehouseCardDescription {
+    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
     font-size: 15px !important;
     font-weight: bold !important;
     margin-top: 5px !important;

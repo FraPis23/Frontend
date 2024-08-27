@@ -41,7 +41,7 @@ const HomeMain = () => {
 
     return (
         <main className="main">
-            I miei Magazzini
+            I miei magazzini
 
             <div className="mainWarehouses">
                 {ready ? (
