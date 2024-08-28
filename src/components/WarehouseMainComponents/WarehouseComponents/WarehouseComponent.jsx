@@ -43,7 +43,10 @@ const Warehouse = () => {
 
                     <Grid className = "user-container">
                         <Grid className = "name-container">
-                            <h2>Benvenuto {account.nickname} nel tuo magazzino Jany: {selectedWarehouse.name}</h2>
+                            <h2 className="intro">Ciao famiglia Jany, Benvenuti nel magazzino: </h2>
+
+                           <h2 className="warehouse-name">{selectedWarehouse.name}</h2>
+                            <Bin />
                         </Grid>
                         <Grid className = "object-container">
                             <h2 className="userListTitle">VITO:</h2>
