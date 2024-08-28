@@ -41,23 +41,24 @@ const HomeMain = () => {
 
     return (
         <main className="main">
-            I miei magazzini
+            <h1>I miei magazzini</h1>
 
             <div className="mainWarehouses">
                 {ready ? (
                     warehouses.map((warehouse, index) => (
-                            <WarehouseCard
-                                warehouse={warehouse}
-                                key={index}
-                            />
-                        ))
-                ):(
+                        <WarehouseCard
+                            warehouse={warehouse}
+                            key={index}
+                        />
+                    ))
+                ) : (
                     <Loading />
                 )}
                 <AddWarehouseCard onCreate={handleCreateWarehouse}/>
             </div>
         </main>
-    )
+    );
+
 }
 
 export default HomeMain;

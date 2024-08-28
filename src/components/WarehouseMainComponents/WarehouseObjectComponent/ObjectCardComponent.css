@@ -1,0 +1,145 @@
+
+.Card-object{
+    width: 150px !important;
+    height: 170px !important;
+    box-shadow: none !important;
+    border-radius: 5px !important;
+    border: 2px solid rgba(0, 0, 0, 0.2) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-content: center !important;
+    position: relative !important;
+    padding-bottom: 55px !important;
+    justify-content: center !important;
+    padding-top: -10% !important;
+    margin:16px ;
+}
+.img{
+
+    justify-content: center !important;
+    display: flex !important;
+    background-size: auto !important; ;
+}
+.image{
+    margin-top: 5px !important;
+    height:50px !important;
+    justify-content: center ;
+    display: flex ;
+    flex-direction: row ;
+    align-content: center ;
+    position: relative ;
+    width: 50px !important;
+
+}
+
+
+.button{
+    position: relative !important;
+    border-radius: 50px !important;
+    width: fit-content !important;
+    text-transform: none !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.button:hover{
+    background-color: transparent !important;
+}
+
+.ObjectName{
+    background: #d3d3d3;
+    width: 200px !important;
+    margin-top: 10px !important;
+    font-family: 'Arial', sans-serif !important;
+    font-size: 20px !important ;
+    font-weight: bold !important;
+}
+
+.description{
+    font-size: 15px !important ;
+    font-weight: bold !important;
+    display:flex;
+    position:relative;
+}
+.content{
+    display:flex;
+    justify-content:center;
+    position:absolute;
+}
+.quantity{
+    padding-left:15% !important;
+    padding-right:15% !important;
+
+    align-items:baseline !important;
+    justify-content: space-between !important;
+    padding-top: 25px !important;
+    display:flex;
+}
+.box{
+    font-weight: bold !important;
+    font-size: 13px !important ;
+    background: #eceaea;
+    display:flex !important;
+    width:27%;
+    position:relative;
+    justify-content:center !important;
+    border-radius: 5px;
+}
+
+.box2{
+    display: flex;
+    justify-content: space-between !important;
+    height:50px;
+    padding-left:15% !important;
+    padding-right:15% !important;
+    flex-direction: row-reverse !important;
+}
+
+
+.box3 {
+    height:166px !important;
+    border: 2px grey solid;
+}
+.number{
+    position: relative;
+    width:25%;
+    display:flex;
+    bottom:-10%;
+}
+
+.delete{
+    display:flex;
+    padding-top:15px;
+    padding-left: 4px;
+    justify-content: center !important;
+    position:relative;
+    margin-top:-12px;
+}
+
+.addButton{
+    display:flex;
+    position: absolute;
+    justify-content: center;
+    border-radius: 50px !important;
+    width: fit-content !important;
+    height: 25px !important;
+
+}
+
+
+
+.addButtonBox{
+    align-items:center;
+    display:flex;
+
+}
+
+.roundedButton {
+    border-radius: 16px;
+}
+
+.del{
+    position:absolute !important;
+    margin-left: 40px!important;
+    margin-top: -15px !important;
+}

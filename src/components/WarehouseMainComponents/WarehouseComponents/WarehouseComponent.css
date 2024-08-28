@@ -56,3 +56,19 @@ h1 {
 .userListComponent::-webkit-scrollbar {
     display: none;
 }
+
+.title{
+    background: #d3d3d3;
+    width: 98% ;
+    font-family: 'Inter', sans-serif ; /* Applicato il font Inter */
+    font-size: 25px ;
+    font-weight: bold ;
+    margin: 10px ;
+    border-radius: 15px;
+}
+
+.objects{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}

@@ -6,6 +6,8 @@ import {UserContext} from "../../../contexts/UserContext";
 import { Box, Grid } from "@mui/material";
 import Bin from "./BinComponent";
 import UserList from "./UserListComponent";
+import Object from "../WarehouseObjectComponent/ObjectCardComponent";
+import AddObjectCard from "../WarehouseObjectComponent/AddObjectCardComponent"
 
 const Warehouse = () => {
     const {selectedWarehouse, setSelectedWarehouse, account} = useContext(UserContext);
@@ -41,11 +43,15 @@ const Warehouse = () => {
 
                     <Grid className = "user-container">
                         <Grid className = "name-container">
-
-                            <h1>Benvenuto {account.nickname} nel tuo magazzino Jany: {selectedWarehouse.name}</h1>
+                            <h2>Benvenuto {account.nickname} nel tuo magazzino Jany: {selectedWarehouse.name}</h2>
                         </Grid>
                         <Grid className = "object-container">
-                            <h1>VITO</h1>
+                            <h2 className="userListTitle">VITO:</h2>
+                            <div className="objects">
+                                <Object />
+                                <Object />
+                                <AddObjectCard />
+                            </div>
                         </Grid>
                     </Grid>
 

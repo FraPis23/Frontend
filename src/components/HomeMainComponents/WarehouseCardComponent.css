@@ -2,26 +2,35 @@
     width: 230px !important;
     height: 300px !important;
     box-shadow: none !important;
-    border-radius: 5px !important;
+    border-radius: 20px !important;
     border: 2px solid rgba(0, 0, 0, 0.2) !important;
     overflow: hidden !important;
-    margin-top: 16px !important;
+    margin-top: 20px !important;
     display: flex !important;
     flex-direction: row !important;
-    align-content: center !important;
+    align-items: center !important;
     position: relative !important;
     padding-bottom: 60px !important;
     justify-content: center !important;
-    margin-left: 6px !important;
-    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
+    margin-left: 12px !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.warehouseCardConteiner:hover {
+    transform: scale(1.07) ; /* Effetto di ingrandimento e sollevamento */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombra più intensa per l'effetto di sollevamento */
 }
 
 .place {
     margin-bottom: 5px !important;
+    margin-top: 5px !important;
     height: 38px !important;
     width: 38px !important;
-    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
+    font-family: 'Inter', sans-serif !important;
+
 }
+
 
 .placeBox {
     position: absolute !important;
@@ -35,7 +44,7 @@
     text-transform: none !important;
     height: 45px !important;
     transition: background-color 0.3s ease !important;
-    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
+    font-family: 'Inter', sans-serif !important;
 }
 
 .icon {
@@ -46,19 +55,20 @@
     align-content: center !important;
     position: relative !important;
     width: 150px !important;
-    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
+    font-family: 'Inter', sans-serif !important;
 }
 
 .warehouseCardName {
     background-color: rgba(25, 118, 210, 0.5);
     width: 200px !important;
     height: 30px !important;
-    border-radius: 5px !important;
+    border-radius: 15px !important;
     margin-top: 10px !important;
     padding: 4px 6px !important;
-    font-family: 'Inter', sans-serif !important; /* Applicato il font Inter */
+    font-family: 'Inter', sans-serif !important;
     font-size: 20px !important;
     font-weight: bold !important;
+    text-align: center !important;
     white-space: nowrap !important; /* Mantiene il testo su una singola riga */
     overflow: hidden !important; /* Nasconde il testo che esce dai bordi */
     cursor: pointer !important; /* Cambia il cursore per indicare che il testo è interattivo */
@@ -83,4 +93,6 @@
     width: 200px !important;
     height: 80px !important;
     cursor: pointer !important; /* Cambia il cursore per indicare che il testo è interattivo */
+    text-align: center !important;
 }
+ 
