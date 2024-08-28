@@ -1,16 +1,12 @@
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-import Loading  from './pages/LoadingPage';
+import React from "react";
 
 export const AuthenticationGuard = ({ component }) => {
-    const Component = withAuthenticationRequired(component, {
-        onRedirecting: () => (
-            <div className="page-layout">
-                <Loading />
-            </div>
-        ),
-    });
+    const Component = withAuthenticationRequired(component);
 
-    return <Component />;
+    return (
+        <Component />
+    );
 };
 
 export default AuthenticationGuard;

@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 
-import '../../../rendering/components/WarehouseComponent/warehouseComponent.css';
+import './WarehouseComponent.css';
 
 import {UserContext} from "../../../contexts/UserContext";
 import { Box, Grid } from "@mui/material";
@@ -15,7 +15,7 @@ const Warehouse = () => {
 
     return (
         <div>
-            {selectedWarehouse ? (
+            {selectedWarehouse &&
                 <Box
                     sx={{
                         margin: 0,
@@ -57,11 +57,7 @@ const Warehouse = () => {
                     </Grid>
 
                 </Box>
-            ) : (
-                <p>DioPorco, non va ancora</p>
-            )}
-
-
+            }
         </div>
     );
 }

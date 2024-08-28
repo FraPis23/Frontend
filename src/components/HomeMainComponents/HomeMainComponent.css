@@ -17,7 +17,7 @@
     margin-top: 40px;
     margin-bottom: 10px;
     items-align: center;
-    overflow-x: hidden;
+    overflow-x: scroll;
     overflow-y: scroll;
     flex-wrap: wrap;
     justify-content: center;

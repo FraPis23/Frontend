@@ -7,7 +7,7 @@ import {UserContext} from "../contexts/UserContext";
 
 import {postUser} from "../services/HomePageSetupService";
 
-import '../rendering/pages/HomePage.css'
+import './HomePage.css'
 
 import HomeHeader from "../components/HomeHeaderComponents/HomeHeaderComponent";
 import HomeMain from "../components/HomeMainComponents/HomeMainComponent";

@@ -7,7 +7,7 @@ import {UserContext} from "../../../contexts/UserContext";
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
-import '../../../rendering/components/MainComponents/AddWarehouseComponent.css'
+import './AddWarehouseCardComponent.css'
 
 const SearchDinamically = ({scope}) => {
     const scopeToSend = `Seleziona ${scope}`
@@ -16,10 +16,6 @@ const SearchDinamically = ({scope}) => {
     const [nicknameArray, setNicknameArray] = useState([]);
     const {lsAdminsNickname, setLsAdminsNickname} = useContext(UserContext);
     const {lsUsersNickname, setLsUsersNickname} = useContext(UserContext);
-
-
-
-
 
     useEffect(() => {
         if (searchQuery.trim() !== '') {

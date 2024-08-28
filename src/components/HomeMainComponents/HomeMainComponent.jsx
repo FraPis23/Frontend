@@ -3,9 +3,9 @@ import {UserContext} from "../../contexts/UserContext";
 
 import {getWarehousesId, getWarehouse, addWarehouse} from "../../services/HomePageSetupService";
 
-import '../../rendering/components/MainComponents/MainComponent.css';
+import './HomeMainComponent.css';
 
-import AddWarehouseCard from "./AddWarehouseComponents/AddWarehouseCard";
+import AddWarehouseCard from "./AddWarehouseComponents/AddWarehouseCardComponent";
 import WarehouseCard from "./WarehouseCardComponent";
 import Loading from "../../pages/LoadingPage";
 
@@ -54,7 +54,6 @@ const HomeMain = () => {
                 ):(
                     <Loading />
                 )}
-
                 <AddWarehouseCard onCreate={handleCreateWarehouse}/>
             </div>
         </main>

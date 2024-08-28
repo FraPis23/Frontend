@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 
 import LogoutIcon from '@mui/icons-material/Logout';
 
-import '../../rendering/components/HeaderComponents/LogoutButtonComponent.css'
+import './LogoutButtonComponent.css'
 
 function LogoutButton() {
     const { logout } = useAuth0();

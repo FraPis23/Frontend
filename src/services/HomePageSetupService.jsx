@@ -91,6 +91,8 @@ export async function addWarehouse (account, warehouse, token) {
             }
         );
 
+        console.log(response.data)
+
         return response.data;
 
     } catch (error) {

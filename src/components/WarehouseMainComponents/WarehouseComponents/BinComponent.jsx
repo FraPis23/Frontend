@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import '../../../rendering/components/WarehouseComponent/TrashBin.css';
+import './BinComponent.css';
 import {UserContext} from "../../../contexts/UserContext";
 import {deleteWarehouse} from "../../../services/WarehousePageSetupService";
 

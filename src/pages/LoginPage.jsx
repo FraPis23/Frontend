@@ -1,4 +1,4 @@
-import '../rendering/pages/LoginPage.css';
+import './LoginPage.css';
 
 import LoginButtonComponent from "../components/LoginComponents/LoginButtonComponent";
 

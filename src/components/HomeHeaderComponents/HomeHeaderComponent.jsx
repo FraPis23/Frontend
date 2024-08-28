@@ -9,7 +9,7 @@ import UserInfo from './UserInfoComponent'
 
 import logo from '../../images/HomeImages/warehouseLogo-removebg-preview-fotor-2024081683521.png'
 
-import '../../rendering/components/HeaderComponents/HeaderComponent.css'
+import './HomeHeaderComponent.css'
 
 
 function HomeHeader() {

@@ -9,7 +9,7 @@ import SearchDinamically from "./SearchDinamicallyComponent";
 
 import { UserContext } from "../../../contexts/UserContext";
 
-import '../../../rendering/components/MainComponents/AddWarehouseComponent.css';
+import './AddWarehouseCardComponent.css';
 
 const libraries = ['places'];
 

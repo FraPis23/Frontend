@@ -14,7 +14,7 @@ import Loading from '../../pages/LoadingPage'
 import {UserContext} from "../../contexts/UserContext";
 
 
-import '../../rendering/components/HeaderComponents/UserInfoComponent.css'
+import './UserInfoComponent.css'
 import LogoutButton from "./LogoutButtonComponent";
 
 

@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PlaceIcon from '@mui/icons-material/Place';
 
-import '../../rendering/components/MainComponents/WarehouseCardComponent.css';
+import './WarehouseCardComponent.css';
 
 import logo3 from '../../images/HomeImages/WarehouseCardImages/warehouse.png';
 import logo2 from '../../images/HomeImages/WarehouseCardImages/dick.png';
