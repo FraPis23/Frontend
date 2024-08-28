@@ -19,3 +19,23 @@ export async function deleteWarehouse(warehouse, token) {
         console.log(error);
     }
 }
+
+export async function getUsers(list, token) {
+    try {
+        const response = await axios.post(
+            `${api_url}/warehouses/get-users`,
+            {
+                list: list
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}

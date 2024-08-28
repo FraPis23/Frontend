@@ -20,7 +20,6 @@ const WarehouseCard = ({ warehouse }) => {
 
     const handleWarehouseClick = () => {
         sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
-        console.log(warehouse)
         navigate(`/home/warehouse/${warehouse._id}`);
     };
 

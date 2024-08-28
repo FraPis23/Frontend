@@ -29,12 +29,30 @@ h1 {
 
 }
 
-.f{
+.userListConteiner{
     width: 45%;
     height: 300px;
     background-color: white;
     border-radius: 15px;
-    text-align: center;
     margin: 1%;
 }
 
+.userListTitle {
+    margin-top: 5px;
+    margin-bottom: 4px;
+    margin-left: 15px;
+}
+
+.userListComponent {
+    height: 83%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    scrollbar-width: none;
+    margin-top: 0;
+}
+
+.userListComponent::-webkit-scrollbar {
+    display: none;
+}
