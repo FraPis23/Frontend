@@ -1,87 +1,73 @@
 .warehouseCardConteiner {
-    width: 230px !important;
-    height: 300px !important;
+    width: 230px;
+    height: 300px;
     box-shadow: none !important;
     border-radius: 20px !important;
-    border: 2px solid rgba(0, 0, 0, 0.2) !important;
-    overflow: hidden !important;
-    margin-top: 20px !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    position: relative !important;
-    padding-bottom: 60px !important;
-    justify-content: center !important;
-    margin-left: 12px !important;
-    font-family: 'Inter', sans-serif !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 60px;
+    justify-content: center;
+    margin-left: 12px;
+    font-family: 'Inter', sans-serif;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .warehouseCardConteiner:hover {
-    transform: scale(1.07) ; /* Effetto di ingrandimento e sollevamento */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Ombra più intensa per l'effetto di sollevamento */
+    transform: scale(1.07) ;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .place {
-    margin-bottom: 5px !important;
-    margin-top: 5px !important;
-    height: 38px !important;
-    width: 38px !important;
-    font-family: 'Inter', sans-serif !important;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 30px !important;
+    width: 30px !important;
+    font-family: 'Inter', sans-serif;
 
 }
 
 
 .placeBox {
     position: absolute !important;
-    bottom: 15px !important;
-    left: 50%; /* Centra orizzontalmente il box */
+    bottom: 15px;
+    left: 50%;
     transform: translateX(-50%);
-    flex-direction: row !important;
-    background-color: #1976D2 !important;
+    background-color: #1976D2;
     border-radius: 50px !important;
-    width: fit-content !important;
+    width: fit-content;
     text-transform: none !important;
-    height: 45px !important;
-    transition: background-color 0.3s ease !important;
-    font-family: 'Inter', sans-serif !important;
+    height: 45px;
+    transition: background-color 0.3s ease;
+    font-family: 'Inter', sans-serif;
 }
 
 .icon {
     left: 12%;
-    justify-content: center !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-content: center !important;
-    position: relative !important;
+    position: relative;
+    margin-bottom: 5px;
     width: 150px !important;
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
 }
 
 .warehouseCardName {
     background-color: rgba(25, 118, 210, 0.5);
-    width: 200px !important;
-    height: 30px !important;
-    border-radius: 15px !important;
-    margin-top: 10px !important;
-    padding: 4px 6px !important;
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 4px 6px;
     font-family: 'Inter', sans-serif !important;
     font-size: 20px !important;
     font-weight: bold !important;
-    text-align: center !important;
-    white-space: nowrap !important; /* Mantiene il testo su una singola riga */
-    overflow: hidden !important; /* Nasconde il testo che esce dai bordi */
-    cursor: pointer !important; /* Cambia il cursore per indicare che il testo è interattivo */
-}
-
-.warehouseCardName:hover,
-.warehouseCardDescription:hover {
-    overflow-x: auto !important; /* Permette lo scorrimento orizzontale al passaggio del mouse */
-}
-
-.warehouseCardName::-webkit-scrollbar,
-.warehouseCardDescription::-webkit-scrollbar {
-    display: none; /* Nasconde la barra di scorrimento per i browser WebKit */
+    text-align: center;
+    white-space: nowrap;
+    overflow: scroll;
+    cursor: pointer;
+    scrollbar-width: none;
 }
 
 .warehouseCardDescription {
@@ -89,10 +75,17 @@
     font-size: 15px !important;
     font-weight: bold !important;
     margin-top: 5px !important;
-    overflow: scroll !important; /* Nasconde il testo che esce dai bordi */
-    width: 200px !important;
-    height: 80px !important;
-    cursor: pointer !important; /* Cambia il cursore per indicare che il testo è interattivo */
-    text-align: center !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 200px;
+    height: 80px;
+    cursor: pointer;
+    text-align: center;
+    word-break: break-word;
+    scrollbar-width: none;
 }
- 
+
+.warehouseCardName::-webkit-scrollbar,
+.warehouseCardDescription::-webkit-scrollbar {
+    display: none;
+}

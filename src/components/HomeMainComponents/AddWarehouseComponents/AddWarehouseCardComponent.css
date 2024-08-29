@@ -1,25 +1,22 @@
 .CardConteiner {
-    width: 230px !important;
-    height: 363px !important;
-    border-radius: 5px !important;
+    width: 230px;
+    height: 363px;
+    border-radius: 20px !important;
     border: 2px solid rgba(0, 0, 0, 0.2) !important;
-    overflow: hidden !important;
     margin-top: 16px !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-content: center !important;
-    position: relative !important;
+    align-content: center;
+    position: relative;
     padding-bottom: 60px !important;
-    justify-content: center !important;
-    margin-left: 6px !important;
+    justify-content: center;
+    margin-left: 12px !important;
 }
 
 .pac-container {
-    z-index: 2051 !important;
+    z-index: 2051;
 }
 
 .Add{
-    margin-top: 50px !important;
+    margin-top: 50px;
 }
 
 input[type="search"]::-webkit-search-cancel-button {

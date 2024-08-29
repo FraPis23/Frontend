@@ -1,45 +1,31 @@
 
 .Card-object{
-    width: 150px !important;
-    height: 170px !important;
+    width: 150px;
+    height: 170px;
     box-shadow: none !important;
-    border-radius: 5px !important;
-    border: 2px solid rgba(0, 0, 0, 0.2) !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-content: center !important;
-    position: relative !important;
-    padding-bottom: 55px !important;
-    justify-content: center !important;
-    padding-top: -10% !important;
-    margin:16px ;
+    border-radius: 15px !important;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    padding-bottom: 50px;
+    justify-content: center;
+    margin: 16px;
 }
+
 .img{
-
-    justify-content: center !important;
-    display: flex !important;
-    background-size: auto !important; ;
+    justify-content: center;
+    display: flex;
 }
-.image{
-    margin-top: 5px !important;
-    height:50px !important;
-    justify-content: center ;
-    display: flex ;
-    flex-direction: row ;
-    align-content: center ;
-    position: relative ;
-    width: 50px !important;
 
+.image{
+    margin-top: 5px;
+    height: 50px;
+    width: 50px !important;
 }
 
 
 .button{
-    position: relative !important;
     border-radius: 50px !important;
-    width: fit-content !important;
-    text-transform: none !important;
-    transition: background-color 0.3s ease !important;
+    transition: background-color 0.3s ease;
 }
 
 .button:hover{
@@ -48,98 +34,62 @@
 
 .ObjectName{
     background: #d3d3d3;
-    width: 200px !important;
+    width: 200px;
     margin-top: 10px !important;
-    font-family: 'Arial', sans-serif !important;
+    font-family: 'Arial', sans-serif;
     font-size: 20px !important ;
     font-weight: bold !important;
 }
 
 .description{
-    font-size: 15px !important ;
+    font-size: 15px !important;
     font-weight: bold !important;
-    display:flex;
-    position:relative;
 }
+
 .content{
     display:flex;
     justify-content:center;
     position:absolute;
 }
-.quantity{
-    padding-left:15% !important;
-    padding-right:15% !important;
 
-    align-items:baseline !important;
-    justify-content: space-between !important;
-    padding-top: 25px !important;
-    display:flex;
+.quantity{
+    padding-left: 15%;
+    padding-right: 15%;
+    align-items :baseline;
+    justify-content: space-between;
+    padding-top: 25px;
+    display: flex;
 }
 .box{
-    font-weight: bold !important;
-    font-size: 13px !important ;
+    font-weight: bold;
+    font-size: 13px;
     background: #eceaea;
-    display:flex !important;
-    width:27%;
-    position:relative;
-    justify-content:center !important;
-    border-radius: 5px;
+    width: 27%;
+    border-radius: 10px;
 }
 
 .box2{
     display: flex;
-    justify-content: space-between !important;
-    height:50px;
-    padding-left:15% !important;
-    padding-right:15% !important;
-    flex-direction: row-reverse !important;
+    justify-content: space-between;
+    height: 50px;
+    padding-left: 15%;
+    padding-right: 15%;
+    flex-direction: row-reverse;
 }
-
 
 .box3 {
-    height:166px !important;
+    height: 166px;
     border: 2px grey solid;
 }
+
 .number{
     position: relative;
-    width:25%;
-    display:flex;
-    bottom:-10%;
-}
-
-.delete{
-    display:flex;
-    padding-top:15px;
-    padding-left: 4px;
-    justify-content: center !important;
-    position:relative;
-    margin-top:-12px;
-}
-
-.addButton{
-    display:flex;
-    position: absolute;
-    justify-content: center;
-    border-radius: 50px !important;
-    width: fit-content !important;
-    height: 25px !important;
-
-}
-
-
-
-.addButtonBox{
-    align-items:center;
-    display:flex;
-
-}
-
-.roundedButton {
-    border-radius: 16px;
+    width: 35%;
+    bottom: -10%;
 }
 
 .del{
-    position:absolute !important;
-    margin-left: 40px!important;
-    margin-top: -15px !important;
+    position: absolute !important;
+    margin-left: 35px !important;
+    margin-top: -17px !important;
 }

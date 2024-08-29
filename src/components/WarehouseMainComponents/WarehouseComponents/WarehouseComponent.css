@@ -94,7 +94,7 @@ h1 {
 }
 
 .warehouse-name:hover {
-    overflow-x: auto !important; /* Permette lo scorrimento orizzontale al passaggio del mouse */
+    overflow-x: auto;
 }
 
 

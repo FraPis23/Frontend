@@ -1,26 +1,19 @@
 .CardCont {
-    width: 150px !important;
-    height: 228px !important;
-    box-shadow: none !important;
+    width: 150px;
+    height: 228px;
+    box-shadow: none;
     border-radius: 5px !important;
     border: 2px solid rgba(0, 0, 0, 0.2) !important;
-    overflow: hidden !important;
-    display: flex !important;
-    flex-direction: row !important;
-    align-content: center !important;
-    position: relative !important;
     padding-bottom: 55px !important;
-    justify-content: center !important;
-    padding-top: -10% !important;
     margin:16px !important;
 }
 
 .pac-container {
-    z-index: 2051 !important;
+    z-index: 2051;
 }
 
 .Add{
-    margin-top: 50px !important;
+    margin-top: 50px;
 }
 
 input[type="search"]::-webkit-search-cancel-button {
