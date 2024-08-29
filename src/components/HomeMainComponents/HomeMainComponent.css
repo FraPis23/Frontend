@@ -1,10 +1,10 @@
-.main {
+.homeMain {
     position: fixed;
     overflow: hidden;
     width: 100%;
 }
 
-h1{
+.homeMainTitle {
     top: 0;
     left: 0;
     width: 100%;
@@ -12,11 +12,11 @@ h1{
     padding: 20px;
     text-align: center;
     font-family: 'Inter', sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.mainWarehouses {
+.homeMainWarehouses {
     display: flex;
     flex-direction: row;
     align-items: center;

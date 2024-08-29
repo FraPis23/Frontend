@@ -40,10 +40,10 @@ const HomeMain = () => {
 
 
     return (
-        <main className="main">
-            <h1>I miei magazzini</h1>
+        <main className="homeMain">
+            <h1 className="homeMainTitle">I miei magazzini</h1>
 
-            <div className="mainWarehouses">
+            <div className="homeMainWarehouses">
                 {ready ? (
                     warehouses.map((warehouse, index) => (
                         <WarehouseCard

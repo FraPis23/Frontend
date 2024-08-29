@@ -1,5 +1,4 @@
-
-.Card-object{
+.objectCard {
     width: 150px;
     height: 170px;
     box-shadow: none !important;
@@ -11,28 +10,28 @@
     margin: 16px;
 }
 
-.img{
+.objectCardLogoContainer {
     justify-content: center;
     display: flex;
 }
 
-.image{
+.objectCardLogo {
     margin-top: 5px;
     height: 50px;
     width: 50px !important;
 }
 
 
-.button{
+.objectCardButton {
     border-radius: 50px !important;
     transition: background-color 0.3s ease;
 }
 
-.button:hover{
+.objectCardButton:hover {
     background-color: transparent !important;
 }
 
-.ObjectName{
+.objectName {
     background: #d3d3d3;
     width: 200px;
     margin-top: 10px !important;
@@ -41,18 +40,18 @@
     font-weight: bold !important;
 }
 
-.description{
+.objectDescription {
     font-size: 15px !important;
     font-weight: bold !important;
 }
 
-.content{
+.objectContent {
     display:flex;
     justify-content:center;
     position:absolute;
 }
 
-.quantity{
+.objectQuantity {
     padding-left: 15%;
     padding-right: 15%;
     align-items :baseline;
@@ -60,7 +59,7 @@
     padding-top: 25px;
     display: flex;
 }
-.box{
+.objectQuantityContainer{
     font-weight: bold;
     font-size: 13px;
     background: #eceaea;
@@ -68,7 +67,7 @@
     border-radius: 10px;
 }
 
-.box2{
+.objectModifyQuantityContainer{
     display: flex;
     justify-content: space-between;
     height: 50px;
@@ -77,18 +76,18 @@
     flex-direction: row-reverse;
 }
 
-.box3 {
+.objectDataContainer{
     height: 166px;
     border: 2px grey solid;
 }
 
-.number{
+.objectChangeNumber{
     position: relative;
     width: 35%;
     bottom: -10%;
 }
 
-.del{
+.objectBin{
     position: absolute !important;
     margin-left: 35px !important;
     margin-top: -17px !important;

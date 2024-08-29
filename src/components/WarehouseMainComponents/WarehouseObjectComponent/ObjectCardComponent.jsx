@@ -32,34 +32,34 @@ const ObjectCard = () => {
     };
 
     return (
-        <Card className='Card-object'>
+        <Card className='objectCard'>
             <CardContent>
-                <IconButton className="del">
+                <IconButton className="objectBin">
                     <DeleteIcon />
                 </IconButton>
 
-                <div className='img'>
-                    <CardMedia className='image'
+                <div className='objectCardLogoContainer'>
+                    <CardMedia className='objectCardLogo'
                                component="img"
                                height="250"
                                image={logo}
                                alt='chiodo'
                     />
                 </div>
-                <Typography gutterBottom variant="h5" className= 'ObjectName'>
+                <Typography gutterBottom variant="h5" className= 'objectName'>
                     Martello
                 </Typography>
-                <div className='box3'>
-                    <div className= 'quantity'>
-                        <Typography variant="subtitle1" color="text.secondary" component='div' className='description'>
+                <div className='objectDataContainer'>
+                    <div className= "objectQuantity">
+                        <Typography variant="subtitle1" color="text.secondary" component='div' className='objectDescription'>
                             Quantità:
                         </Typography>
-                        <Box className='box' variant='subtitle1' color='text.secondary'>
+                        <Box className='objectQuantityContainer' variant='subtitle1' color='text.secondary'>
                             {sumValue}
                         </Box>
                     </div>
-                    <div className='box2'>
-                        <Box  className='number'
+                    <div className='objectModifyQuantityContainer'>
+                        <Box  className='objectChangeNumber'
                               component="form"
                               noValidate
                               autoComplete="off"
@@ -84,7 +84,7 @@ const ObjectCard = () => {
                         </Box>
 
                         <Button
-                            className="button"
+                            className="objectCardButton"
                             onClick={handleButtonClick}
                         >
 
@@ -92,7 +92,7 @@ const ObjectCard = () => {
                                 sx={{
                                     alignItems: 'center',
                                 }}
-                                className='content'
+                                className='objectContent'
                             >
                                 <AddCircleOutlineIcon/>
                             </Typography>

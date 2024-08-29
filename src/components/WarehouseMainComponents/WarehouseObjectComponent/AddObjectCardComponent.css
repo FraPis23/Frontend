@@ -1,4 +1,4 @@
-.CardCont {
+.addObjectCardBotton {
     width: 150px;
     height: 228px;
     box-shadow: none;
@@ -8,11 +8,7 @@
     margin:16px !important;
 }
 
-.pac-container {
-    z-index: 2051;
-}
-
-.Add{
+.addObjectCartIcon{
     margin-top: 50px;
 }
 

@@ -59,12 +59,12 @@ const WarehouseCard = ({ warehouse }) => {
 
     return (
         <Card
-            className="warehouseCardConteiner"
+            className="warehouseCard"
         >
             <CardContent >
                 <CardMedia
                     onClick={handleWarehouseClick}
-                    className="icon"
+                    className="warehouseCardIcon"
                     component="img"
                     image={logo}
                     alt="icona"
@@ -78,11 +78,11 @@ const WarehouseCard = ({ warehouse }) => {
 
 
                 <Button
-                    className="placeBox"
+                    className="warehouseCardLocalizationBox"
                     onClick={handleLocationClick}
                     variant="contained"
                 >
-                    <PlaceIcon className="place" />
+                    <PlaceIcon className="warehouseCardLocalizationIncon" />
                     <Typography
                         sx={{
                             color: 'white',

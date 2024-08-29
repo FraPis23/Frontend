@@ -1,4 +1,4 @@
-.CardConteiner {
+.addWarehouseCard {
     width: 230px;
     height: 363px;
     border-radius: 20px !important;
@@ -11,11 +11,12 @@
     margin-left: 12px !important;
 }
 
-.pac-container {
-    z-index: 2051;
+.addWarehouseCard:hover {
+    transform: scale(1.07) ;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.Add{
+.addWarehouseCardAddIcon{
     margin-top: 50px;
 }
 

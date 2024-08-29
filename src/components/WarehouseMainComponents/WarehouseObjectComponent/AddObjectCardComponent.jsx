@@ -32,10 +32,10 @@ const AddObjectCard = ({ onCreate }) => {
                 color="primary"
                 aria-label="add warehouse"
                 onClick={handleOpen}
-                className="CardCont"
+                className="addObjectCardBotton"
             >
                 <AddCircleOutlineIcon
-                    className="Add"
+                    className="addObjectCartIcon"
 
                     style={{ fontSize: 100}} />
             </IconButton>

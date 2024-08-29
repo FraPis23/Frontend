@@ -41,16 +41,16 @@ const Warehouse = () => {
 
                     </Grid>
 
-                    <Grid className = "user-container">
-                        <Grid className = "name-container">
-                            <h2 className="intro">Ciao famiglia Jany, Benvenuti nel magazzino: </h2>
+                    <Grid className = "warehouseUsers">
+                        <Grid className = "warehouseIntroContainer">
+                            <h2 className="warehouseIntro">Ciao famiglia Jany, Benvenuti nel magazzino: </h2>
 
-                           <h2 className="warehouse-name">{selectedWarehouse.name}</h2>
+                           <h2 className="warehouseName">{selectedWarehouse.name}</h2>
                             <Bin />
                         </Grid>
-                        <Grid className = "object-container">
-                            <h2 className="userListTitle">VITO:</h2>
-                            <div className="objects">
+                        <Grid className = "warehouseThingsContainer">
+                            <h2 className="warehouseUserListTitle">VITO:</h2>
+                            <div className="warehouseThings">
                                 <Object />
                                 <Object />
                                 <AddObjectCard />
@@ -58,16 +58,16 @@ const Warehouse = () => {
                         </Grid>
                     </Grid>
 
-                    <Grid className="user-container">
-                        <Grid className="userListConteiner">
-                            <h2 className="userListTitle">Amministratori:</h2>
-                            <div className="userListComponent">
+                    <Grid className="warehouseUsers">
+                        <Grid className="warehouseUsersList">
+                            <h2 className="warehouseUserListTitle">Amministratori:</h2>
+                            <div className="warehouseUserListComponent">
                                 <UserList type={1} list={selectedWarehouse.lsAdminsId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
                         </Grid>
-                        <Grid className="userListConteiner">
-                            <h2 className="userListTitle">Utenti:</h2>
-                            <div className="userListComponent">
+                        <Grid className="warehouseUsersList">
+                            <h2 className="warehouseUserListTitle">Utenti:</h2>
+                            <div className="warehouseUserListComponent">
                                 <UserList type={2} list={selectedWarehouse.lsUsersId}control={selectedWarehouse.lsAdminsId}/>
                             </div>
                         </Grid>

@@ -1,11 +1,4 @@
-h1 {
-    font-family: 'Inter', sans-serif;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.name-container{
+.warehouseIntroContainer {
     width: 30%;
     height: 300px;
     background-color: white;
@@ -13,7 +6,7 @@ h1 {
     text-align: center;
     margin:1%;
 }
-.object-container{
+.warehouseThingsContainer {
     width: 60%;
     height: 300px;
     background-color: white;
@@ -22,14 +15,14 @@ h1 {
     margin:1%;
 }
 
-.user-container{
+.warehouseUsers {
     display: flex;
     position: relative;
     justify-content: center;
 
 }
 
-.userListConteiner{
+.warehouseUsersList {
     width: 45%;
     height: 300px;
     background-color: white;
@@ -37,13 +30,13 @@ h1 {
     margin: 1%;
 }
 
-.userListTitle {
+.warehouseUserListTitle {
     margin-top: 5px;
     margin-bottom: 4px;
     margin-left: 15px;
 }
 
-.userListComponent {
+.warehouseUserListComponent {
     height: 83%;
     display: flex;
     flex-direction: column;
@@ -53,33 +46,23 @@ h1 {
     margin-top: 0;
 }
 
-.userListComponent::-webkit-scrollbar {
+.warehouseUserListComponent::-webkit-scrollbar {
     display: none;
 }
 
-.title{
-    background: #d3d3d3;
-    width: 98% ;
-    font-family: 'Inter', sans-serif ; /* Applicato il font Inter */
-    font-size: 25px ;
-    font-weight: bold ;
-    margin: 10px ;
-    border-radius: 15px;
-}
-
-.objects{
+.warehouseThings {
     display: flex;
     flex-direction: row;
     justify-content: left;
 }
 
-.intro{
+.warehouseIntro {
     margin-top: 10%;
     margin-left: 16%;
     margin-right: 16%;
 }
 
-.warehouse-name{
+.warehouseName {
     width: 80%;
     height: 20%;
     border: 2px solid #3498db;
@@ -93,11 +76,11 @@ h1 {
     margin-top: 5%;
 }
 
-.warehouse-name:hover {
+.warehouseName:hover {
     overflow-x: auto;
 }
 
 
-.warehouse-name::-webkit-scrollbar {
-    display: none; /* Nasconde la barra di scorrimento per i browser WebKit */
+.warehouseName::-webkit-scrollbar {
+    display: none;
 }

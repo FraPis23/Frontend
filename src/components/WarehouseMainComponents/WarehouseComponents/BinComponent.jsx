@@ -25,7 +25,7 @@ function Bin() {
     return (
         <IconButton
             onClick={handleDelete}
-            className="trash-can"
+            className="binComponent"
         >
             <DeleteIcon sx={{ color: 'grey', fontSize: '40px' }} />
         </IconButton>

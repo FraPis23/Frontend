@@ -70,15 +70,15 @@ const NewWarehouseIcon = ({ onCreate }) => {
     };
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div>
             <IconButton
                 color="primary"
                 aria-label="add warehouse"
                 onClick={handleOpen}
-                className="CardConteiner"
+                className="addWarehouseCard"
             >
                 <AddCircleOutlineIcon
-                    className="Add"
+                    className="addWarehouseCardAddIcon"
                     style={{ fontSize: 130 }} />
             </IconButton>
 
