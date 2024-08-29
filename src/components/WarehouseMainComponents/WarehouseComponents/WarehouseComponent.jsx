@@ -68,7 +68,7 @@ const Warehouse = () => {
                         <Grid className="warehouseUsersList">
                             <h2 className="warehouseUserListTitle">Utenti:</h2>
                             <div className="warehouseUserListComponent">
-                                <UserList type={2} list={selectedWarehouse.lsUsersId}control={selectedWarehouse.lsAdminsId}/>
+                                <UserList type={2} list={selectedWarehouse.lsUsersId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
                         </Grid>
                     </Grid>

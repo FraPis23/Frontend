@@ -17,14 +17,22 @@ import {getUsers, deleteUser} from "../../../services/WarehousePageSetupService"
 import {UserContext} from "../../../contexts/UserContext";
 
 function UserList({type, list, control}) {
-    const {token, account, selectedWarehouse, setSelectedWarehouse, upgradedList, setUpgradedList} = useContext(UserContext);
+    const {token, account, selectedWarehouse, upgradedList, setUpgradedList} = useContext(UserContext);
     const [usersList, setUsersList] = useState([]);
 
     const handleDeleteUser = async (type, sub) => {
         const warehouseUpgraded = await deleteUser(type, sub, selectedWarehouse._id, token);
-        setSelectedWarehouse(warehouseUpgraded)
-        await sessionStorage.setItem("warehouse", JSON.stringify(selectedWarehouse));
-        setUpgradedList(upgradedList + 1);
+        await sessionStorage.setItem("warehouse", JSON.stringify(warehouseUpgraded));
+        switch (type) {
+            case 1:
+                console.log("liste", warehouseUpgraded.lsAdminsId)
+                setUsersList(warehouseUpgraded.lsAdminsId)
+                break
+            case 2:
+                setUsersList(warehouseUpgraded.lsUsersId)
+                break
+        }
+        setUpgradedList(upgradedList+1)
     }
 
     useEffect(() => {
@@ -32,7 +40,7 @@ function UserList({type, list, control}) {
             .then((response) => {
                 setUsersList(response);
             })
-    }, [list, setSelectedWarehouse]);
+    }, [list, upgradedList]);
 
     return (
         <List className="usersList" sx={{bgcolor: 'background.paper' }}>
