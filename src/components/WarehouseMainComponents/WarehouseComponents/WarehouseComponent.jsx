@@ -10,12 +10,12 @@ import Object from "../WarehouseObjectComponent/ObjectCardComponent";
 import AddObjectCard from "../WarehouseObjectComponent/AddObjectCardComponent"
 
 const Warehouse = () => {
-    const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
+    const {selectedWarehouse, setSelectedWarehouse, upgradedList} = useContext(UserContext);
 
     useEffect(() => {
             setSelectedWarehouse(JSON.parse(sessionStorage.getItem("warehouse")));
             //console.log(selectedWarehouse);
-    }, []);
+    }, [upgradedList]);
 
     return (
         <div>

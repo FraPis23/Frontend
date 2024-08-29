@@ -15,6 +15,10 @@ import HomePage from "./pages/HomePage";
 function App() {
     const {isLoading} = useAuth0();
 
+    if (isLoading) {
+        return <Loading />;
+    }
+
     return (
         <main className="appMain">
             <UserProvider>

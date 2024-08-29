@@ -39,3 +39,25 @@ export async function getUsers(list, token) {
         console.log(error);
     }
 }
+
+export async function deleteUser(type, sub, warehouseId, token) {
+    try {
+        const response = await axios.post(
+            `${api_url}/warehouses/delete-user`,
+            {
+                type: type,
+                sub: sub,
+                warehouseId: warehouseId
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}

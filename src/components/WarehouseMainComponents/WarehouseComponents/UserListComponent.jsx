@@ -12,23 +12,27 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import './UserListComponent.css'
 
-import {getUsers} from "../../../services/WarehousePageSetupService";
+import {getUsers, deleteUser} from "../../../services/WarehousePageSetupService";
 
 import {UserContext} from "../../../contexts/UserContext";
 
 function UserList({type, list, control}) {
-    const {token, account} = useContext(UserContext);
+    const {token, account, selectedWarehouse, setSelectedWarehouse, upgradedList, setUpgradedList} = useContext(UserContext);
     const [usersList, setUsersList] = useState([]);
 
-    console.log(account)
+    const handleDeleteUser = async (type, sub) => {
+        const warehouseUpgraded = await deleteUser(type, sub, selectedWarehouse._id, token);
+        setSelectedWarehouse(warehouseUpgraded)
+        await sessionStorage.setItem("warehouse", JSON.stringify(selectedWarehouse));
+        setUpgradedList(upgradedList + 1);
+    }
+
     useEffect(() => {
         getUsers(list, token)
             .then((response) => {
                 setUsersList(response);
             })
-    }, [list]);
-
-    console.log(usersList)
+    }, [list, setSelectedWarehouse]);
 
     return (
         <List className="usersList" sx={{bgcolor: 'background.paper' }}>
@@ -46,14 +50,20 @@ function UserList({type, list, control}) {
                         <ListItemText primary={user.nickname} />
                         {type === 1 && account.sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Rimuovi" placement="left">
-                                <IconButton aria-label="delete admin">
+                                <IconButton
+                                    aria-label="delete admin"
+                                    onClick={() => handleDeleteUser(1, user.sub)}
+                                >
                                     <PersonRemoveIcon />
                                 </IconButton>
                             </Tooltip>
                         }
                         {type === 2 && account.sub === control[0] &&
                             <Tooltip title="Rimuovi" placement="left">
-                                <IconButton aria-label="delete admin">
+                                <IconButton
+                                    aria-label="delete admin"
+                                    onClick={() => handleDeleteUser(2, user.sub)}
+                                >
                                     <PersonRemoveIcon />
                                 </IconButton>
                             </Tooltip>
@@ -66,7 +76,7 @@ function UserList({type, list, control}) {
                             </Tooltip>
                         }
                         {type === 2 && account.sub === control[0] &&
-                            <Tooltip title="Rimuovi" placement="left">
+                            <Tooltip title="Promuovi" placement="right">
                                 <IconButton aria-label="delete admin">
                                     <VisibilityIcon />
                                 </IconButton>
