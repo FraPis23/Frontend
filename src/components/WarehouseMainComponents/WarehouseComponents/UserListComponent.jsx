@@ -28,6 +28,8 @@ function UserList({type, list, control}) {
             })
     }, [list]);
 
+    console.log(usersList)
+
     return (
         <List className="usersList" sx={{bgcolor: 'background.paper' }}>
             {usersList && usersList.map((user) => {

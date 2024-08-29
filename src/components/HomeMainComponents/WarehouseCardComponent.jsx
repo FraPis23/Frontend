@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import Card from '@mui/material/Card';
@@ -15,11 +15,15 @@ import logo2 from '../../images/HomeImages/WarehouseCardImages/dick.png';
 import logo1 from '../../images/HomeImages/WarehouseCardImages/building.png';
 import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-management.png';
 
+import {UserContext} from "../../contexts/UserContext";
+
 const WarehouseCard = ({ warehouse }) => {
     const navigate = useNavigate();
+    const {setSelectedWarehouse} = useContext(UserContext);
 
-    const handleWarehouseClick = () => {
-        sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
+    const handleWarehouseClick = async () => {
+        setSelectedWarehouse(warehouse)
+        await sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
         navigate(`/home/warehouse/${warehouse._id}`);
     };
 
