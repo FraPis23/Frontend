@@ -14,12 +14,8 @@ const AddObjectCard = ({ onCreate }) => {
     const [open, setOpen] = useState(false);
     const [firstValue, setFirstValue] = useState(0);
 
-
-
-
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
 
     const handleFirstValueChange = (event) => {
         setFirstValue(Number(event.target.value));

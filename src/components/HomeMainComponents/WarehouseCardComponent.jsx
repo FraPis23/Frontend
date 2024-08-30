@@ -27,7 +27,8 @@ const WarehouseCard = ({ warehouse }) => {
         navigate(`/home/warehouse/${warehouse._id}`);
     };
 
-    const handleLocationClick = () => {
+    const handleLocationClick = (event) => {
+        event.stopPropagation();
         if (warehouse.coordinates && warehouse.coordinates.length === 2) {
             const [latitude, longitude] = warehouse.coordinates;
             const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${longitude},${latitude}`;
@@ -50,7 +51,7 @@ const WarehouseCard = ({ warehouse }) => {
             case 4:
                 return logo4;
             default:
-                return null;
+                return logo1;
         }
     };
     const logo = getLogo(warehouse.icon);
@@ -60,10 +61,10 @@ const WarehouseCard = ({ warehouse }) => {
     return (
         <Card
             className="warehouseCard"
+            onClick={handleWarehouseClick}
         >
             <CardContent >
                 <CardMedia
-                    onClick={handleWarehouseClick}
                     className="warehouseCardIcon"
                     component="img"
                     image={logo}

@@ -5,11 +5,12 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
 import IconChoose from "./IconChoose";
 
-import SearchDinamically from "./SearchDinamicallyComponent";
+import SearchDinamically from "../../SearchDinamicallyComponent";
 
 import { UserContext } from "../../../contexts/UserContext";
 
 import './AddWarehouseCardComponent.css';
+
 
 const libraries = ['places'];
 
@@ -19,12 +20,15 @@ const NewWarehouseIcon = ({ onCreate }) => {
     const [description, setDescription] = useState('');
     const [coordinates, setCoordinates] = useState([]);
     const [autocomplete, setAutocomplete] = useState(null);
-    const { lsAdminsNickname } = useContext(UserContext);
-    const { lsUsersNickname } = useContext(UserContext);
-    const { selectedImage } = useContext(UserContext);
+    const { lsAdminsNickname, setLsAdminsNickname } = useContext(UserContext);
+    const { lsUsersNickname, setLsUsersNickname } = useContext(UserContext);
+    const { selectedImage, setSelectedImage } = useContext(UserContext);
 
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+
+    const handleClose = () =>
+        setOpen(false);
+
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: "AIzaSyAFWH8opVo0QTRo7ChM-P0hCqvmd6cq8Tw",
@@ -61,6 +65,12 @@ const NewWarehouseIcon = ({ onCreate }) => {
                 lsUsersNickname: lsUsersNickname,
                 selectedImage: selectedImage
             });
+            setWarehouseName('');
+            setDescription('');
+            setCoordinates([]);
+            setSelectedImage(null);
+            setLsAdminsNickname([]);
+            setLsUsersNickname([]);
             console.log(lsAdminsNickname)
             console.log(lsUsersNickname)
             handleClose();

@@ -17,7 +17,8 @@ import {getUsers, deleteUser} from "../../../services/WarehousePageSetupService"
 import {UserContext} from "../../../contexts/UserContext";
 
 function UserList({type, list, control}) {
-    const {token, account, selectedWarehouse, upgradedList, setUpgradedList} = useContext(UserContext);
+    const {token, account, selectedWarehouse} = useContext(UserContext);
+    const {upgradedUserList, setUpgradedUserList, upgradedWarehouseList} = useContext(UserContext);
     const [usersList, setUsersList] = useState([]);
 
     const handleDeleteUser = async (type, sub) => {
@@ -32,22 +33,26 @@ function UserList({type, list, control}) {
                 setUsersList(warehouseUpgraded.lsUsersId)
                 break
         }
-        setUpgradedList(upgradedList+1)
+        setUpgradedUserList(upgradedUserList+1)
     }
+
+    console.log("primo",token)
 
     useEffect(() => {
         getUsers(list, token)
             .then((response) => {
                 setUsersList(response);
             })
-    }, [list, upgradedList]);
+    }, [list, upgradedWarehouseList]);
 
+    let keyU = 0;
     return (
         <List className="usersList" sx={{bgcolor: 'background.paper' }}>
             {usersList && usersList.map((user) => {
+                keyU = keyU +1
                 return (
                     <ListItem
-                        key={user.sub}
+                        key={keyU}
                     >
                         <ListItemAvatar>
                             <Avatar

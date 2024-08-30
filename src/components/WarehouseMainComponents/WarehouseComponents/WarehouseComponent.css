@@ -2,24 +2,29 @@
     width: 30%;
     height: 300px;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 20px;
     text-align: center;
     margin:1%;
+    font-family: 'Inter', sans-serif;
+    border: 2px solid rgba(0, 0, 0, 0.2);
 }
+
 .warehouseThingsContainer {
     width: 60%;
     height: 300px;
     background-color: white;
-    border-radius: 15px;
-    text-align: center;
+    font-family: 'Inter', sans-serif;
+    border-radius: 20px;
+    align-content: center;
+    text-align: left;
     margin:1%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .warehouseUsers {
     display: flex;
     position: relative;
     justify-content: center;
-
 }
 
 .warehouseUsersList {
@@ -28,16 +33,22 @@
     background-color: white;
     border-radius: 15px;
     margin: 1%;
+    border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
 .warehouseUserListTitle {
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 4px;
     margin-left: 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    text-transform: uppercase;
 }
 
 .warehouseUserListComponent {
-    height: 83%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,6 +65,8 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
+    align-items: center;
+    text-align: center;
 }
 
 .warehouseIntro {
@@ -66,7 +79,6 @@
     width: 80%;
     height: 20%;
     border: 2px solid #3498db;
-    border-radius: 15px;
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
@@ -74,6 +86,7 @@
     overflow: hidden;
     font-size: 35px ;
     margin-top: 5%;
+    font-family: 'Inter', sans-serif;
 }
 
 .warehouseName:hover {
@@ -83,4 +96,29 @@
 
 .warehouseName::-webkit-scrollbar {
     display: none;
+}
+
+.warehouseBox {
+    height: calc(100vh - 70px);
+    padding: 20px;
+    max-width: 100%;
+    max-height: calc(100vh - 90px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+
+.warehouseBox::-webkit-scrollbar {
+    display: none;
+}
+
+.headerBox{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    padding-top: 60px;
 }

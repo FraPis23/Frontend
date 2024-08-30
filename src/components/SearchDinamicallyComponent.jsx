@@ -2,12 +2,12 @@ import React, {useContext, useEffect, useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-import {searchUserByNickname} from '../../../services/HomePageSetupService';
-import {UserContext} from "../../../contexts/UserContext";
+import {searchUserByNickname} from '../services/HomePageSetupService';
+import {UserContext} from "../contexts/UserContext";
 
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
-import './AddWarehouseCardComponent.css'
+import './HomeMainComponents/AddWarehouseComponents/AddWarehouseCardComponent.css'
 
 const SearchDinamically = ({scope}) => {
     const scopeToSend = `Seleziona ${scope}`
@@ -16,12 +16,22 @@ const SearchDinamically = ({scope}) => {
     const [nicknameArray, setNicknameArray] = useState([]);
     const {lsAdminsNickname, setLsAdminsNickname} = useContext(UserContext);
     const {lsUsersNickname, setLsUsersNickname} = useContext(UserContext);
+    const {list} = useContext(UserContext);
 
     useEffect(() => {
         if (searchQuery.trim() !== '') {
             searchUserByNickname(searchQuery, token, sub)
                 .then((nicknames) => {
-                    setNicknameArray(nicknames || []);
+                    const filteredNicknames = nicknames.filter((nickname) => {
+                        if (scope === "Amministratori") {
+                            return !lsAdminsNickname.includes(nickname);
+                        } else if (scope === "Utenti") {
+                            return !lsUsersNickname.includes(nickname);
+                        } else if (scope === "Utente") {
+                            return !list.includes(nickname);
+                        }
+                    });
+                    setNicknameArray(filteredNicknames || []);
                 })
                 .catch((error) => {
                     console.error('Error fetching nicknames:', error);
@@ -33,7 +43,7 @@ const SearchDinamically = ({scope}) => {
     }, [searchQuery])
 
 
-    const handleAddAdmin = () => {
+    const handleAdd = () => {
         if (newNickname.trim()) { // Check if input is not empty
             if(scope==="Amministratori")
             {setLsAdminsNickname([...lsAdminsNickname, newNickname]);
@@ -64,7 +74,7 @@ const SearchDinamically = ({scope}) => {
                 clearIcon={<AddCircleOutlineIcon
                     //color="primary"
                     style={{ fontSize: 40 }}
-                    onClick={handleAddAdmin}
+                    onClick={handleAdd}
                 />}
                 renderInput={(params) => (
                     <TextField
