@@ -1,13 +1,17 @@
 import React, {useContext, useEffect, useState} from 'react';
+import Cookies from "js-cookie";
+
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-
-import {searchUserByNickname} from '../services/HomePageSetupService';
-import {UserContext} from "../contexts/UserContext";
-
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
+import {searchUserByNickname} from '../services/HomePageSetupService';
+import {addUser} from "../services/WarehousePageSetupService";
+
+import {UserContext} from "../contexts/UserContext";
+
 import './HomeMainComponents/AddWarehouseComponents/AddWarehouseCardComponent.css'
+
 
 const SearchDinamically = ({scope}) => {
     const scopeToSend = `Seleziona ${scope}`
@@ -16,7 +20,7 @@ const SearchDinamically = ({scope}) => {
     const [nicknameArray, setNicknameArray] = useState([]);
     const {lsAdminsNickname, setLsAdminsNickname} = useContext(UserContext);
     const {lsUsersNickname, setLsUsersNickname} = useContext(UserContext);
-    const {list} = useContext(UserContext);
+    const {list, upgradedUserList, setUpgradedUserList} = useContext(UserContext);
 
     useEffect(() => {
         if (searchQuery.trim() !== '') {
@@ -43,8 +47,8 @@ const SearchDinamically = ({scope}) => {
     }, [searchQuery])
 
 
-    const handleAdd = () => {
-        if (newNickname.trim()) { // Check if input is not empty
+    const handleAdd = async () => {
+        if (newNickname.trim()) {
             if(scope==="Amministratori")
             {setLsAdminsNickname([...lsAdminsNickname, newNickname]);
                 setNewNickname('');
@@ -54,7 +58,13 @@ const SearchDinamically = ({scope}) => {
             {
                 setLsUsersNickname([...lsUsersNickname, newNickname]);
                 setNewNickname('');
-                console.log('Users List:', lsUsersNickname)
+                console.log('Users List:', lsUsersNickname);
+            }
+            else if(scope==="Utente")
+            {
+                const warehouse = await addUser(newNickname, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get('sessionToken'))
+                await sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
+                setUpgradedUserList(upgradedUserList+1)
             }
 
         }
@@ -71,6 +81,7 @@ const SearchDinamically = ({scope}) => {
                     setSearchQuery(newInputValue);
                     setNewNickname(newInputValue);
                 }}
+                clearText="Aggiungi"
                 clearIcon={<AddCircleOutlineIcon
                     //color="primary"
                     style={{ fontSize: 40 }}

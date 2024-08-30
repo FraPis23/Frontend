@@ -61,3 +61,24 @@ export async function deleteUser(type, sub, warehouseId, token) {
         console.log(error);
     }
 }
+
+export async function addUser(nickname, warehouseId, token) {
+    try {
+        const response = await axios.post(
+            `${api_url}/warehouses/add-user`,
+            {
+                nickname: nickname,
+                warehouseId: warehouseId,
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
