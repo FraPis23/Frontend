@@ -27,7 +27,7 @@ function Bin() {
             onClick={handleDelete}
             className="binComponent"
         >
-            <DeleteIcon sx={{ color: 'grey', fontSize: '40px' }} />
+            <DeleteIcon sx={{ color: 'grey', fontSize: '30px' }} />
         </IconButton>
     );
 }

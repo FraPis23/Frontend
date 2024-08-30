@@ -56,7 +56,7 @@ const Warehouse = () => {
 
                     <Grid className = "warehouseUsers">
                         <Grid className = "warehouseIntroContainer">
-                            <h2 className="warehouseIntro">Ciao famiglia Jany, Benvenuti nel magazzino: </h2>
+                            <h2 className="warehouseIntro">Benvenuti, questo è il magazzino </h2>
 
                            <h2 className="warehouseName">{selectedWarehouse.name}</h2>
                             <Bin />

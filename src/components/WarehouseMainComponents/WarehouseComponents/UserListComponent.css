@@ -3,4 +3,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+.PersonRemoveIcon{
+    position: fixed;
+}
+
+.VisibilityOffIcon{
+    position: fixed;
+}
+
+.Avatar{
+    position: fixed;
+}
+
+.ItemText{
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.ItemText::-webkit-scrollbar {
+    display: none;
 }

@@ -27,4 +27,9 @@
     padding: 30px;
     height: calc(100vh - 200px);
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    scrollbar-width: none;
+}
+
+.warehouseBox::-webkit-scrollbar {
+    display: none;
 }

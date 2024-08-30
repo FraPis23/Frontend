@@ -60,7 +60,7 @@ function UserList({type, list, control}) {
                                 src={user.picture}
                             />
                         </ListItemAvatar>
-                        <ListItemText primary={user.nickname} />
+                        <ListItemText primary={user.nickname} className="itemText" />
                         {type === 1 && account.sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Rimuovi" placement="left">
                                 <IconButton
