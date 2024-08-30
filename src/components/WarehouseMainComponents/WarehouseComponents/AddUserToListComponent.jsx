@@ -4,7 +4,10 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import Modal from '@mui/material/Modal';
 import {Box, Card, CardContent, Typography} from "@mui/material";
+
 import SearchDinamically from "../../SearchDinamicallyComponent";
+
+import "./AddUserToListComponent.css"
 
 function AddUserToList() {
     const [open, setOpen] = useState(false);
@@ -13,7 +16,7 @@ function AddUserToList() {
     const handleClose = () => setOpen(false);
 
     return (
-        <div>
+        <div className="AddUserButton">
             <IconButton
                 onClick={handleOpen}
             >

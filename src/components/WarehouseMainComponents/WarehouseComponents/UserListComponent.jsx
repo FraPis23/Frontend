@@ -45,14 +45,12 @@ function UserList({type, list, control}) {
             })
     }, [list, upgradedWarehouseList]);
 
-    let keyU = 0;
     return (
         <List className="usersList" sx={{bgcolor: 'background.paper' }}>
-            {usersList && usersList.map((user) => {
-                keyU = keyU +1
+            {usersList && usersList.map((user, index) => {
                 return (
                     <ListItem
-                        key={keyU}
+                        key={index}
                     >
                         <ListItemAvatar>
                             <Avatar
@@ -61,6 +59,20 @@ function UserList({type, list, control}) {
                             />
                         </ListItemAvatar>
                         <ListItemText primary={user.nickname} className="itemText" />
+                        {type === 1 && account.sub === list[0] && user.sub !== list[0] &&
+                            <Tooltip title="Declassa" placement="right">
+                                <IconButton aria-label="delete admin">
+                                    <VisibilityOffIcon />
+                                </IconButton>
+                            </Tooltip>
+                        }
+                        {type === 2 && account.sub === control[0] &&
+                            <Tooltip title="Promuovi" placement="right">
+                                <IconButton aria-label="delete admin">
+                                    <VisibilityIcon />
+                                </IconButton>
+                            </Tooltip>
+                        }
                         {type === 1 && account.sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Rimuovi" placement="left">
                                 <IconButton
@@ -78,20 +90,6 @@ function UserList({type, list, control}) {
                                     onClick={() => handleDeleteUser(2, user.sub)}
                                 >
                                     <PersonRemoveIcon />
-                                </IconButton>
-                            </Tooltip>
-                        }
-                        {type === 1 && account.sub === list[0] && user.sub !== list[0] &&
-                            <Tooltip title="Declassa" placement="right">
-                                <IconButton aria-label="delete admin">
-                                    <VisibilityOffIcon />
-                                </IconButton>
-                            </Tooltip>
-                        }
-                        {type === 2 && account.sub === control[0] &&
-                            <Tooltip title="Promuovi" placement="right">
-                                <IconButton aria-label="delete admin">
-                                    <VisibilityIcon />
                                 </IconButton>
                             </Tooltip>
                         }

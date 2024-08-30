@@ -79,10 +79,12 @@ const Warehouse = () => {
                             </div>
                         </Grid>
                         <Grid className="warehouseUsersList">
-                            <h2 className="warehouseUserListTitle">
-                                Utenti
+                            <div className="AddUsersTitleBox">
+                                <h2 className="warehouseUserListTitle">
+                                    Utenti
+                                </h2>
                                 <AddUserToList />
-                            </h2>
+                            </div>
                             <div className="warehouseUserListComponent">
                                 <UserList type={2} list={selectedWarehouse.lsUsersId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
