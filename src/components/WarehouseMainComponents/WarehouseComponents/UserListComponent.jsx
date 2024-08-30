@@ -12,7 +12,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import './UserListComponent.css'
 
-import {getUsers, deleteUser} from "../../../services/WarehousePageSetupService";
+import {getUsers, deleteUser, addUser} from "../../../services/WarehousePageSetupService";
 
 import {UserContext} from "../../../contexts/UserContext";
 

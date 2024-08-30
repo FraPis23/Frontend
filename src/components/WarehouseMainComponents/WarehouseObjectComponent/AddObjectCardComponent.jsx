@@ -9,16 +9,34 @@ import './AddObjectCardComponent.css';
 
 
 
-
 const AddObjectCard = ({ onCreate }) => {
     const [open, setOpen] = useState(false);
-    const [firstValue, setFirstValue] = useState(0);
+    const [minQuantity, setMinQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(0);
+    const [objectName, setObjectName] = useState('');
+    const { selectedPicture, setSelectedPicture } = useContext(UserContext);
+
+
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleFirstValueChange = (event) => {
-        setFirstValue(Number(event.target.value));
+
+
+
+    const handleCreate = () => {
+        if (onCreate && objectName && minQuantity && quantity) {
+            onCreate({
+                name: objectName,
+                minQuantity: minQuantity,
+                quantity: quantity,
+                picture: selectedPicture
+            });
+
+            handleClose();
+        } else {
+            console.log("Errore: Informazioni incomplete");
+        }
     };
 
 
@@ -64,7 +82,8 @@ const AddObjectCard = ({ onCreate }) => {
                                 fullWidth
                                 label="Nome Ogetto"
                                 variant="outlined"
-
+                                value={objectName}
+                                onChange={(e) => setObjectName(e.target.value)}
                                 sx={{ mt: 2 }}
                             />
                             <TextField
@@ -72,8 +91,8 @@ const AddObjectCard = ({ onCreate }) => {
                                 type="number"
                                 variant="outlined"
                                 fullWidth
-                                value={firstValue}
-                                onChange={handleFirstValueChange}
+                                value={minQuantity}
+                                onChange={(e) => setMinQuantity(e.target.value)}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
@@ -89,11 +108,13 @@ const AddObjectCard = ({ onCreate }) => {
                                 type="number"
                                 variant="outlined"
                                 fullWidth
+                                value={quantity}
+                                onChange={(e) => setQuantity(e.target.value)}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
                                 inputProps={{
-                                    min: firstValue,
+                                    min: 0,
                                     step: 1
                                 }}
                                 sx={{ mt: 2}}
@@ -104,7 +125,7 @@ const AddObjectCard = ({ onCreate }) => {
                             <Button
                                 variant="contained"
                                 color="primary"
-
+                                onClick={handleCreate}
                             >
                                 Crea
                             </Button>

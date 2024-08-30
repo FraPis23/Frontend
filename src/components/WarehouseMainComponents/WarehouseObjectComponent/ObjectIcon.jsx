@@ -9,10 +9,9 @@ import {UserContext} from "../../../contexts/UserContext";
 
 const IconChoose = () => {
 
-    const {selectedIcon, setSelectedIcon} = useContext(UserContext);
-
+    const {selectedPicture, setSelectedPicture} = useContext(UserContext);
     const handleImageClick = (imageId) => {
-        setSelectedIcon(imageId); // Aggiorna lo stato con l'immagine cliccata
+        setSelectedPicture(imageId); // Aggiorna lo stato con l'immagine cliccata
         console.log(`Hai cliccato sull'immagine ${imageId}`);
     };
 
@@ -24,8 +23,8 @@ const IconChoose = () => {
     };
 
 
-    const getImageStyle = (imageId) => {if (selectedIcon) {
-        return selectedIcon === imageId
+    const getImageStyle = (imageId) => {if (selectedPicture) {
+        return selectedPicture === imageId
             ? { ...baseStyle } // Stile di base
             : { ...baseStyle, opacity: 0.5 }; // Opacizza le altre immagini
     } else {

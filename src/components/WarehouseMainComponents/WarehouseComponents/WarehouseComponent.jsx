@@ -1,22 +1,50 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import Cookies from "js-cookie";
 
 import './WarehouseComponent.css';
 
 import {UserContext} from "../../../contexts/UserContext";
+
 import { Box, Grid } from "@mui/material";
 
 import Bin from "./BinComponent";
 import UserList from "./UserListComponent";
-import ObjectCard from "../WarehouseObjectComponent/ObjectCardComponent";
+import Object from "../WarehouseObjectComponent/ObjectCardComponent";
 import AddObjectCard from "../WarehouseObjectComponent/AddObjectCardComponent"
 import AddUserToList from "./AddUserToListComponent";
-import {getUsers} from "../../../services/WarehousePageSetupService";
-import Cookies from "js-cookie";
+import Loading from "../../../pages/LoadingPage";
+
+import {getUsers, createThing} from "../../../services/WarehousePageSetupService";
+
+
+
 
 const Warehouse = () => {
     const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
     const {upgradedWarehouseList, setUpgradedWarehouseList, upgradedUserList} = useContext(UserContext);
-    const {setList} = useContext(UserContext)
+    const {setList} = useContext(UserContext);
+    const {token} = useContext(UserContext);
+    const [upgradedObjects, setUpgradedObjects] = useState(0);
+
+    const [ready, setReady] = useState(false);
+
+    const handleCreateThing = async (newThing) => {
+        if (!selectedWarehouse._id || !token) {
+            console.error("warehouseId or token is not available.");
+            return;
+        }
+        console.log("Creating a new thing with:", newThing, selectedWarehouse._id, token);
+        try {
+            const addedThing = await createThing(newThing, selectedWarehouse._id, token);
+            const warehouse = JSON.parse(sessionStorage.getItem("warehouse"));
+            warehouse.lsThings.push(addedThing);
+            sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
+            console.log("warehouse : ", warehouse);
+            setUpgradedObjects(upgradedObjects+1)
+        } catch (error) {
+            console.error("Error creating thing:", error);
+        }
+    };
 
     useEffect(() => {
         setSelectedWarehouse(JSON.parse(sessionStorage.getItem("warehouse")));
@@ -26,8 +54,11 @@ const Warehouse = () => {
             .then((usersList) => {
                 const nicknames = usersList.map(user => user.nickname);
                 setList(nicknames);
-            })
-    }, [upgradedUserList]);
+            });
+        if (JSON.parse(sessionStorage.getItem("warehouse")) && JSON.parse(sessionStorage.getItem("warehouse")).lsThings) {
+            setReady(true);
+        }
+    }, [upgradedUserList, upgradedObjects]);
 
     return (
         <div>
@@ -63,17 +94,27 @@ const Warehouse = () => {
                         </Grid>
                         <Grid className = "warehouseThingsContainer">
                             <h2 className="warehouseUserListTitle">Inventario</h2>
-                            <div className="warehouseThings">
-                                <ObjectCard />
-                                <ObjectCard />
-                                <AddObjectCard />
-                            </div>
+                                <div className="warehouseThings">
+                                    {ready ? (
+                                        selectedWarehouse.lsThings.map((thing, index) => (
+                                            <div>
+                                                <Object
+                                                    thing={thing}
+                                                    key={index}
+                                                />
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <Loading/>
+                                    )}
+                                    <AddObjectCard onCreate={handleCreateThing}/>
+                                </div>
                         </Grid>
                     </Grid>
 
                     <Grid className="warehouseUsers">
                         <Grid className="warehouseUsersList">
-                            <h2 className="warehouseUserListTitle">Amministratori</h2>
+                            <h2 className="warehouseUserListTitle">Amministratori [{selectedWarehouse.lsAdminsId.length}]</h2>
                             <div className="warehouseUserListComponent">
                                 <UserList type={1} list={selectedWarehouse.lsAdminsId} control={selectedWarehouse.lsAdminsId}/>
                             </div>

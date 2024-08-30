@@ -15,18 +15,19 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from "@mui/material/IconButton";
 
 
-const ObjectCard = () => {
+const ObjectCard = ({thing}) => {
 
     const [inputValue, setInputValue] = useState(0);
     const [sumValue, setSumValue] = useState(0);
 
+    console.log("Prova: ", thing)
     const handleInputChange = (event) => {
         setInputValue(Number(event.target.value));
 
     };
     const handleButtonClick = () => {
         setSumValue(prevSum => {
-            const newSum = prevSum + inputValue;
+            const newSum = prevSum + inputValue ;
             return newSum >= 0 ? newSum : 0;
         });
     };
@@ -47,7 +48,7 @@ const ObjectCard = () => {
                     />
                 </div>
                 <Typography gutterBottom variant="h5" className= 'objectName'>
-                    Martello
+                    {thing.name}
                 </Typography>
                 <div className='objectDataContainer'>
                     <div className= "objectQuantity">

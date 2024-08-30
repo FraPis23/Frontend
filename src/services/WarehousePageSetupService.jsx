@@ -82,3 +82,48 @@ export async function addUser(nickname, warehouseId, token) {
         console.log(error);
     }
 }
+
+export async function createThing(newThing, warehouseId, token) {
+    try {
+        console.log("ID  ", token);
+        const response = await axios.post(
+            `${api_url}/warehouses/create-thing`,
+            {
+                warehouseId: warehouseId,
+                name: newThing.name,
+                minQuantity: newThing.minQuantity,
+                quantity: newThing.quantity,
+                picture: newThing.picture
+
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function getThings(list, token) {
+    try {
+
+        const response = await axios.get(
+            `${api_url}/warehouses/get-thing`,
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
