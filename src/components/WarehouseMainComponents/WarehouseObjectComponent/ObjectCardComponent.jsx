@@ -13,12 +13,17 @@ import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from "@mui/material/IconButton";
+import logo1 from "../../../images/HomeImages/WarehouseCardImages/hammer.jpg";
+import logo2 from "../../../images/HomeImages/WarehouseCardImages/screw.jpg";
+import logo3 from "../../../images/HomeImages/WarehouseCardImages/brick.jpg";
+import logo4 from "../../../images/HomeImages/WarehouseCardImages/saw.jpg";
 
 
 const ObjectCard = ({thing}) => {
 
     const [inputValue, setInputValue] = useState(0);
     const [sumValue, setSumValue] = useState(0);
+
 
     console.log("Prova: ", thing)
     const handleInputChange = (event) => {
@@ -27,10 +32,27 @@ const ObjectCard = ({thing}) => {
     };
     const handleButtonClick = () => {
         setSumValue(prevSum => {
-            const newSum = prevSum + inputValue ;
+            const newSum = prevSum + inputValue;
             return newSum >= 0 ? newSum : 0;
         });
     };
+
+    const getLogo = (selectedPic) => {
+        console.log("Immagine ", selectedPic);
+        switch(selectedPic) {
+            case 1:
+                return logo1;
+            case 2:
+                return logo2;
+            case 3:
+                return logo3;
+            case 4:
+                return logo4;
+            default:
+                return logo1;
+        }
+    };
+    const logo = getLogo(thing.picture);
 
     return (
         <Card className='objectCard'>
@@ -56,7 +78,7 @@ const ObjectCard = ({thing}) => {
                             Quantità:
                         </Typography>
                         <Box className='objectQuantityContainer' variant='subtitle1' color='text.secondary'>
-                            {sumValue}
+                            {sumValue+thing.quantity}
                         </Box>
                     </div>
                     <div className='objectModifyQuantityContainer'>
