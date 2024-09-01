@@ -40,14 +40,15 @@ export async function getUsers(list, token) {
     }
 }
 
-export async function deleteUser(type, sub, warehouseId, token) {
+export async function deleteUser(type, sub, warehouseId, token, grade) {
     try {
         const response = await axios.post(
             `${api_url}/warehouses/delete-user`,
             {
                 type: type,
                 sub: sub,
-                warehouseId: warehouseId
+                warehouseId: warehouseId,
+                grade: grade
             },
             {
                 withCredentials: true,
@@ -62,13 +63,14 @@ export async function deleteUser(type, sub, warehouseId, token) {
     }
 }
 
-export async function addUser(nickname, warehouseId, token) {
+export async function addUser(nickname, warehouseId, token, grade) {
     try {
         const response = await axios.post(
             `${api_url}/warehouses/add-user`,
             {
                 nickname: nickname,
                 warehouseId: warehouseId,
+                grade: grade
             },
             {
                 withCredentials: true,
@@ -78,6 +80,29 @@ export async function addUser(nickname, warehouseId, token) {
             }
         );
         return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function modifyPermissions(type, sub, warehouseId, token) {
+    try {
+        const response = await axios.post(
+            `${api_url}/warehouses/modify-permissions`,
+            {
+                type: type,
+                sub: sub,
+                warehouseId: warehouseId
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+
     } catch (error) {
         console.log(error);
     }

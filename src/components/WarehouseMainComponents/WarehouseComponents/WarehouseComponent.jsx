@@ -16,14 +16,11 @@ import Loading from "../../../pages/LoadingPage";
 
 import {getUsers, createThing} from "../../../services/WarehousePageSetupService";
 
-
-
-
 const Warehouse = () => {
     const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
     const {upgradedWarehouseList, setUpgradedWarehouseList, upgradedUserList} = useContext(UserContext);
     const {setList} = useContext(UserContext);
-    const {token} = useContext(UserContext);
+    const {token, account} = useContext(UserContext);
     const [upgradedObjects, setUpgradedObjects] = useState(0);
 
     const [ready, setReady] = useState(false);
@@ -90,7 +87,9 @@ const Warehouse = () => {
                             <h2 className="warehouseIntro">Benvenuti, questo è il magazzino </h2>
 
                            <h2 className="warehouseName">{selectedWarehouse.name}</h2>
-                            <Bin />
+                            {selectedWarehouse.lsAdminsId[0] === account.sub && (
+                                <Bin />
+                            )}
                         </Grid>
                         <Grid className = "warehouseThingsContainer">
                             <h2 className="warehouseUserListTitle">Inventario</h2>
@@ -124,7 +123,9 @@ const Warehouse = () => {
                                 <h2 className="warehouseUserListTitle">
                                     Utenti
                                 </h2>
-                                <AddUserToList />
+                                {selectedWarehouse.lsAdminsId.includes(account.sub) && (
+                                    <AddUserToList />
+                                )}
                             </div>
                             <div className="warehouseUserListComponent">
                                 <UserList type={2} list={selectedWarehouse.lsUsersId} control={selectedWarehouse.lsAdminsId}/>

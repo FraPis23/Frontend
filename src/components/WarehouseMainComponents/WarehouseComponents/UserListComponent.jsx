@@ -1,4 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
+import Cookies from "js-cookie";
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -12,7 +14,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import './UserListComponent.css'
 
-import {getUsers, deleteUser, addUser} from "../../../services/WarehousePageSetupService";
+import {getUsers, deleteUser, modifyPermissions} from "../../../services/WarehousePageSetupService";
 
 import {UserContext} from "../../../contexts/UserContext";
 
@@ -22,21 +24,16 @@ function UserList({type, list, control}) {
     const [usersList, setUsersList] = useState([]);
 
     const handleDeleteUser = async (type, sub) => {
-        const warehouseUpgraded = await deleteUser(type, sub, selectedWarehouse._id, token);
+        const warehouseUpgraded = await deleteUser(type, sub, selectedWarehouse._id, token, JSON.parse(Cookies.get('sessionUser')).sub);
         await sessionStorage.setItem("warehouse", JSON.stringify(warehouseUpgraded));
-        switch (type) {
-            case 1:
-                console.log("liste", warehouseUpgraded.lsAdminsId)
-                setUsersList(warehouseUpgraded.lsAdminsId)
-                break
-            case 2:
-                setUsersList(warehouseUpgraded.lsUsersId)
-                break
-        }
         setUpgradedUserList(upgradedUserList+1)
     }
 
-    console.log("primo",token)
+    const handleModifyPermissions = async (type, sub) => {
+        const warehouseUpgraded = await modifyPermissions(type, sub, selectedWarehouse._id, token);
+        await sessionStorage.setItem("warehouse", JSON.stringify(warehouseUpgraded));
+        setUpgradedUserList(upgradedUserList+1);
+    }
 
     useEffect(() => {
         getUsers(list, token)
@@ -59,21 +56,27 @@ function UserList({type, list, control}) {
                             />
                         </ListItemAvatar>
                         <ListItemText primary={user.nickname} className="itemText" />
-                        {type === 1 && account.sub === list[0] && user.sub !== list[0] &&
+                        {type === 1 && JSON.parse(Cookies.get('sessionUser')).sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Declassa" placement="right">
-                                <IconButton aria-label="delete admin">
+                                <IconButton
+                                    aria-label="downgrade admin"
+                                    onClick={() => handleModifyPermissions(1, user.sub)}
+                                >
                                     <VisibilityOffIcon />
                                 </IconButton>
                             </Tooltip>
                         }
-                        {type === 2 && account.sub === control[0] &&
+                        {type === 2 && JSON.parse(Cookies.get('sessionUser')).sub === control[0] &&
                             <Tooltip title="Promuovi" placement="right">
-                                <IconButton aria-label="delete admin">
+                                <IconButton
+                                    aria-label="upgrade user"
+                                    onClick={() => handleModifyPermissions(2, user.sub)}
+                                >
                                     <VisibilityIcon />
                                 </IconButton>
                             </Tooltip>
                         }
-                        {type === 1 && account.sub === list[0] && user.sub !== list[0] &&
+                        {type === 1 && JSON.parse(Cookies.get('sessionUser')).sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Rimuovi" placement="left">
                                 <IconButton
                                     aria-label="delete admin"
@@ -83,10 +86,10 @@ function UserList({type, list, control}) {
                                 </IconButton>
                             </Tooltip>
                         }
-                        {type === 2 && account.sub === control[0] &&
+                        {type === 2 && control.includes(JSON.parse(Cookies.get('sessionUser')).sub) &&
                             <Tooltip title="Rimuovi" placement="left">
                                 <IconButton
-                                    aria-label="delete admin"
+                                    aria-label="delete user"
                                     onClick={() => handleDeleteUser(2, user.sub)}
                                 >
                                     <PersonRemoveIcon />

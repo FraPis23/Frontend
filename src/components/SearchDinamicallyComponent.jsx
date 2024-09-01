@@ -21,17 +21,16 @@ const SearchDinamically = ({scope}) => {
     const {lsAdminsNickname, setLsAdminsNickname} = useContext(UserContext);
     const {lsUsersNickname, setLsUsersNickname} = useContext(UserContext);
     const {list, upgradedUserList, setUpgradedUserList} = useContext(UserContext);
+    const {account} = useContext(UserContext)
 
     useEffect(() => {
         if (searchQuery.trim() !== '') {
             searchUserByNickname(searchQuery, token, sub)
                 .then((nicknames) => {
                     const filteredNicknames = nicknames.filter((nickname) => {
-                        if (scope === "Amministratori") {
-                            return !lsAdminsNickname.includes(nickname);
-                        } else if (scope === "Utenti") {
-                            return !lsUsersNickname.includes(nickname);
-                        } else if (scope === "Utente") {
+                        if (scope === "Amministratori" || scope === "Utenti") {
+                            return !lsAdminsNickname.includes(nickname) && !lsUsersNickname.includes(nickname);
+                        } else {
                             return !list.includes(nickname);
                         }
                     });
@@ -62,7 +61,7 @@ const SearchDinamically = ({scope}) => {
             }
             else if(scope==="Utente")
             {
-                const warehouse = await addUser(newNickname, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get('sessionToken'))
+                const warehouse = await addUser(newNickname, JSON.parse(sessionStorage.getItem("warehouse"))._id, token, JSON.parse(Cookies.get('sessionUser')).sub)
                 await sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
                 setUpgradedUserList(upgradedUserList+1)
             }
