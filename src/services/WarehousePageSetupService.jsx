@@ -85,14 +85,15 @@ export async function addUser(nickname, warehouseId, token, grade) {
     }
 }
 
-export async function modifyPermissions(type, sub, warehouseId, token) {
+export async function modifyPermissions(type, sub, warehouseId, token, grade) {
     try {
         const response = await axios.post(
             `${api_url}/warehouses/modify-permissions`,
             {
                 type: type,
                 sub: sub,
-                warehouseId: warehouseId
+                warehouseId: warehouseId,
+                grade: grade
             },
             {
                 withCredentials: true,

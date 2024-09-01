@@ -30,7 +30,7 @@ function UserList({type, list, control}) {
     }
 
     const handleModifyPermissions = async (type, sub) => {
-        const warehouseUpgraded = await modifyPermissions(type, sub, selectedWarehouse._id, token);
+        const warehouseUpgraded = await modifyPermissions(type, sub, selectedWarehouse._id, token, JSON.parse(Cookies.get('sessionUser')).sub);
         await sessionStorage.setItem("warehouse", JSON.stringify(warehouseUpgraded));
         setUpgradedUserList(upgradedUserList+1);
     }
