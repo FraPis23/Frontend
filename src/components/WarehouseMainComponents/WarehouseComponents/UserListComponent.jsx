@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Cookies from "js-cookie";
+import { socket } from '../../../socket';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -19,21 +20,62 @@ import {getUsers, deleteUser, modifyPermissions} from "../../../services/Warehou
 import {UserContext} from "../../../contexts/UserContext";
 
 function UserList({type, list, control}) {
-    const {token, account, selectedWarehouse} = useContext(UserContext);
+    const {token, account, selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
     const {upgradedUserList, setUpgradedUserList, upgradedWarehouseList} = useContext(UserContext);
     const [usersList, setUsersList] = useState([]);
 
     const handleDeleteUser = async (type, sub) => {
         const warehouseUpgraded = await deleteUser(type, sub, selectedWarehouse._id, token, JSON.parse(Cookies.get('sessionUser')).sub);
         await sessionStorage.setItem("warehouse", JSON.stringify(warehouseUpgraded));
-        setUpgradedUserList(upgradedUserList+1)
+        setUpgradedUserList(upgradedUserList+1);
+        socket.emit('deleteUser', {
+            warehouseId: selectedWarehouse._id,
+            warehouseUpgraded,
+        });
     }
+
+    useEffect(() => {
+        socket.on('userDeleted', (data) => {
+                sessionStorage.setItem("warehouse", JSON.stringify(data.warehouseUpgraded));
+                setUpgradedUserList(upgradedUserList+1);
+        });
+
+        return () => {
+            socket.off('userDeleted');
+        };
+    }, [selectedWarehouse]);
+
 
     const handleModifyPermissions = async (type, sub) => {
         const warehouseUpgraded = await modifyPermissions(type, sub, selectedWarehouse._id, token, JSON.parse(Cookies.get('sessionUser')).sub);
         await sessionStorage.setItem("warehouse", JSON.stringify(warehouseUpgraded));
         setUpgradedUserList(upgradedUserList+1);
+        socket.emit('modifyPermissions', {
+            warehouseId: selectedWarehouse._id,
+            warehouseUpgraded,
+        });
     }
+
+    useEffect(() => {
+        socket.on('modifyPermissions', (data) => {
+            sessionStorage.setItem("warehouse", JSON.stringify(data.warehouseUpgraded));
+            setUpgradedUserList(upgradedUserList+1);
+        });
+
+        return () => {
+            socket.off('modifyPermissions');
+        };
+    }, [selectedWarehouse]);
+
+    useEffect(() => {
+        socket.on('addUser', (data) => {
+            sessionStorage.setItem("warehouse", JSON.stringify(data.warehouse));
+            setUpgradedUserList(upgradedUserList + 1);
+        });
+        return () => {
+            socket.off('addUser');
+        };
+    }, [selectedWarehouse]);
 
     useEffect(() => {
         getUsers(list, token)

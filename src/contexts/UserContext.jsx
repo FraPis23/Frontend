@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useState} from 'react';
 
 export const UserContext = createContext();
 
@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
     const [selectedImage, setSelectedImage] = useState('');
     const [lsAdminsNickname, setLsAdminsNickname] = useState([]);
     const [lsUsersNickname, setLsUsersNickname] = useState([]);
-    const [selectedWarehouse, setSelectedWarehouse] = useState(null);
+    const [selectedWarehouse, setSelectedWarehouse] = useState(JSON.parse(localStorage.getItem('warehouses')));
     const [upgradedUserList, setUpgradedUserList] = useState(0);
     const [upgradedWarehouseList, setUpgradedWarehouseList] = useState(0);
     const [list, setList] = useState([]);

@@ -11,6 +11,7 @@ import {addUser} from "../services/WarehousePageSetupService";
 import {UserContext} from "../contexts/UserContext";
 
 import './HomeMainComponents/AddWarehouseComponents/AddWarehouseCardComponent.css'
+import {socket} from "../socket";
 
 
 const SearchDinamically = ({scope}) => {
@@ -21,7 +22,7 @@ const SearchDinamically = ({scope}) => {
     const {lsAdminsNickname, setLsAdminsNickname} = useContext(UserContext);
     const {lsUsersNickname, setLsUsersNickname} = useContext(UserContext);
     const {list, upgradedUserList, setUpgradedUserList} = useContext(UserContext);
-    const {account} = useContext(UserContext)
+    const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext)
 
     useEffect(() => {
         if (searchQuery.trim() !== '') {
@@ -63,7 +64,12 @@ const SearchDinamically = ({scope}) => {
             {
                 const warehouse = await addUser(newNickname, JSON.parse(sessionStorage.getItem("warehouse"))._id, token, JSON.parse(Cookies.get('sessionUser')).sub)
                 await sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
+                setSelectedWarehouse(warehouse);
                 setUpgradedUserList(upgradedUserList+1)
+                socket.emit('addUser', {
+                    warehouseId: warehouse._id,
+                    warehouse,
+                });
             }
 
         }

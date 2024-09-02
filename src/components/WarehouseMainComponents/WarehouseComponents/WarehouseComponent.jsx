@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Cookies from "js-cookie";
+import { socket } from '../../../socket';
 
 import './WarehouseComponent.css';
 
@@ -44,6 +45,19 @@ const Warehouse = () => {
     };
 
     useEffect(() => {
+        if (selectedWarehouse?._id) {
+            socket.connect();
+
+            socket.emit('joinWarehouse', selectedWarehouse._id);
+
+            return () => {
+                socket.emit('leaveWarehouse', selectedWarehouse._id);
+                socket.disconnect();
+            };
+        }
+    }, [selectedWarehouse]);
+
+    useEffect(() => {
         setSelectedWarehouse(JSON.parse(sessionStorage.getItem("warehouse")));
         setUpgradedWarehouseList(upgradedWarehouseList + 1);
         const array = [ ...JSON.parse(sessionStorage.getItem("warehouse")).lsAdminsId, ...JSON.parse(sessionStorage.getItem("warehouse")).lsUsersId];
@@ -55,7 +69,7 @@ const Warehouse = () => {
         if (JSON.parse(sessionStorage.getItem("warehouse")) && JSON.parse(sessionStorage.getItem("warehouse")).lsThings) {
             setReady(true);
         }
-    }, [upgradedUserList, upgradedObjects]);
+    }, [upgradedUserList]);
 
     return (
         <div>

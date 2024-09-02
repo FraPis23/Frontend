@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 
 import {useNavigate} from "react-router-dom";
 
@@ -8,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import './BinComponent.css';
 import {UserContext} from "../../../contexts/UserContext";
 import {deleteWarehouse} from "../../../services/WarehousePageSetupService";
+import {socket} from "../../../socket";
 
 function Bin() {
     const {setWarehouses, warehouses, selectedWarehouse, token} = useContext(UserContext);
@@ -20,7 +21,21 @@ function Bin() {
             .then(() => {
                 navigate('/home');
             })
+        socket.emit('deleteWarehouse', {
+            warehouseId: selectedWarehouse._id,
+            setWarehouses
+        });
     };
+
+    useEffect(() => {
+        socket.on('deleteWarehouse', () => {
+                navigate('/home');
+        });
+
+        return () => {
+            socket.off('deleteWarehouse');
+        };
+    }, [selectedWarehouse, navigate]);
 
     return (
         <IconButton
