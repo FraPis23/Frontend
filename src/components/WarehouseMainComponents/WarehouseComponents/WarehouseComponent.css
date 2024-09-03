@@ -1,17 +1,36 @@
 .warehouseIntroContainer {
-    width: 20%;
-    height: 300px;
-    background-color: white;
-    border-radius: 20px;
+    width: 100%;
     text-align: center;
-    margin:1%;
     font-family: 'Inter', sans-serif;
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    font-size: 35px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right:19px;
+}
+
+.warehouseBin{
+    margin-left: auto;
+}
+
+.warehouseName {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 35px;
+    text-transform: uppercase;
 }
 
 .warehouseThingsContainer {
-    width: 70%;
-    height: 300px;
+    width: 92%;
+    height: 310px;
     background-color: white;
     font-family: 'Inter', sans-serif;
     border-radius: 20px;
@@ -70,26 +89,6 @@
     overflow: scroll;
 }
 
-.warehouseIntro {
-    margin-top: 10%;
-    margin-left: 16%;
-    margin-right: 16%;
-    font-size: 22px;
-}
-
-.warehouseName {
-    width: 80%;
-    height: 20%;
-    text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 35px ;
-    margin-top: 10%;
-    font-family: 'Inter', sans-serif;
-}
-
 .warehouseName:hover {
     overflow-x: auto;
 }
@@ -100,14 +99,13 @@
 }
 
 .warehouseBox {
-    height: calc(100vh - 70px);
+    height: calc(100vh - 200px);
     padding: 20px;
     max-width: 100%;
     max-height: calc(100vh - 90px);
     overflow-y: scroll;
     scrollbar-width: none;
 }
-
 
 .warehouseBox::-webkit-scrollbar {
     display: none;

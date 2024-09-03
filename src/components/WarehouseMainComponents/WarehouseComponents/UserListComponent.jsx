@@ -99,7 +99,7 @@ function UserList({type, list, control}) {
                         </ListItemAvatar>
                         <ListItemText primary={user.nickname} className="itemText" />
                         {type === 1 && JSON.parse(Cookies.get('sessionUser')).sub === list[0] && user.sub !== list[0] &&
-                            <Tooltip title="Declassa" placement="right">
+                            <Tooltip title="Declassa" placement="left">
                                 <IconButton
                                     aria-label="downgrade admin"
                                     onClick={() => handleModifyPermissions(1, user.sub)}
@@ -109,7 +109,7 @@ function UserList({type, list, control}) {
                             </Tooltip>
                         }
                         {type === 2 && JSON.parse(Cookies.get('sessionUser')).sub === control[0] &&
-                            <Tooltip title="Promuovi" placement="right">
+                            <Tooltip title="Promuovi" placement="left">
                                 <IconButton
                                     aria-label="upgrade user"
                                     onClick={() => handleModifyPermissions(2, user.sub)}
@@ -119,7 +119,7 @@ function UserList({type, list, control}) {
                             </Tooltip>
                         }
                         {type === 1 && JSON.parse(Cookies.get('sessionUser')).sub === list[0] && user.sub !== list[0] &&
-                            <Tooltip title="Rimuovi" placement="left">
+                            <Tooltip title="Rimuovi" placement="right">
                                 <IconButton
                                     aria-label="delete admin"
                                     onClick={() => handleDeleteUser(1, user.sub)}
@@ -129,7 +129,7 @@ function UserList({type, list, control}) {
                             </Tooltip>
                         }
                         {type === 2 && control.includes(JSON.parse(Cookies.get('sessionUser')).sub) &&
-                            <Tooltip title="Rimuovi" placement="left">
+                            <Tooltip title="Rimuovi" placement="right">
                                 <IconButton
                                     aria-label="delete user"
                                     onClick={() => handleDeleteUser(2, user.sub)}

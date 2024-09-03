@@ -1,24 +1,27 @@
 .objectCard {
     width: 150px;
     height: 170px;
-    box-shadow: none !important;
+    box-shadow: gray !important;
     border-radius: 15px !important;
     border: 2px solid rgba(0, 0, 0, 0.2);
     display: flex;
     padding-bottom: 50px;
     justify-content: center;
     margin: 16px;
+    position: relative;
 }
 
 .objectCardLogoContainer {
     justify-content: center;
     display: flex;
+    position: relative;
 }
 
 .objectCardLogo {
     margin-top: 5px;
     height: 50px;
     width: 50px !important;
+    margin-bottom:5px;
 }
 
 
@@ -33,11 +36,11 @@
 
 .objectName {
     background: #d3d3d3;
-    width: 200px;
-    margin-top: 10px !important;
+    width: 100%;
     font-family: 'Arial', sans-serif;
-    font-size: 20px !important ;
+    font-size: 15px !important;
     font-weight: bold !important;
+    text-align: center;
 }
 
 .objectDescription {
@@ -56,7 +59,7 @@
     padding-right: 15%;
     align-items :baseline;
     justify-content: space-between;
-    padding-top: 25px;
+    padding-top: 10px;
     display: flex;
 }
 .objectQuantityContainer{
@@ -78,7 +81,6 @@
 
 .objectDataContainer{
     height: 166px;
-    border: 2px grey solid;
 }
 
 .objectChangeNumber{
@@ -88,7 +90,7 @@
 }
 
 .objectBin{
-    position: absolute !important;
-    margin-left: 35px !important;
+    position: relative !important;
+    margin-left: 110px !important;
     margin-top: -17px !important;
 }

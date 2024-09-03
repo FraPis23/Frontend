@@ -95,6 +95,12 @@ const Warehouse = () => {
 
     return (
         <div>
+            <Grid className = "warehouseIntroContainer">
+                <h2 className="warehouseName">{selectedWarehouse.name}</h2>
+                {selectedWarehouse.lsAdminsId[0] === account.sub && (
+                    <Bin className = "warehouseBin"/>
+                )}
+            </Grid>
             {selectedWarehouse &&
                 <Box
                     className="warehouseBox"
@@ -119,14 +125,6 @@ const Warehouse = () => {
                     </Grid>
 
                     <Grid className = "warehouseUsers">
-                        <Grid className = "warehouseIntroContainer">
-                            <h2 className="warehouseIntro">Benvenuti, questo è il magazzino </h2>
-
-                           <h2 className="warehouseName">{selectedWarehouse.name}</h2>
-                            {selectedWarehouse.lsAdminsId[0] === account.sub && (
-                                <Bin />
-                            )}
-                        </Grid>
                         <Grid className = "warehouseThingsContainer">
                             <h2 className="warehouseUserListTitle">Inventario</h2>
                                 <div className="warehouseThings">
