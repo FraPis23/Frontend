@@ -7,7 +7,10 @@ import './WarehouseComponent.css';
 
 import {UserContext} from "../../../contexts/UserContext";
 
-import { Box, Grid } from "@mui/material";
+import {Box, Grid, Modal} from "@mui/material";
+import Alert from '@mui/material/Alert';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 import Bin from "./BinComponent";
 import UserList from "./UserListComponent";
@@ -25,9 +28,10 @@ const Warehouse = () => {
     const {setList} = useContext(UserContext);
     const {token, account} = useContext(UserContext);
     const [upgradedObjects, setUpgradedObjects] = useState(0);
+    const [open, setOpen] = useState(false);
+    const [ready, setReady] = useState(false);
     const navigate = useNavigate();
 
-    const [ready, setReady] = useState(false);
 
     const handleCreateThing = async (newThing) => {
         if (!selectedWarehouse._id || !token) {
@@ -54,7 +58,7 @@ const Warehouse = () => {
             socket.emit('joinWarehouse', selectedWarehouse._id);
 
             socket.on('deleteWarehouse', () => {
-                navigate('/home');
+                setOpen(true);
             });
 
             return () => {
@@ -85,7 +89,7 @@ const Warehouse = () => {
             .then((response) => {
                 console.log("ciao",response);
                 if(!response)
-                    navigate('/home');
+                    setOpen(true);
             })
     }, []);
 
@@ -167,6 +171,28 @@ const Warehouse = () => {
 
                 </Box>
             }
+            <Modal
+                open={open}
+            >
+                <Stack sx={{ width: '50%' }}>
+                    <Alert severity="warning"
+                           action={
+                               <Button
+                                   color="inherit"
+                                   size="small"
+                                   onClick={(event) => {
+                                       event.stopPropagation();
+                                       navigate('/home');
+                                   }}
+                               >
+                                   Return
+                               </Button>
+                           }
+                    >
+                        Il magazzino è stato eliminato
+                    </Alert>
+                </Stack>
+            </Modal>
         </div>
     );
 }
