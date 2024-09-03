@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Cookies from "js-cookie";
 import { socket } from '../../../socket';
+import {useNavigate} from "react-router-dom";
 
 import './WarehouseComponent.css';
 
@@ -15,6 +16,7 @@ import AddObjectCard from "../WarehouseObjectComponent/AddObjectCardComponent"
 import AddUserToList from "./AddUserToListComponent";
 import Loading from "../../../pages/LoadingPage";
 
+import {getWarehouse} from "../../../services/HomePageSetupService";
 import {getUsers, createThing} from "../../../services/WarehousePageSetupService";
 
 const Warehouse = () => {
@@ -23,6 +25,7 @@ const Warehouse = () => {
     const {setList} = useContext(UserContext);
     const {token, account} = useContext(UserContext);
     const [upgradedObjects, setUpgradedObjects] = useState(0);
+    const navigate = useNavigate();
 
     const [ready, setReady] = useState(false);
 
@@ -50,12 +53,18 @@ const Warehouse = () => {
 
             socket.emit('joinWarehouse', selectedWarehouse._id);
 
+            socket.on('deleteWarehouse', () => {
+                navigate('/home');
+            });
+
             return () => {
                 socket.emit('leaveWarehouse', selectedWarehouse._id);
+                socket.off('deleteWarehouse');
                 socket.disconnect();
             };
         }
     }, [selectedWarehouse]);
+
 
     useEffect(() => {
         setSelectedWarehouse(JSON.parse(sessionStorage.getItem("warehouse")));
@@ -70,6 +79,15 @@ const Warehouse = () => {
             setReady(true);
         }
     }, [upgradedUserList]);
+
+    useEffect(() => {
+        getWarehouse(selectedWarehouse._id, token)
+            .then((response) => {
+                console.log("ciao",response);
+                if(!response)
+                    navigate('/home');
+            })
+    }, []);
 
     return (
         <div>

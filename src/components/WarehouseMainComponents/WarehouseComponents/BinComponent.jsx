@@ -19,23 +19,12 @@ function Bin() {
         setWarehouses(updatedWarehouses);
         deleteWarehouse(selectedWarehouse, token)
             .then(() => {
+                socket.emit('deleteWarehouse', {
+                    warehouseId: selectedWarehouse._id,
+                });
                 navigate('/home');
             })
-        socket.emit('deleteWarehouse', {
-            warehouseId: selectedWarehouse._id,
-            setWarehouses
-        });
     };
-
-    useEffect(() => {
-        socket.on('deleteWarehouse', () => {
-                navigate('/home');
-        });
-
-        return () => {
-            socket.off('deleteWarehouse');
-        };
-    }, [selectedWarehouse, navigate]);
 
     return (
         <IconButton
