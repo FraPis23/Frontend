@@ -1,4 +1,6 @@
 import React, {useState, useContext} from 'react';
+import {socket} from "../../../socket";
+
 import {
     Card,
     CardContent,
@@ -22,32 +24,32 @@ import logo2 from "../../../images/HomeImages/WarehouseCardImages/screw.jpg";
 import logo3 from "../../../images/HomeImages/WarehouseCardImages/brick.jpg";
 import logo4 from "../../../images/HomeImages/WarehouseCardImages/saw.jpg";
 
-
 const ObjectCard = ({thing}) => {
 
     const{selectedWarehouse, setSelectedWarehouse, token}=useContext(UserContext);
     const [inputValue, setInputValue] = useState(0);
     const [sumValue, setSumValue] = useState(0);
-    const {upgradedObjects, setUpgradedObjects} = useContext(UserContext)
+    const {upgradeObjects, setUpgradeObjects} = useContext(UserContext)
 
     const handleDelete = async () => {
         try {
-
-            // Filter the lsThings array to remove the thing with the matching _id
             const updatedThings = selectedWarehouse.lsThings.filter(item => item._id !== thing._id);
 
-            // Update the selectedWarehouse's lsThings with the new array
             setSelectedWarehouse({
                 ...selectedWarehouse,
                 lsThings: updatedThings,
             });
 
-            const newWarehouse = await deleteThing( selectedWarehouse._id, thing._id, token);
+            const newWarehouse = await deleteThing(selectedWarehouse._id, thing._id, token);
             console.log("NEW WAREHOUSE ", newWarehouse);
             sessionStorage.setItem("warehouse", JSON.stringify(newWarehouse));
-            setUpgradedObjects(upgradedObjects+1)
 
+            socket.emit('deletedThing', {
+                warehouseId: newWarehouse._id,
+                newWarehouse,
+            });
 
+            setUpgradeObjects(upgradeObjects + 1);
 
         } catch (error) {
             console.error("Error deleting the thing: ", error);

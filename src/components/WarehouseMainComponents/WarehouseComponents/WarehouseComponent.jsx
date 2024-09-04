@@ -40,6 +40,10 @@ const Warehouse = () => {
             const warehouse = await createThing(newThing, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get("sessionToken"));
             sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
             setUpgradeObjects(upgradeObjects + 1);
+            socket.emit('addThing', {
+                warehouseId: warehouse._id,
+                warehouse,
+            });
         } catch (error) {
             console.error("Error creating thing:", error);
         }
@@ -54,6 +58,20 @@ const Warehouse = () => {
             socket.on('deleteWarehouse', () => {
                 setOpen(true);
             });
+
+            socket.on('addThing', (data) => {
+                sessionStorage.setItem("warehouse", JSON.stringify(data.warehouse));
+                setUpgradeObjects(upgradeObjects + 1);
+            });
+
+            socket.on('deleteThing', (data) => {
+                sessionStorage.setItem("warehouse", JSON.stringify(data.newWarehouse));
+                setUpgradeObjects(upgradeObjects + 1);
+            });
+
+            return () => {
+                socket.off('modifyPermissions');
+            };
 
             return () => {
                 socket.emit('leaveWarehouse', selectedWarehouse._id);
