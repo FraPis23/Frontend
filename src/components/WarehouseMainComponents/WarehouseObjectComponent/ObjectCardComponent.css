@@ -94,3 +94,25 @@
     margin-left: 110px !important;
     margin-top: -17px !important;
 }
+
+.alert{
+    color: red !important;
+    padding: 0 !important;
+    position: absolute !important;
+    margin-left: 17px !important;
+    margin-top: -8px !important;
+    animation: blink 1s infinite;
+    cursor: pointer;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

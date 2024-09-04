@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {socket} from "../../../socket";
 
 import {
@@ -14,7 +14,7 @@ import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from "@mui/material/IconButton";
-
+import WarningIcon from '@mui/icons-material/Warning';
 import {UserContext} from "../../../contexts/UserContext";
 
 import {deleteThing} from "../../../services/WarehousePageSetupService";
@@ -23,13 +23,21 @@ import logo1 from "../../../images/HomeImages/WarehouseCardImages/hammer.jpg";
 import logo2 from "../../../images/HomeImages/WarehouseCardImages/screw.jpg";
 import logo3 from "../../../images/HomeImages/WarehouseCardImages/brick.jpg";
 import logo4 from "../../../images/HomeImages/WarehouseCardImages/saw.jpg";
+import Tooltip from "@mui/material/Tooltip";
+
+
+
 
 const ObjectCard = ({thing}) => {
+
 
     const{selectedWarehouse, setSelectedWarehouse, token}=useContext(UserContext);
     const [inputValue, setInputValue] = useState(0);
     const [sumValue, setSumValue] = useState(0);
     const {upgradeObjects, setUpgradeObjects} = useContext(UserContext)
+    const [showTriangle, setShowTriangle] = useState(false);
+
+
 
     const handleDelete = async () => {
         try {
@@ -66,7 +74,18 @@ const ObjectCard = ({thing}) => {
             const newSum = prevSum + inputValue;
             return newSum >= 0 ? newSum : 0;
         });
+
     };
+
+    useEffect(() => {
+        if (sumValue + thing.quantity <= thing.minQuantity) {
+            setShowTriangle(true);
+        }
+        else
+        {
+            setShowTriangle(false);
+        }
+    });
 
     const getLogo = (selectedPic) => {
         console.log("Immagine ", selectedPic);
@@ -86,8 +105,17 @@ const ObjectCard = ({thing}) => {
     const logo = getLogo(thing.picture);
 
     return (
+        <div>
         <Card className='objectCard'>
+
             <CardContent>
+                {showTriangle && (
+                    <Tooltip title={`Carenza di ${thing.name}`} >
+                        <WarningIcon className="alert" />
+                    </Tooltip>
+                    )}
+
+
                 <IconButton className="objectBin">
                     <DeleteIcon
                         onClick={handleDelete}
@@ -105,6 +133,7 @@ const ObjectCard = ({thing}) => {
                 <Typography gutterBottom variant="h5" className= 'objectName'>
                     {thing.name}
                 </Typography>
+
                 <div className='objectDataContainer'>
                     <div className= "objectQuantity">
                         <Typography variant="subtitle1" color="text.secondary" component='div' className='objectDescription'>
@@ -158,7 +187,7 @@ const ObjectCard = ({thing}) => {
                 </div>
             </CardContent>
         </Card>
-
+        </div>
 
     );
 }
