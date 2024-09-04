@@ -20,9 +20,10 @@ import {getUsers, deleteUser, modifyPermissions} from "../../../services/Warehou
 import {UserContext} from "../../../contexts/UserContext";
 
 function UserList({type, list, control}) {
-    const {token, account, selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
+    const {token, account, selectedWarehouse } = useContext(UserContext);
     const {upgradedUserList, setUpgradedUserList, upgradedWarehouseList} = useContext(UserContext);
     const [usersList, setUsersList] = useState([]);
+    const {setUserDeleted} = useContext(UserContext);
 
     const handleDeleteUser = async (type, sub) => {
         const warehouseUpgraded = await deleteUser(type, sub, selectedWarehouse._id, token, JSON.parse(Cookies.get('sessionUser')).sub);
@@ -31,6 +32,7 @@ function UserList({type, list, control}) {
         socket.emit('deleteUser', {
             warehouseId: selectedWarehouse._id,
             warehouseUpgraded,
+            sub
         });
     }
 
@@ -38,6 +40,9 @@ function UserList({type, list, control}) {
         socket.on('userDeleted', (data) => {
                 sessionStorage.setItem("warehouse", JSON.stringify(data.warehouseUpgraded));
                 setUpgradedUserList(upgradedUserList+1);
+                if (account.sub === data.sub) {
+                    setUserDeleted(true);
+                }
         });
 
         return () => {

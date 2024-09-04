@@ -153,3 +153,25 @@ export async function getThings(list, token) {
     }
 }
 
+export async function deleteThing(warehouseId, thingId, token) {
+    console.log("ID  ", token)
+    try {
+        const response = await axios.post(
+            `${api_url}/warehouses/delete-thing`,
+            {
+                warehouseId : warehouseId,
+                thingId: thingId,
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}

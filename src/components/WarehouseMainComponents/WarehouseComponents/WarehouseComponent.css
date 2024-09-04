@@ -128,3 +128,9 @@
     align-items: center;
     width: 100%;
 }
+
+.warehouseDeleteWarning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

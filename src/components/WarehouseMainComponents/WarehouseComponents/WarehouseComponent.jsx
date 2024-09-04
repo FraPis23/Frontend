@@ -27,25 +27,19 @@ const Warehouse = () => {
     const {upgradedWarehouseList, setUpgradedWarehouseList, upgradedUserList} = useContext(UserContext);
     const {setList} = useContext(UserContext);
     const {token, account} = useContext(UserContext);
-    const [upgradedObjects, setUpgradedObjects] = useState(0);
+    const {upgradeObjects, setUpgradeObjects} = useContext(UserContext)
     const [open, setOpen] = useState(false);
+    const {userDeleted, setUserDeleted} = useContext(UserContext);
     const [ready, setReady] = useState(false);
     const navigate = useNavigate();
 
 
     const handleCreateThing = async (newThing) => {
-        if (!selectedWarehouse._id || !token) {
-            console.error("warehouseId or token is not available.");
-            return;
-        }
         console.log("Creating a new thing with:", newThing, selectedWarehouse._id, token);
         try {
-            const addedThing = await createThing(newThing, selectedWarehouse._id, token);
-            const warehouse = JSON.parse(sessionStorage.getItem("warehouse"));
-            warehouse.lsThings.push(addedThing);
+            const warehouse = await createThing(newThing, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get("sessionToken"));
             sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
-            console.log("warehouse : ", warehouse);
-            setUpgradedObjects(upgradedObjects+1)
+            setUpgradeObjects(upgradeObjects + 1);
         } catch (error) {
             console.error("Error creating thing:", error);
         }
@@ -85,7 +79,14 @@ const Warehouse = () => {
     }, [upgradedUserList]);
 
     useEffect(() => {
-        getWarehouse(selectedWarehouse._id, token)
+        setSelectedWarehouse(JSON.parse(sessionStorage.getItem("warehouse")));
+        if (JSON.parse(sessionStorage.getItem("warehouse")) && JSON.parse(sessionStorage.getItem("warehouse")).lsThings) {
+            setReady(true);
+        }
+    }, [upgradeObjects]);
+
+    useEffect(() => {
+        getWarehouse(JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get("sessionToken"))
             .then((response) => {
                 console.log("ciao",response);
                 if(!response)
@@ -95,12 +96,14 @@ const Warehouse = () => {
 
     return (
         <div>
+            {selectedWarehouse &&
             <Grid className = "warehouseIntroContainer">
                 <h2 className="warehouseName">{selectedWarehouse.name}</h2>
                 {selectedWarehouse.lsAdminsId[0] === account.sub && (
                     <Bin className = "warehouseBin"/>
                 )}
             </Grid>
+            }
             {selectedWarehouse &&
                 <Box
                     className="warehouseBox"
@@ -147,7 +150,7 @@ const Warehouse = () => {
 
                     <Grid className="warehouseUsers">
                         <Grid className="warehouseUsersList">
-                            <h2 className="warehouseUserListTitle">Amministratori [{selectedWarehouse.lsAdminsId.length}]</h2>
+                            <h2 className="warehouseUserListTitle">Amministratori</h2>
                             <div className="warehouseUserListComponent">
                                 <UserList type={1} list={selectedWarehouse.lsAdminsId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
@@ -171,8 +174,9 @@ const Warehouse = () => {
             }
             <Modal
                 open={open}
+                className="warehouseDeleteWarning"
             >
-                <Stack sx={{ width: '50%' }}>
+                <Stack sx={{ width: '27%' }}>
                     <Alert severity="warning"
                            action={
                                <Button
@@ -188,6 +192,30 @@ const Warehouse = () => {
                            }
                     >
                         Il magazzino è stato eliminato
+                    </Alert>
+                </Stack>
+            </Modal>
+            <Modal
+                open={userDeleted}
+                className="warehouseDeleteWarning"
+            >
+                <Stack sx={{ width: '27%' }}>
+                    <Alert severity="warning"
+                           action={
+                               <Button
+                                   color="inherit"
+                                   size="small"
+                                   onClick={(event) => {
+                                       event.stopPropagation();
+                                       setUserDeleted(false);
+                                       navigate('/home');
+                                   }}
+                               >
+                                   Return
+                               </Button>
+                           }
+                    >
+                        Non fai più parte del magazzino
                     </Alert>
                 </Stack>
             </Modal>

@@ -18,6 +18,8 @@ export const UserProvider = ({ children }) => {
     const [selectedPicture, setSelectedPicture] = useState('');
     const [things, setThings] = useState([]);
     const [deletedWarehouse, setDeletedWarehouse] = useState(0)
+    const [userDeleted, setUserDeleted] = useState(false);
+    const [upgradeObjects, setUpgradeObjects] = useState(0)
 
     return (
         <UserContext.Provider value={{
@@ -36,6 +38,8 @@ export const UserProvider = ({ children }) => {
             selectedPicture, setSelectedPicture,
             things, setThings,
             deletedWarehouse, setDeletedWarehouse,
+            userDeleted, setUserDeleted,
+            upgradeObjects, setUpgradeObjects,
 
         }}>
             {children}

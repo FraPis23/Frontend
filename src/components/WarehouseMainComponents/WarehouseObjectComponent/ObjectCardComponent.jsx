@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
     Card,
     CardContent,
@@ -6,13 +6,17 @@ import {
     Typography,
 } from "@mui/material";
 import './ObjectCardComponent.css'
-import logo from '../../../images/HomeImages/WarehouseCardImages/hammer.jpg'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from "@mui/material/IconButton";
+
+import {UserContext} from "../../../contexts/UserContext";
+
+import {deleteThing} from "../../../services/WarehousePageSetupService";
+
 import logo1 from "../../../images/HomeImages/WarehouseCardImages/hammer.jpg";
 import logo2 from "../../../images/HomeImages/WarehouseCardImages/screw.jpg";
 import logo3 from "../../../images/HomeImages/WarehouseCardImages/brick.jpg";
@@ -21,9 +25,34 @@ import logo4 from "../../../images/HomeImages/WarehouseCardImages/saw.jpg";
 
 const ObjectCard = ({thing}) => {
 
+    const{selectedWarehouse, setSelectedWarehouse, token}=useContext(UserContext);
     const [inputValue, setInputValue] = useState(0);
     const [sumValue, setSumValue] = useState(0);
+    const {upgradedObjects, setUpgradedObjects} = useContext(UserContext)
 
+    const handleDelete = async () => {
+        try {
+
+            // Filter the lsThings array to remove the thing with the matching _id
+            const updatedThings = selectedWarehouse.lsThings.filter(item => item._id !== thing._id);
+
+            // Update the selectedWarehouse's lsThings with the new array
+            setSelectedWarehouse({
+                ...selectedWarehouse,
+                lsThings: updatedThings,
+            });
+
+            const newWarehouse = await deleteThing( selectedWarehouse._id, thing._id, token);
+            console.log("NEW WAREHOUSE ", newWarehouse);
+            sessionStorage.setItem("warehouse", JSON.stringify(newWarehouse));
+            setUpgradedObjects(upgradedObjects+1)
+
+
+
+        } catch (error) {
+            console.error("Error deleting the thing: ", error);
+        }
+    };
 
     console.log("Prova: ", thing)
     const handleInputChange = (event) => {
@@ -58,7 +87,9 @@ const ObjectCard = ({thing}) => {
         <Card className='objectCard'>
             <CardContent>
                 <IconButton className="objectBin">
-                    <DeleteIcon />
+                    <DeleteIcon
+                        onClick={handleDelete}
+                    />
                 </IconButton>
 
                 <div className='objectCardLogoContainer'>
