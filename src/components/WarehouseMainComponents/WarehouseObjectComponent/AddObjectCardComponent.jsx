@@ -13,19 +13,23 @@ const AddObjectCard = ({ onCreate }) => {
     const [minQuantity, setMinQuantity] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [objectName, setObjectName] = useState('');
-    const { selectedPicture } = useContext(UserContext);
+    const { selectedPicture, setSelectedPicture } = useContext(UserContext);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const handleCreate = () => {
-        if (onCreate && objectName && minQuantity && quantity) {
+        if (onCreate && objectName) {
             onCreate({
                 name: objectName,
                 minQuantity: minQuantity,
                 quantity: quantity,
                 picture: selectedPicture
             });
+            setObjectName('');
+            setQuantity(0);
+            setMinQuantity(0);
+            setSelectedPicture(null);
 
             handleClose();
         } else {

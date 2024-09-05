@@ -35,8 +35,13 @@ const Warehouse = () => {
 
 
     const handleCreateThing = async (newThing) => {
-        console.log("Creating a new thing with:", newThing, selectedWarehouse._id, token);
         try {
+            if (typeof newThing.quantity !== 'number') {
+                newThing.quantity = 0;
+            }
+            if (typeof newThing.minQuantity !== 'number') {
+                newThing.minQuantity = 0;
+            }
             const warehouse = await createThing(newThing, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get("sessionToken"));
             sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
             setUpgradeObjects(upgradeObjects + 1);
