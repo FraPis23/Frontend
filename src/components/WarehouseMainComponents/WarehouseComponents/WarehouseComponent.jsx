@@ -27,7 +27,7 @@ const Warehouse = () => {
     const {upgradedWarehouseList, setUpgradedWarehouseList, upgradedUserList} = useContext(UserContext);
     const {setList} = useContext(UserContext);
     const {token, account} = useContext(UserContext);
-    const {upgradeObjects, setUpgradeObjects} = useContext(UserContext)
+    const {upgradeObjects, setUpgradeObjects} = useContext(UserContext);
     const [open, setOpen] = useState(false);
     const {userDeleted, setUserDeleted} = useContext(UserContext);
     const [ready, setReady] = useState(false);
@@ -66,6 +66,11 @@ const Warehouse = () => {
 
             socket.on('deleteThing', (data) => {
                 sessionStorage.setItem("warehouse", JSON.stringify(data.newWarehouse));
+                setUpgradeObjects(upgradeObjects + 1);
+            });
+
+            socket.on('modifyQuantity', (data) => {
+                sessionStorage.setItem("warehouse", JSON.stringify(data.warehouse));
                 setUpgradeObjects(upgradeObjects + 1);
             });
 

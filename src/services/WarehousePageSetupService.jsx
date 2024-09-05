@@ -154,7 +154,6 @@ export async function getThings(list, token) {
 }
 
 export async function deleteThing(warehouseId, thingId, token) {
-    console.log("ID  ", token)
     try {
         const response = await axios.post(
             `${api_url}/warehouses/delete-thing`,
@@ -170,6 +169,28 @@ export async function deleteThing(warehouseId, thingId, token) {
             }
         );
 
+        return response.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function modifyQuantity(thingId, warehouseId, quantity, token) {
+    try {
+        const response = await axios.post(
+            `${api_url}/warehouses/modify-quantity`,
+            {
+                thingId: thingId,
+                warehouseId : warehouseId,
+                quantity: quantity
+            },
+            {
+                withCredentials: true,
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        );
         return response.data
     } catch (error) {
         console.log(error);

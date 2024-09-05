@@ -15,29 +15,24 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from "@mui/material/IconButton";
 import WarningIcon from '@mui/icons-material/Warning';
+import Tooltip from "@mui/material/Tooltip";
+
 import {UserContext} from "../../../contexts/UserContext";
 
-import {deleteThing} from "../../../services/WarehousePageSetupService";
+import {deleteThing, modifyQuantity} from "../../../services/WarehousePageSetupService";
 
 import logo1 from "../../../images/HomeImages/WarehouseCardImages/hammer.jpg";
 import logo2 from "../../../images/HomeImages/WarehouseCardImages/screw.jpg";
 import logo3 from "../../../images/HomeImages/WarehouseCardImages/brick.jpg";
 import logo4 from "../../../images/HomeImages/WarehouseCardImages/saw.jpg";
-import Tooltip from "@mui/material/Tooltip";
-
-
-
+import Cookies from "js-cookie";
 
 const ObjectCard = ({thing}) => {
 
-
-    const{selectedWarehouse, setSelectedWarehouse, token}=useContext(UserContext);
+    const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
     const [inputValue, setInputValue] = useState(0);
-    const [sumValue, setSumValue] = useState(0);
     const {upgradeObjects, setUpgradeObjects} = useContext(UserContext)
     const [showTriangle, setShowTriangle] = useState(false);
-
-
 
     const handleDelete = async () => {
         try {
@@ -48,7 +43,7 @@ const ObjectCard = ({thing}) => {
                 lsThings: updatedThings,
             });
 
-            const newWarehouse = await deleteThing(selectedWarehouse._id, thing._id, token);
+            const newWarehouse = await deleteThing(JSON.parse(sessionStorage.getItem("warehouse"))._id, thing._id, Cookies.get("sessionToken"));
             console.log("NEW WAREHOUSE ", newWarehouse);
             sessionStorage.setItem("warehouse", JSON.stringify(newWarehouse));
 
@@ -64,21 +59,23 @@ const ObjectCard = ({thing}) => {
         }
     };
 
-    console.log("Prova: ", thing)
     const handleInputChange = (event) => {
         setInputValue(Number(event.target.value));
 
     };
-    const handleButtonClick = () => {
-        setSumValue(prevSum => {
-            const newSum = prevSum + inputValue;
-            return newSum >= 0 ? newSum : 0;
+    const handleButtonClick = async () => {
+        const warehouse = await modifyQuantity(thing._id, JSON.parse(sessionStorage.getItem("warehouse"))._id, inputValue, Cookies.get("sessionToken"));
+        await sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
+        setInputValue(0);
+        socket.emit('modifiedQuantity', {
+            warehouseId: warehouse._id,
+            warehouse,
         });
-
+        setUpgradeObjects(upgradeObjects + 1);
     };
 
     useEffect(() => {
-        if (sumValue + thing.quantity <= thing.minQuantity) {
+        if (thing.quantity <= thing.minQuantity) {
             setShowTriangle(true);
         }
         else
@@ -110,7 +107,7 @@ const ObjectCard = ({thing}) => {
 
             <CardContent>
                 {showTriangle && (
-                    <Tooltip title={`Carenza di ${thing.name}`} >
+                    <Tooltip title={`Materiale in esaurimento`} >
                         <WarningIcon className="alert" />
                     </Tooltip>
                     )}
@@ -140,7 +137,7 @@ const ObjectCard = ({thing}) => {
                             Quantità:
                         </Typography>
                         <Box className='objectQuantityContainer' variant='subtitle1' color='text.secondary'>
-                            {sumValue+thing.quantity}
+                            {thing.quantity}
                         </Box>
                     </div>
                     <div className='objectModifyQuantityContainer'>
