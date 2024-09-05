@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 
 import { Card, CardContent, CardActions, Typography, TextField, Button, IconButton, Modal, Box } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { useLoadScript, Autocomplete } from '@react-google-maps/api';
 import ObjectIcon from "./ObjectIcon";
 import { UserContext } from "../../../contexts/UserContext";
 import './AddObjectCardComponent.css';
@@ -14,15 +13,10 @@ const AddObjectCard = ({ onCreate }) => {
     const [minQuantity, setMinQuantity] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [objectName, setObjectName] = useState('');
-    const { selectedPicture, setSelectedPicture } = useContext(UserContext);
-
-
+    const { selectedPicture } = useContext(UserContext);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-
-
 
     const handleCreate = () => {
         if (onCreate && objectName && minQuantity && quantity) {

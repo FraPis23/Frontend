@@ -166,7 +166,9 @@ const Warehouse = () => {
                                     ) : (
                                         <Loading/>
                                     )}
-                                    <AddObjectCard onCreate={handleCreateThing}/>
+                                    {selectedWarehouse.lsAdminsId.includes(account.sub) &&
+                                        <AddObjectCard onCreate={handleCreateThing}/>
+                                    }
                                 </div>
                         </Grid>
                     </Grid>

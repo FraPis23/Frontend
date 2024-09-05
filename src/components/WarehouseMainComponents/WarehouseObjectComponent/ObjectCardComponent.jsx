@@ -29,7 +29,7 @@ import Cookies from "js-cookie";
 
 const ObjectCard = ({thing}) => {
 
-    const {selectedWarehouse, setSelectedWarehouse} = useContext(UserContext);
+    const {selectedWarehouse, setSelectedWarehouse, account} = useContext(UserContext);
     const [inputValue, setInputValue] = useState(0);
     const {upgradeObjects, setUpgradeObjects} = useContext(UserContext)
     const [showTriangle, setShowTriangle] = useState(false);
@@ -106,18 +106,19 @@ const ObjectCard = ({thing}) => {
         <Card className='objectCard'>
 
             <CardContent>
-                {showTriangle && (
+                {showTriangle && selectedWarehouse.lsAdminsId.includes(account.sub) &&
                     <Tooltip title={`Materiale in esaurimento`} >
                         <WarningIcon className="alert" />
                     </Tooltip>
-                    )}
+                    }
 
-
-                <IconButton className="objectBin">
-                    <DeleteIcon
-                        onClick={handleDelete}
-                    />
-                </IconButton>
+                {selectedWarehouse.lsAdminsId.includes(account.sub) &&
+                    <IconButton className="objectBin">
+                        <DeleteIcon
+                            onClick={handleDelete}
+                        />
+                    </IconButton>
+                }
 
                 <div className='objectCardLogoContainer'>
                     <CardMedia className='objectCardLogo'
