@@ -106,19 +106,21 @@ const ObjectCard = ({thing}) => {
         <Card className='objectCard'>
 
             <CardContent>
-                {showTriangle && selectedWarehouse.lsAdminsId.includes(account.sub) &&
-                    <Tooltip title={`Materiale in esaurimento`} >
-                        <WarningIcon className="alert" />
-                    </Tooltip>
-                    }
+                <Box className="upperBox">
+                    {showTriangle && selectedWarehouse.lsAdminsId.includes(account.sub) &&
+                        <Tooltip title={`Materiale in esaurimento`} >
+                            <WarningIcon className="alert" />
+                        </Tooltip>
+                        }
 
-                {selectedWarehouse.lsAdminsId.includes(account.sub) &&
-                    <IconButton className="objectBin">
-                        <DeleteIcon
-                            onClick={handleDelete}
-                        />
-                    </IconButton>
-                }
+                    {selectedWarehouse.lsAdminsId.includes(account.sub) &&
+                        <IconButton className="objectBin">
+                            <DeleteIcon
+                                onClick={handleDelete}
+                            />
+                        </IconButton>
+                    }
+                </Box>
 
                 <div className='objectCardLogoContainer'>
                     <CardMedia className='objectCardLogo'

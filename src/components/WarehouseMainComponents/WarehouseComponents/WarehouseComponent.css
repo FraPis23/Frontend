@@ -9,6 +9,12 @@
     align-items: center;
     justify-content: space-between;
     padding-right:19px;
+    scrollbar-width: none;
+    flex-direction: column;
+}
+
+.warehouseBox::-webkit-scrollbar {
+    display: none;
 }
 
 .warehouseBin{
@@ -28,6 +34,14 @@
     text-transform: uppercase;
 }
 
+.warehouseName:hover{
+    overflow-x: auto;
+}
+
+.warehouseName::-webkit-scrollbar {
+    display: none;
+}
+
 .warehouseThingsContainer {
     width: 92%;
     height: 310px;
@@ -36,8 +50,10 @@
     border-radius: 20px;
     align-content: center;
     text-align: left;
-    margin:1%;
+    margin:0.1%;
     border: 2px solid rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    overflow-x: auto;
 }
 
 .warehouseUsers {
@@ -76,7 +92,8 @@
     margin-top: 0;
 }
 
-.warehouseUserListComponent::-webkit-scrollbar {
+.warehouseUserListComponent ::-webkit-scrollbar,
+.warehouseThingsContainer ::-webkit-scrollbar {
     display: none;
 }
 
@@ -89,22 +106,12 @@
     overflow: scroll;
 }
 
-.warehouseName:hover {
-    overflow-x: auto;
-}
-
-
-.warehouseName::-webkit-scrollbar {
-    display: none;
-}
-
 .warehouseBox {
-    height: calc(100vh - 200px);
-    padding: 20px;
+    height: calc(100vh - 170px);
     max-width: 100%;
-    max-height: calc(100vh - 90px);
     overflow-y: scroll;
     scrollbar-width: none;
+    padding-bottom:10%;
 }
 
 .warehouseBox::-webkit-scrollbar {
@@ -133,4 +140,93 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .warehouseIntroContainer {
+        font-size: 28px;
+        padding-right: 0;
+    }
+
+    .warehouseBin {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .warehouseName {
+        font-size: 28px;
+        padding: 10px;
+        position: relative;
+        transform: none;
+    }
+
+    .warehouseThingsContainer .warehouseUsersList {
+        width: 100%;
+        height: 320px;
+        margin: 10px 0;
+        border-radius: 10px;
+    }
+
+    .warehouseUsers {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .warehouseUserListTitle {
+        font-size: 18px;
+        margin-left: 10px;
+        padding: 0.5rem;
+    }
+
+    .warehouseBox {
+        padding: 10px;
+        overflow-y: scroll;
+        height: calc(100vh - 150px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .warehouseThings {
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .warehouseThingsContainer {
+        overflow-y: hidden;
+        height: auto;
+    }
+
+    .headerBox {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .warehouseIntroContainer {
+        font-size: 24px;
+    }
+
+    .warehouseName {
+        font-size: 24px;
+    }
+
+    .warehouseUserListTitle {
+        font-size: 16px;
+    }
+
+    .warehouseThingsContainer, .warehouseUsersList {
+        margin: 5px 0;
+    }
+
+    .AddUsersTitleBox {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .warehouseThingsContainer {
+        height: auto;
+        max-height: 300px;
+        overflow-y: auto;
+    }
 }

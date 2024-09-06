@@ -36,12 +36,25 @@
 
 .objectName {
     background: #d3d3d3;
-    width: 100%;
+    width: 150px;
     font-family: 'Arial', sans-serif;
     font-size: 15px !important;
     font-weight: bold !important;
     text-align: center;
+    white-space: nowrap;
+    overflow-x: scroll;
+    text-transform: uppercase;
 }
+
+.objectName:hover{
+    overflow-x: auto;
+}
+
+.objectName::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 .objectDescription {
     font-size: 15px !important;
@@ -74,8 +87,8 @@
     display: flex;
     justify-content: space-between;
     height: 50px;
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 23%;
+    padding-right: 7%;
     flex-direction: row-reverse;
 }
 
@@ -94,6 +107,8 @@
     margin-left: 110px !important;
     margin-top: -17px !important;
 }
+
+
 
 .alert{
     color: red !important;
@@ -115,4 +130,8 @@
     100% {
         opacity: 1;
     }
+}
+
+.upperBox{
+    height: 20px;
 }

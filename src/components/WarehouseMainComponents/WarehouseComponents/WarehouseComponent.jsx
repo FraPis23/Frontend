@@ -36,12 +36,20 @@ const Warehouse = () => {
 
     const handleCreateThing = async (newThing) => {
         try {
-            if (typeof newThing.quantity !== 'number') {
+            // Controllo per newThing.quantity
+            if (isNaN(parseFloat(newThing.quantity))) {
                 newThing.quantity = 0;
+            } else {
+                newThing.quantity = parseFloat(newThing.quantity);  // Converti a numero se è una stringa valida
             }
-            if (typeof newThing.minQuantity !== 'number') {
+
+// Controllo per newThing.minQuantity
+            if (isNaN(parseFloat(newThing.minQuantity))) {
                 newThing.minQuantity = 0;
+            } else {
+                newThing.minQuantity = parseFloat(newThing.minQuantity);  // Converti a numero se è una stringa valida
             }
+
             const warehouse = await createThing(newThing, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get("sessionToken"));
             sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
             setUpgradeObjects(upgradeObjects + 1);
