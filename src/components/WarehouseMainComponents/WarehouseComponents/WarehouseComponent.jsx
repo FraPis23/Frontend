@@ -48,7 +48,7 @@ const Warehouse = () => {
                 newThing.minQuantity = parseFloat(newThing.minQuantity);  // Converti a numero se è una stringa valida
             }
 
-            const warehouse = await createThing(newThing, JSON.parse(sessionStorage.getItem("warehouse"))._id, JSON.parse(Cookies.get("sessionToken")), JSON.parse(Cookies.get('sessionUser')).sub);
+            const warehouse = await createThing(newThing, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get("sessionToken"), JSON.parse(Cookies.get('sessionUser')).sub);
             sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
             setUpgradeObjects(upgradeObjects + 1);
             socket.emit('addThing', {
@@ -212,7 +212,7 @@ const Warehouse = () => {
                 open={open}
                 className="warehouseDeleteWarning"
             >
-                <Stack sx={{ width: '27%' }}>
+                <Stack sx={{ width: '330px' }}>
                     <Alert severity="warning"
                            action={
                                <Button
@@ -235,7 +235,7 @@ const Warehouse = () => {
                 open={userDeleted}
                 className="warehouseDeleteWarning"
             >
-                <Stack sx={{ width: '27%' }}>
+                <Stack sx={{ width: '340px' }}>
                     <Alert severity="warning"
                            action={
                                <Button

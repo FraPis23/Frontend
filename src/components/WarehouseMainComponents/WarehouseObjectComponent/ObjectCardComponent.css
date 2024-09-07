@@ -37,13 +37,15 @@
 .objectName {
     background: #d3d3d3;
     width: 150px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px !important;
     font-weight: bold !important;
     text-align: center;
     white-space: nowrap;
     overflow-x: scroll;
     text-transform: uppercase;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .objectName:hover{
@@ -53,8 +55,6 @@
 .objectName::-webkit-scrollbar {
     display: none;
 }
-
-
 
 .objectDescription {
     font-size: 15px !important;

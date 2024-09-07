@@ -43,8 +43,7 @@ const ObjectCard = ({thing}) => {
                 lsThings: updatedThings,
             });
 
-            const newWarehouse = await deleteThing(JSON.parse(sessionStorage.getItem("warehouse"))._id, thing._id, JSON.parse(Cookies.get("sessionToken")), JSON.parse(Cookies.get("sessioUser")).sub);
-            console.log("NEW WAREHOUSE ", newWarehouse);
+            const newWarehouse = await deleteThing(JSON.parse(sessionStorage.getItem("warehouse"))._id, thing._id, Cookies.get("sessionToken"), JSON.parse(Cookies.get("sessionUser")).sub);
             sessionStorage.setItem("warehouse", JSON.stringify(newWarehouse));
 
             socket.emit('deletedThing', {
@@ -64,8 +63,9 @@ const ObjectCard = ({thing}) => {
 
     };
     const handleButtonClick = async () => {
-        const warehouse = await modifyQuantity(thing._id, JSON.parse(sessionStorage.getItem("warehouse"))._id, inputValue, Cookies.get("sessionToken"));
+        const warehouse = await modifyQuantity(thing._id, JSON.parse(sessionStorage.getItem("warehouse"))._id, inputValue, Cookies.get("sessionToken"), JSON.parse(Cookies.get("sessionUser")).sub);
         await sessionStorage.setItem("warehouse", JSON.stringify(warehouse));
+        console.log(warehouse.ls)
         setInputValue(0);
         socket.emit('modifiedQuantity', {
             warehouseId: warehouse._id,

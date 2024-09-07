@@ -175,14 +175,15 @@ export async function deleteThing(warehouseId, thingId, token, grade) {
     }
 }
 
-export async function modifyQuantity(thingId, warehouseId, quantity, token) {
+export async function modifyQuantity(thingId, warehouseId, quantity, token, grade) {
     try {
         const response = await axios.post(
             `${api_url}/warehouses/modify-quantity`,
             {
                 thingId: thingId,
                 warehouseId : warehouseId,
-                quantity: quantity
+                quantity: quantity,
+                grade: grade
             },
             {
                 withCredentials: true,
