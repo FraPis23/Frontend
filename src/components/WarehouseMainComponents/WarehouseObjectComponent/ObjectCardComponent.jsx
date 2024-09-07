@@ -43,7 +43,7 @@ const ObjectCard = ({thing}) => {
                 lsThings: updatedThings,
             });
 
-            const newWarehouse = await deleteThing(JSON.parse(sessionStorage.getItem("warehouse"))._id, thing._id, Cookies.get("sessionToken"));
+            const newWarehouse = await deleteThing(JSON.parse(sessionStorage.getItem("warehouse"))._id, thing._id, JSON.parse(Cookies.get("sessionToken")), JSON.parse(Cookies.get("sessioUser")).sub);
             console.log("NEW WAREHOUSE ", newWarehouse);
             sessionStorage.setItem("warehouse", JSON.stringify(newWarehouse));
 

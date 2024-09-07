@@ -109,9 +109,8 @@ export async function modifyPermissions(type, sub, warehouseId, token, grade) {
     }
 }
 
-export async function createThing(newThing, warehouseId, token) {
+export async function createThing(newThing, warehouseId, token, grade) {
     try {
-        console.log("ID  ", token);
         const response = await axios.post(
             `${api_url}/warehouses/create-thing`,
             {
@@ -119,8 +118,8 @@ export async function createThing(newThing, warehouseId, token) {
                 name: newThing.name,
                 minQuantity: newThing.minQuantity,
                 quantity: newThing.quantity,
-                picture: newThing.picture
-
+                picture: newThing.picture,
+                grade: grade
             },
             {
                 withCredentials: true,
@@ -153,13 +152,14 @@ export async function getThings(list, token) {
     }
 }
 
-export async function deleteThing(warehouseId, thingId, token) {
+export async function deleteThing(warehouseId, thingId, token, grade) {
     try {
         const response = await axios.post(
             `${api_url}/warehouses/delete-thing`,
             {
                 warehouseId : warehouseId,
                 thingId: thingId,
+                grade: grade
             },
             {
                 withCredentials: true,
