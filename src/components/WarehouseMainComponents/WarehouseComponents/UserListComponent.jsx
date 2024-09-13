@@ -95,6 +95,12 @@ function UserList({type, list, control}) {
                 return (
                     <ListItem
                         key={index}
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            flexDirection: { xs: 'column', sm: 'row' }, // Column layout for small screens
+                        }}
                     >
                         <ListItemAvatar>
                             <Avatar

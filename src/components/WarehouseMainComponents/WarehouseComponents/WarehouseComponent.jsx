@@ -191,8 +191,8 @@ const Warehouse = () => {
                                 <UserList type={1} list={selectedWarehouse.lsAdminsId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
                         </Grid>
-                        <Grid className="warehouseUsersList">
-                            <div className="AddUsersTitleBox">
+                        <Grid className="warehouseUsersList" >
+                            <div className="AddUsersTitleBox" >
                                 <h2 className="warehouseUserListTitle">
                                     Utenti
                                 </h2>

@@ -60,6 +60,7 @@
     display: flex;
     position: relative;
     justify-content: center;
+    overflow-y: hidden;
 }
 
 .warehouseUsersList {
@@ -69,6 +70,7 @@
     border-radius: 20px;
     margin: 1%;
     border: 2px solid rgba(0, 0, 0, 0.2);
+    overflow-y: hidden;
 }
 
 .warehouseUserListTitle {
