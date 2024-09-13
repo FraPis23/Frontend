@@ -163,7 +163,9 @@ const Warehouse = () => {
 
                     <Grid className = "warehouseUsers">
                         <Grid className = "warehouseThingsContainer">
-                            <h2 className="warehouseUserListTitle">Inventario</h2>
+                            <div className="warehouseInventorBox">
+                            <h2 className="warehouseUsersListTitle">Inventario</h2>
+                            </div>
                                 <div className="warehouseThings">
                                     {ready ? (
                                         selectedWarehouse.lsThings.map((thing, index) => (
@@ -184,13 +186,17 @@ const Warehouse = () => {
                         </Grid>
                     </Grid>
 
+
+
                     <Grid className="warehouseUsers">
+
                         <Grid className="warehouseUsersList">
                             <h2 className="warehouseUserListTitle">Amministratori</h2>
                             <div className="warehouseUserListComponent">
                                 <UserList type={1} list={selectedWarehouse.lsAdminsId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
                         </Grid>
+
                         <Grid className="warehouseUsersList" >
                             <div className="AddUsersTitleBox" >
                                 <h2 className="warehouseUserListTitle">
@@ -204,7 +210,9 @@ const Warehouse = () => {
                                 <UserList type={2} list={selectedWarehouse.lsUsersId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
                         </Grid>
+
                     </Grid>
+
 
                 </Box>
             }

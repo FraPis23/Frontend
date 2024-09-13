@@ -78,7 +78,7 @@ const AddObjectCard = ({ onCreate }) => {
                             </Typography>
                             <TextField
                                 fullWidth
-                                label="Nome Ogetto"
+                                label="Nome Oggetto"
                                 variant="outlined"
                                 value={objectName}
                                 onChange={(e) => setObjectName(e.target.value)}

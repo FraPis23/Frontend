@@ -44,7 +44,7 @@
 
 .warehouseThingsContainer {
     width: 92%;
-    height: 310px;
+    height: 340px;
     background-color: white;
     font-family: 'Inter', sans-serif;
     border-radius: 20px;
@@ -71,6 +71,7 @@
     margin: 1%;
     border: 2px solid rgba(0, 0, 0, 0.2);
     overflow-y: hidden;
+
 }
 
 .warehouseUserListTitle {
@@ -81,6 +82,15 @@
     font-size: 22px;
     padding-left: 1rem;
     padding-top: 0.5rem;
+    text-transform: uppercase;
+}
+
+.warehouseInventorBox {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    padding-left: 40px;
     text-transform: uppercase;
 }
 
@@ -106,6 +116,7 @@
     align-items: center;
     text-align: center;
     overflow: scroll;
+    margin-top: 0;
 }
 
 .warehouseBox {
@@ -136,6 +147,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    flex-direction: row !important;
 }
 
 .warehouseDeleteWarning {
@@ -159,7 +171,6 @@
         font-size: 28px;
         padding: 10px;
         position: relative;
-        transform: none;
     }
 
     .warehouseThingsContainer .warehouseUsersList {
@@ -215,7 +226,8 @@
     }
 
     .warehouseUserListTitle {
-        font-size: 16px;
+        font-size: 14px;
+        padding: 0;
     }
 
     .warehouseThingsContainer, .warehouseUsersList {
@@ -232,4 +244,9 @@
         max-height: 300px;
         overflow-y: auto;
     }
+    .warehouseInventorBox {
+        text-align: center;
+        padding-left: 0;
+    }
+
 }
