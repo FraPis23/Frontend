@@ -17,7 +17,7 @@
 
 .loginSection {
     background: rgba(364, 364, 364, 0.6);
-    width: auto;
+    width: 50%;
     height: auto;
     padding: 20px;
     display: flex;
@@ -31,27 +31,28 @@
 }
 
 .loginSection p {
-    font-size: 2em;
+    font-size: 1.56vw;
     margin-bottom: 20px;
     text-align: center;
-    font-family: "Patua One";
+    font-family:'Inter', sans-serif;
+    font-weight: bold;
     color: rgb(37, 37, 37);
 }
 
 .loginButton {
     background: none;
     border: 4px solid transparent;
-    font-size: 30px;
+    font-size: 1.8vw;
     padding: 10px 20px;
     cursor: pointer;
     transition: color 0.3s, border 0.3s;
     box-sizing: border-box;
     margin-top: 10px;
-    font-family: "Patua One";
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
     color: rgb(37, 37, 37);
     border-radius: 15px;
 }
-
 
 .loginButton::after {
     content: '';
@@ -72,4 +73,37 @@
 
 .loginButton:hover {
     border: 4px solid;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+@media only screen and (max-width: 428px) {
+    .loginSection {
+        width: 90%;
+        padding: 15px;
+        border-radius: 8px;
+        padding-bottom: 40px;
+    }
+
+    .loginSection p {
+        font-size: 4vw;
+        margin-bottom: 15px;
+    }
+
+    .loginButton {
+        font-size: 4vw;
+        padding: 8px 15px;
+        margin-top: 8px;
+        border-radius: 12px;
+    }
+
+    .loginButton::after {
+        width: 15%;
+        height: 3px;
+        bottom: 35px;
+    }
 }

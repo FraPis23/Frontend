@@ -9,6 +9,7 @@
     position: fixed;
 }
 
+
 .VisibilityOffIcon{
     position: fixed;
 }
@@ -22,7 +23,7 @@
 }
 
 .ItemText{
-    overflow-y: scroll;
+    overflow-x: scroll;
     scrollbar-width: none;
 }
 
