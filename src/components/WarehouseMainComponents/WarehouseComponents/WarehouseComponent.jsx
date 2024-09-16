@@ -193,7 +193,7 @@ const Warehouse = () => {
                         <Grid className="warehouseUsersList">
                             <h2 className="warehouseUserListTitle">Amministratori</h2>
                             <div className="warehouseUserListComponent">
-                                <UserList type={1} list={selectedWarehouse.lsAdminsId} control={selectedWarehouse.lsAdminsId}/>
+                                <UserList className = "userListClass" type={1} list={selectedWarehouse.lsAdminsId} control={selectedWarehouse.lsAdminsId}/>
                             </div>
                         </Grid>
 

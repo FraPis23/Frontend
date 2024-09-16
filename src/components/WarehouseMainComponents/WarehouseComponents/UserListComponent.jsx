@@ -99,7 +99,7 @@ function UserList({type, list, control}) {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            flexDirection: { xs: 'column', sm: 'row' }, // Column layout for small screens
+                            flexDirection: { xs: 'column', sm: 'column', md: 'row'}, // Column layout for small screens
                         }}
                     >
                         <ListItemAvatar>
@@ -109,6 +109,7 @@ function UserList({type, list, control}) {
                             />
                         </ListItemAvatar>
                         <ListItemText primary={user.nickname} className="itemText" />
+                        <div>
                         {type === 1 && JSON.parse(Cookies.get('sessionUser')).sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Declassa" placement="left">
                                 <IconButton
@@ -139,6 +140,7 @@ function UserList({type, list, control}) {
                                 </IconButton>
                             </Tooltip>
                         }
+
                         {type === 2 && control.includes(JSON.parse(Cookies.get('sessionUser')).sub) &&
                             <Tooltip title="Rimuovi" placement="right">
                                 <IconButton
@@ -149,6 +151,7 @@ function UserList({type, list, control}) {
                                 </IconButton>
                             </Tooltip>
                         }
+                        </div>
                     </ListItem>
                 );
             })}

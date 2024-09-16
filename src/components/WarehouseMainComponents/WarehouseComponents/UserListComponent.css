@@ -25,7 +25,8 @@
 .ItemText{
     overflow-x: scroll;
     scrollbar-width: none;
-    width: 95%;
+    width: auto;
+
 }
 
 .ItemText::-webkit-scrollbar {
