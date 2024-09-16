@@ -102,13 +102,22 @@ function UserList({type, list, control}) {
                             flexDirection: { xs: 'column', sm: 'column', md: 'row'}, // Column layout for small screens
                         }}
                     >
-                        <ListItemAvatar>
+                        <ListItemAvatar
+
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}
+                        >
                             <Avatar
                                 alt={`Avatar`}
                                 src={user.picture}
                             />
                         </ListItemAvatar>
-                        <ListItemText primary={user.nickname} className="itemText" />
+                        <div className="userName">
+                            <ListItemText primary={user.nickname} className="itemText"/>
+                        </div>
                         <div>
                         {type === 1 && JSON.parse(Cookies.get('sessionUser')).sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Declassa" placement="left">

@@ -33,3 +33,18 @@
     display: none;
 }
 
+@media (max-width: 480px) {
+    .warehouseUserListComponent{
+        display: flex;
+        text-align: center;
+        align-content: center !important;
+        align-items: center;
+    }
+
+    .userName{
+        width: 100%;
+        display: flex;
+        text-align: center;
+        overflow-x: scroll;
+    }
+}

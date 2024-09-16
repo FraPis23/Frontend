@@ -186,8 +186,6 @@ const Warehouse = () => {
                         </Grid>
                     </Grid>
 
-
-
                     <Grid className="warehouseUsers">
 
                         <Grid className="warehouseUsersList">

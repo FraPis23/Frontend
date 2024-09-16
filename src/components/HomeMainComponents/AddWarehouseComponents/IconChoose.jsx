@@ -1,6 +1,6 @@
 import React, {useState, useContext} from 'react';
 import image1 from '../../../images/HomeImages/WarehouseCardImages/building.png'
-import image2 from '../../../images/HomeImages/WarehouseCardImages/dick.png'
+import image2 from '../../../images/HomeImages/WarehouseCardImages/storehouse.png'
 import image3 from '../../../images/HomeImages/WarehouseCardImages/warehouse.png'
 import image4 from '../../../images/HomeImages/WarehouseCardImages/warehouse-management.png'
 import {UserContext} from "../../../contexts/UserContext";

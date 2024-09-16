@@ -11,7 +11,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import './WarehouseCardComponent.css';
 
 import logo3 from '../../images/HomeImages/WarehouseCardImages/warehouse.png';
-import logo2 from '../../images/HomeImages/WarehouseCardImages/dick.png';
+import logo2 from '../../images/HomeImages/WarehouseCardImages/storehouse.png';
 import logo1 from '../../images/HomeImages/WarehouseCardImages/building.png';
 import logo4 from '../../images/HomeImages/WarehouseCardImages/warehouse-management.png';
 
