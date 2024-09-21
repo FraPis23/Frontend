@@ -95,8 +95,8 @@ const AddObjectCard = ({ onCreate }) => {
                                     shrink: true,
                                 }}
                                 inputProps={{
-                                    min: 0,   // Valore minimo
-                                    step: 1   // Incremento dei valori
+                                    min: 0,
+                                    step: 1
                                 }}
                                 sx={{ mt: 2}}
                             />

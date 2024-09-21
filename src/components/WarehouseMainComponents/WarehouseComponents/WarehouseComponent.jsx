@@ -39,13 +39,13 @@ const Warehouse = () => {
             if (isNaN(parseFloat(newThing.quantity))) {
                 newThing.quantity = 0;
             } else {
-                newThing.quantity = parseFloat(newThing.quantity);  // Converti a numero se è una stringa valida
+                newThing.quantity = parseFloat(newThing.quantity);
             }
 
             if (isNaN(parseFloat(newThing.minQuantity))) {
                 newThing.minQuantity = 0;
             } else {
-                newThing.minQuantity = parseFloat(newThing.minQuantity);  // Converti a numero se è una stringa valida
+                newThing.minQuantity = parseFloat(newThing.minQuantity);
             }
 
             const warehouse = await createThing(newThing, JSON.parse(sessionStorage.getItem("warehouse"))._id, Cookies.get("sessionToken"), JSON.parse(Cookies.get('sessionUser')).sub);

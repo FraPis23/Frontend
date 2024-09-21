@@ -13,7 +13,7 @@ const IconChoose = () => {
     const {selectedImage, setSelectedImage} = useContext(UserContext);
 
     const handleImageClick = (imageId) => {
-        setSelectedImage(imageId); // Aggiorna lo stato con l'immagine cliccata
+        setSelectedImage(imageId);
         console.log(`Hai cliccato sull'immagine ${imageId}`);
     };
 
@@ -28,7 +28,7 @@ const IconChoose = () => {
     const getImageStyle = (imageId) => {if (selectedImage) {
         return selectedImage === imageId
             ? { ...baseStyle } // Stile di base
-            : { ...baseStyle, opacity: 0.5 }; // Opacizza le altre immagini
+            : { ...baseStyle, opacity: 0.5 };
     } else {
         return baseStyle;
     }

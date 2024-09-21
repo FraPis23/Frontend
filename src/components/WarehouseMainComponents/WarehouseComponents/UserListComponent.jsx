@@ -99,8 +99,8 @@ function UserList({type, list, control}) {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            flexDirection: { xs: 'column', sm: 'column', md: 'row'}, // Column layout for small screens
                         }}
+                        className="userListItem"
                     >
                         <ListItemAvatar
 
@@ -118,7 +118,7 @@ function UserList({type, list, control}) {
                         <div className="userName">
                             <ListItemText primary={user.nickname} className="itemText"/>
                         </div>
-                        <div>
+                        <div className="icons">
                         {type === 1 && JSON.parse(Cookies.get('sessionUser')).sub === list[0] && user.sub !== list[0] &&
                             <Tooltip title="Declassa" placement="left">
                                 <IconButton
